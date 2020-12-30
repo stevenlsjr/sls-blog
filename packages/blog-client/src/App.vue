@@ -1,10 +1,31 @@
 <template>
-  <div id="nav">
-    <router-link to="/">Home</router-link> |
-    <router-link to="/about">About</router-link>
+  <div>
+    <div id="nav">
+      <router-link to="/">Home</router-link> |
+      <router-link to="/about">About</router-link>
+    </div>
+    <router-view />
   </div>
-  <router-view />
 </template>
+
+<script lang="ts">
+import { defineComponent, provide, ref } from "vue";
+import { ApolloClients, useMutation } from "@vue/apollo-composable";
+import { apolloClient } from "./apollo";
+import gql from "graphql-tag";
+import { useStore } from "./store";
+
+export default defineComponent({
+  name: "App",
+  setup() {
+    provide(ApolloClients, { default: apolloClient });
+    const store = useStore();
+    store.dispatch("loginPublic").then(() => {
+      console.log("logged in ", store.state.jwt);
+    });
+  },
+});
+</script>
 
 <style>
 #app {

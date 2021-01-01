@@ -1,0 +1,30 @@
+{
+  "collectionName": "components_content_blocks_images",
+  "info": {
+    "name": "Image",
+    "icon": "image"
+  },
+  "options": {},
+  "attributes": {
+    "alt_text": {
+      "type": "string"
+    },
+    "Image": {
+      "model": "file",
+      "via": "related",
+      "allowedTypes": [
+        "images"
+      ],
+      "plugin": "upload",
+      "required": false
+    },
+    "presentation": {
+      "type": "enumeration",
+      "enum": [
+        "default"
+      ],
+      "default": "default",
+      "required": true
+    }
+  }
+}

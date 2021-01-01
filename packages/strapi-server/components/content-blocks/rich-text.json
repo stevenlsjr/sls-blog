@@ -1,0 +1,16 @@
+{
+  "collectionName": "components_content_blocks_rich_texts",
+  "info": {
+    "name": "RichText",
+    "icon": "indent"
+  },
+  "options": {},
+  "attributes": {
+    "RichText": {
+      "type": "richtext"
+    },
+    "extract_quote": {
+      "type": "text"
+    }
+  }
+}

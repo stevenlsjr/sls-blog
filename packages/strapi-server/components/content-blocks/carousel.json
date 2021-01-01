@@ -1,0 +1,20 @@
+{
+  "collectionName": "components_content_blocks_carousels",
+  "info": {
+    "name": "Carousel",
+    "icon": "photo-video"
+  },
+  "options": {},
+  "attributes": {
+    "media_items": {
+      "collection": "file",
+      "via": "related",
+      "allowedTypes": [
+        "images",
+        "videos"
+      ],
+      "plugin": "upload",
+      "required": false
+    }
+  }
+}

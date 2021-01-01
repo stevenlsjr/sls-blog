@@ -1,0 +1,52 @@
+{
+  "kind": "collectionType",
+  "collectionName": "articles",
+  "info": {
+    "name": "Article",
+    "description": ""
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "Title": {
+      "type": "string",
+      "required": true
+    },
+    "Subtitle": {
+      "type": "string"
+    },
+    "abstract": {
+      "type": "text"
+    },
+    "slug": {
+      "type": "string",
+      "required": true,
+      "regex": "^[a-z0-9]+(?:-[a-z0-9]+)*$"
+    },
+    "content": {
+      "type": "dynamiczone",
+      "components": [
+        "content-blocks.rich-text",
+        "content-blocks.media",
+        "content-blocks.carousel"
+      ]
+    },
+    "tags": {
+      "collection": "tag",
+      "via": "articles",
+      "dominant": true
+    },
+    "linked_to": {
+      "collection": "article",
+      "via": "linked_by",
+      "dominant": true
+    },
+    "linked_by": {
+      "collection": "article",
+      "via": "linked_to"
+    }
+  }
+}

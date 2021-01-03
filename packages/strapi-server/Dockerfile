@@ -2,8 +2,6 @@ FROM debian:bullseye
 
 WORKDIR /strapi-api
 
-COPY ./package.json ./
-COPY ./yarn.lock ./
 
 RUN apt-get update -y && \
   apt-get install -y \
@@ -14,7 +12,9 @@ RUN apt-get update -y && \
     libpng-dev \
     libvips-dev && \
     ln /usr/bin/yarnpkg /usr/bin/yarn
-
+    
+COPY ./package.json ./
+COPY ./yarn.lock ./
 
 RUN yarn install  --network-timeout 1000000000
 

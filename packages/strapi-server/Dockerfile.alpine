@@ -1,0 +1,27 @@
+FROM alpine:edge
+
+WORKDIR /strapi-api
+
+RUN apk update && \
+  apk add \
+    'nodejs<15' 'npm<15'   \
+    yarn \
+    build-base \
+    libpng-dev \
+    vips-dev && \
+    yarn global add node-gyp
+    
+# COPY ./package.json ./
+# COPY ./yarn.lock ./
+
+# RUN yarn install  --network-timeout 1000000000
+
+# COPY . .
+
+# ENV NODE_ENV production
+
+# RUN yarn build
+
+# EXPOSE 1337
+
+# CMD ["yarn", "start"]

@@ -5,10 +5,11 @@ WORKDIR /strapi-api
 COPY ./package.json ./
 COPY ./yarn.lock ./
 
-RUN apt-get update && \
-  apt-get install build-essential libpng-dev
-  
-RUN yarn install --network-timeout 1000000000
+RUN apt-get update -y && \
+  apt-get install -y \
+  build-essential libpng-dev
+
+RUN yarn install -y --network-timeout 1000000000
 
 COPY . .
 

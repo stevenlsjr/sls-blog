@@ -14,18 +14,18 @@ export default async ({ $axios, store, $config, $apolloHelpers }: Context) => {
     });
   }
 
-  setJwt(store.state.strapi.jwt, $apolloHelpers);
+  await setJwt(store.state.strapi.jwt, $apolloHelpers);
   const _subscribe = store.subscribe((mutation, state) => {
     switch (mutation.type) {
       case 'strapi/setJwt':
-        setJwt(mutation.payload, $apolloHelpers);
+        setJwt(mutation.payload, $apolloHelpers).catch(console.error);
         break;
     }
   }, {});
 };
 
-function setJwt(jwt: string | undefined, $apolloHelpers: ApolloHelpers) {
+async function setJwt(jwt: string | undefined, $apolloHelpers: ApolloHelpers) {
   if (jwt) {
-    $apolloHelpers.onLogin(jwt);
+    await $apolloHelpers.onLogin(jwt);
   }
 }

@@ -517,17 +517,17 @@
       "Article": {
         "required": [
           "id",
-          "Title",
+          "title",
           "slug"
         ],
         "properties": {
           "id": {
             "type": "string"
           },
-          "Title": {
+          "title": {
             "type": "string"
           },
-          "Subtitle": {
+          "subtitle": {
             "type": "string"
           },
           "abstract": {
@@ -553,7 +553,7 @@
                     "id": {
                       "type": "string"
                     },
-                    "RichText": {
+                    "rich_text": {
                       "type": "string"
                     },
                     "extract_quote": {
@@ -783,17 +783,17 @@
             "items": {
               "required": [
                 "id",
-                "Title",
+                "title",
                 "slug"
               ],
               "properties": {
                 "id": {
                   "type": "string"
                 },
-                "Title": {
+                "title": {
                   "type": "string"
                 },
-                "Subtitle": {
+                "subtitle": {
                   "type": "string"
                 },
                 "abstract": {
@@ -840,17 +840,17 @@
             "items": {
               "required": [
                 "id",
-                "Title",
+                "title",
                 "slug"
               ],
               "properties": {
                 "id": {
                   "type": "string"
                 },
-                "Title": {
+                "title": {
                   "type": "string"
                 },
-                "Subtitle": {
+                "subtitle": {
                   "type": "string"
                 },
                 "abstract": {
@@ -900,14 +900,14 @@
       },
       "NewArticle": {
         "required": [
-          "Title",
+          "title",
           "slug"
         ],
         "properties": {
-          "Title": {
+          "title": {
             "type": "string"
           },
-          "Subtitle": {
+          "subtitle": {
             "type": "string"
           },
           "abstract": {
@@ -933,7 +933,7 @@
                     "id": {
                       "type": "string"
                     },
-                    "RichText": {
+                    "rich_text": {
                       "type": "string"
                     },
                     "extract_quote": {

@@ -1,8 +1,0 @@
-query getArticleBySlug($start: Int, $limit: Int) {
-  articles(start: $start, limit: $limit) {
-    id
-    Title
-    Subtitle
-    slug
-  }
-}

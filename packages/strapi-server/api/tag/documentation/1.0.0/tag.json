@@ -534,17 +534,17 @@
             "items": {
               "required": [
                 "id",
-                "Title",
+                "title",
                 "slug"
               ],
               "properties": {
                 "id": {
                   "type": "string"
                 },
-                "Title": {
+                "title": {
                   "type": "string"
                 },
-                "Subtitle": {
+                "subtitle": {
                   "type": "string"
                 },
                 "abstract": {

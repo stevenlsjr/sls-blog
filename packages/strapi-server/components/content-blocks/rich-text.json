@@ -2,11 +2,12 @@
   "collectionName": "components_content_blocks_rich_texts",
   "info": {
     "name": "RichText",
-    "icon": "indent"
+    "icon": "indent",
+    "description": ""
   },
   "options": {},
   "attributes": {
-    "RichText": {
+    "rich_text": {
       "type": "richtext"
     },
     "extract_quote": {

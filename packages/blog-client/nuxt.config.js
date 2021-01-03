@@ -46,8 +46,11 @@ export default {
   },
   proxy: {
     '/strapi/': {
-      target: getenv.url('NUXT_STRAPI_URL', 'http://localhost:1337'),
+      target: getenv('NUXT_STRAPI_URL', 'http://localhost:1337'),
       pathRewrite: { '^/strapi/': '' },
+    },
+    '/graphql': {
+      target: getenv('NUXT_STRAPI_URL', 'http://localhost:1337'),
     },
   },
   // Graphql client config https://github.com/nuxt-community/apollo-module
@@ -55,7 +58,11 @@ export default {
   apollo: {
     clientConfigs: {
       default: {
-        httpEndpoint: '/strapi/graphql',
+        // required
+        httpEndpoint: getenv('NUXT_GRAPHQL_ENDPOINT', 'http://localhost:3000/graphql'),
+
+        // override HTTP endpoint in browser only
+        browserHttpEndpoint: '/graphql',
       },
     },
   },

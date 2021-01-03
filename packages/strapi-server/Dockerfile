@@ -5,8 +5,7 @@ WORKDIR /strapi-api
 COPY ./package.json ./
 COPY ./yarn.lock ./
 
-RUN yarn install \
-  --verbose
+RUN yarn install
 
 COPY . .
 

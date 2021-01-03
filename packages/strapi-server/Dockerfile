@@ -7,7 +7,9 @@ COPY ./yarn.lock ./
 
 RUN apt-get update -y && \
   apt-get install -y \
-  build-essential libpng-dev
+    build-essential \
+    libpng-dev \
+    libvips-dev
 
 RUN yarn install  --network-timeout 1000000000
 

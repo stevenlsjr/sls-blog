@@ -1,0 +1,25 @@
+query getArticleBySlug($slug: String!) {
+  articles(where: {slug: $slug}) {
+    id
+    Title
+    Subtitle
+    content {
+      ... on ComponentContentBlocksRichText {
+        id
+        RichText
+      }
+      ... on ComponentContentBlocksMedia {
+        media {
+          formats
+        }
+        alt_text
+        caption
+      }
+      ... on ComponentContentBlocksCarousel {
+        media_items {
+          formats
+        }
+      }
+    }
+  }
+}

@@ -8,7 +8,7 @@ COPY ./yarn.lock ./
 RUN apt-get update -y && \
   apt-get install -y \
     build-essential \
-    libglib-2.0 \
+    libglib2.0-dev \
     libpng-dev \
     libvips-dev
 

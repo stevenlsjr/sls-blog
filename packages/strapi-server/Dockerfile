@@ -9,7 +9,7 @@ RUN apt-get update -y && \
   apt-get install -y \
   build-essential libpng-dev
 
-RUN yarn install -y --network-timeout 1000000000
+RUN yarn install  --network-timeout 1000000000
 
 COPY . .
 

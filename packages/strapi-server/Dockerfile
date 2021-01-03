@@ -1,4 +1,4 @@
-FROM debian:bullseye
+FROM ubuntu:groovy
 
 WORKDIR /strapi-api
 
@@ -12,7 +12,7 @@ RUN apt-get update -y && \
     libpng-dev \
     libvips-dev && \
     ln /usr/bin/yarnpkg /usr/bin/yarn
-    
+
 COPY ./package.json ./
 COPY ./yarn.lock ./
 

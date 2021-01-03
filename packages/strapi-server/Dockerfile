@@ -5,6 +5,7 @@ WORKDIR /strapi-api
 
 RUN apt-get update -y && \
   apt-get install -y \
+    python	\
     nodejs    \
     node-gyp \
     yarnpkg \

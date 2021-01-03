@@ -5,6 +5,8 @@ on:
 
 jobs:
   buildx:
+    environment: strapi-server
+
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -22,12 +24,7 @@ jobs:
       - name: Available platforms
         run: echo ${{ steps.buildx.outputs.platforms }}
       - name: Build image
-        run: >-
-          docker buildx build 
-            -t $IMAGE:$GITHUB_SHA 
-            --platform $BUILDX_PLATFORMS
-            --push
-            packages/strapi-server
+        run: docker buildx build -t $IMAGE:$GITHUB_SHA --platform $BUILDX_PLATFORMS --push packages/strapi-server
         env:
           IMAGE: stevenlsjr/blog-strapi-server
           BUILDX_PLATFORMS: linux/arm64,linux/amd64

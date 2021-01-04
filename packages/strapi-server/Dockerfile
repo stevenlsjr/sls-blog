@@ -19,12 +19,12 @@ COPY ./yarn.lock ./
 
 RUN yarn install  --network-timeout 1000000000
 
-COPY . .
+# COPY . .
 
-ENV NODE_ENV production
+# ENV NODE_ENV production
 
-RUN yarn build
+# RUN yarn build
 
-EXPOSE 1337
+# EXPOSE 1337
 
-CMD ["yarn", "start"]
+# CMD ["yarn", "start"]

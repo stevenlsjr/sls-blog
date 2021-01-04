@@ -1,0 +1,43 @@
+[[source]]
+url = "https://pypi.python.org/simple"
+verify_ssl = true
+name = "pypi"
+
+[packages]
+asgiref = "*"
+channels = "*"
+dj-database-url = "*"
+django = "*"
+django-cache-url = "*"
+django-configurations = "*"
+django-redis = "*"
+graphene-django = "*"
+gunicorn = "*"
+psycopg2-binary = "*"
+uvicorn = "*"
+wagtail = "*"
+Faker = "*"
+factory-boy = "*"
+djangorestframework = "*"
+markdown = "*"
+django-filter = ">=2"
+djangorestframework-simplejwt = "*"
+django-cors-headers = "*"
+wagtail-grapple = "*"
+azure-storage-blob = "<12.0"
+azure-core = "*"
+azure-common = "*"
+
+[dev-packages]
+yapf = "*"
+pytest = "*"
+flake8 = "*"
+pyflakes = "*"
+mccabe = "*"
+pytest-django = "*"
+tox = "*"
+factory_boy = "*"
+
+[packages.django-storages]
+version = "*"
+features = [ "azure",]

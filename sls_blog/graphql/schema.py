@@ -4,8 +4,8 @@ from graphene import ObjectType, relay
 from graphene_django import DjangoObjectType, DjangoListField
 from graphene_django.filter import DjangoFilterConnectionField
 
-from stevenlsjr_blog.cms.models import BlogIndexPage, BlogPage
-from stevenlsjr_blog.cms.filters import PageFilter
+from sls_blog.cms.models import BlogIndexPage, BlogPage
+from sls_blog.cms.filters import PageFilter
 from . import wagtail
 
 Page = apps.get_model('wagtailcore', 'Page')

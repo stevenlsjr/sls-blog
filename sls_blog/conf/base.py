@@ -6,7 +6,7 @@ class BaseConfig(Configuration):
     DEBUG = values.BooleanValue(False)
     TEMPLATE_DEBUG = values.BooleanValue(DEBUG)
     DATABASES = values.DatabaseURLValue(
-        'postgres://steve@localhost/stevenlsjr_blog')
+        'postgres://steve@localhost/sls_blog')
     SECRET_KEY = values.SecretValue()
     CACHES = values.CacheURLValue('locmem://default')
 
@@ -45,8 +45,8 @@ class BaseConfig(Configuration):
         'rest_framework',
         "graphene_django",
         "grapple",
-        'stevenlsjr_blog.auth',
-        'stevenlsjr_blog.cms',
+        'sls_blog.auth',
+        'sls_blog.cms',
         # "channels",
     ]
 
@@ -71,7 +71,7 @@ class BaseConfig(Configuration):
         'wagtail.contrib.redirects.middleware.RedirectMiddleware',
     ]
 
-    ROOT_URLCONF = 'stevenlsjr_blog.urls'
+    ROOT_URLCONF = 'sls_blog.urls'
     WAGTAIL_SITE_NAME = 'Stevenlsjr Blog'
 
     CORS_ORIGIN_WHITELIST = values.ListValue(default=[])
@@ -92,7 +92,7 @@ class BaseConfig(Configuration):
         },
     ]
 
-    WSGI_APPLICATION = 'stevenlsjr_blog.wsgi.application'
+    WSGI_APPLICATION = 'sls_blog.wsgi.application'
 
     # Password validation
     # https://docs.djangoproject.com/en/3.1/ref/settings/#auth-password-validators

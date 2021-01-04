@@ -5,7 +5,7 @@ on:
 
 jobs:
   buildx:
-    environment: strapi-server
+    environment: wagtail-server
 
     runs-on: ubuntu-latest
     steps:

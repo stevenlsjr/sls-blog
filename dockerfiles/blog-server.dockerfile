@@ -13,7 +13,7 @@ RUN \
   chown -R 1000:1000 /app /var/www/static && echo created staticfiles folder
 
 ADD ./tox.ini ./manage.py /app/
-ADD ./stevenlsjr_blog/ /app/stevenlsjr_blog/
+ADD ./sls_blog/ /app/sls_blog/
 ENV DJANGO_CONFIGURATION=Develop
 RUN DJANGO_STATIC_ROOT=/var/www/static/ DJANGO_SECRET_KEY=changeme python manage.py collectstatic
 
@@ -24,4 +24,4 @@ COPY deploy/staticfiles.nginx.conf /etc/nginx/templates/default.conf.template
 FROM base AS runtime
 USER 1000
 # gunicorn stevenlsjr.asgi:app -w 4 -k uvicorn.workers.UvicornWorker
-CMD ["uvicorn", "stevenlsjr_blog.asgi:application"]
+CMD ["uvicorn", "sls_blog.asgi:application"]

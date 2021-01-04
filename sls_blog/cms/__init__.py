@@ -1,1 +1,1 @@
-default_app_config = 'stevenlsjr_blog.cms.apps.StevenlsjrCmsConfig'
+default_app_config = 'sls_blog.cms.apps.StevenlsjrCmsConfig'

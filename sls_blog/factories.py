@@ -1,7 +1,7 @@
 import factory
 from factory.django import DjangoModelFactory
 from django.contrib.auth.models import User, Group
-from stevenlsjr_blog.cms.models import *
+from sls_blog.cms.models import *
 from datetime import datetime
 from faker import Faker
 from django.template import Template, Context

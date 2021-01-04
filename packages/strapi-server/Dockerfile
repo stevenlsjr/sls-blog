@@ -5,14 +5,14 @@ WORKDIR /strapi-api
 
 RUN apt-get update -y && \
   apt-get install -y \
-    python	\
-    nodejs    \
-    node-gyp \
-    yarnpkg \
-    build-essential \
-    libpng-dev \
-    libvips-dev && \
-    ln /usr/bin/yarnpkg /usr/bin/yarn
+  python  \
+  nodejs    \
+  node-gyp \
+  yarnpkg \
+  build-essential \
+  libpng-dev \
+  libvips-dev && \
+  ln /usr/bin/yarnpkg /usr/bin/yarn
 
 COPY ./package.json ./
 COPY ./yarn.lock ./

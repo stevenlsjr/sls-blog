@@ -3,6 +3,12 @@
  * with public authentication
  */
 
+ /**
+  * Not currently used.
+  * We're using wagtail as a temporary cms, which doesn't require
+  * read-only auth
+  */
+
 import { Context } from '@nuxt/types';
 import { ApolloHelpers } from '@nuxtjs/apollo';
 export default async ({ $axios, store, $config, $apolloHelpers }: Context) => {

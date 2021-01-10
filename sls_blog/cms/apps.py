@@ -1,6 +1,6 @@
 from django.apps import AppConfig
 
 
-class StevenlsjrCmsConfig(AppConfig):
+class CmsConfig(AppConfig):
     name = 'sls_blog.cms'
-    label = 'stevenlsjr_cms'
+    label = 'slsblog_cms'

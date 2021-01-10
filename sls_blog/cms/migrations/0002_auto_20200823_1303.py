@@ -8,7 +8,7 @@ import wagtail.core.fields
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('stevenlsjr_cms', '0001_initial'),
+        ('slsblog_cms', '0001_initial'),
     ]
 
     operations = [

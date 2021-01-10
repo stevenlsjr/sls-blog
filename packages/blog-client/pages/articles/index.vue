@@ -1,9 +1,10 @@
 <template>
   <section>
+    <h1>My Articles</h1>
     <ul>
-      <li v-for="article in articles" :key="article.slug">
+      <li v-for="article in pages" :key="article.slug">
         <h2>{{ article.title }}</h2>
-        <h3>{{ article.subtitle }}</h3>
+        <h3>{{ article.slug }}</h3>
       </li>
     </ul>
   </section>
@@ -16,7 +17,7 @@ import type {} from '@nuxt/types';
 import type {} from '@nuxtjs/apollo';
 import type {} from 'vue-apollo';
 
-import articleBySlug from '~/queries/article-list.gql';
+import pagesList from '~/queries/pages-list.gql';
 
 function queryAsInt(param: string | (string | null)[] | undefined) {
   if (!param) {
@@ -47,11 +48,11 @@ function queryAsInt(param: string | (string | null)[] | undefined) {
     return { pageStart, pageLimit };
   },
   apollo: {
-    articles: {
-      query: articleBySlug,
+    pages: {
+      query: pagesList,
       variables(this: ArticleIndex) {
         return {
-          start: this.pageStart,
+          offset: this.pageStart,
           limit: this.pageLimit,
         };
       },
@@ -61,6 +62,7 @@ function queryAsInt(param: string | (string | null)[] | undefined) {
 export default class ArticleIndex extends Vue {
   pageStart: number = 0;
   pageLimit: number = 10;
-  articles!: any[];
+  pages: any[] = [];
+
 }
 </script>

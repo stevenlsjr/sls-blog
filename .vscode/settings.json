@@ -1,3 +1,4 @@
 {
-  "graphql-config.load.configName": ".graphqlrc"
+  "graphql-config.load.configName": ".graphqlrc",
+  "python.pythonPath": "/home/steve/.local/share/virtualenvs/sls-blog-JTFabM9o/bin/python"
 }

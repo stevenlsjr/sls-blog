@@ -1,5 +1,7 @@
 import getenv from 'getenv';
 
+const wagtailUrl = getenv('NUXT_WAGTAIL_URL', 'http://localhost:8000')
+
 export default {
   // Global page headers (https://go.nuxtjs.dev/config-head)
   head: {
@@ -16,7 +18,7 @@ export default {
   css: [],
 
   // Plugins to run before rendering page (https://go.nuxtjs.dev/config-plugins)
-  plugins: ['~/plugins/strapi-auth'],
+  plugins: [/*'~/plugins/strapi-auth'*/],
 
   // Auto import components (https://go.nuxtjs.dev/config-components)
   components: true,
@@ -45,12 +47,12 @@ export default {
     proxyHeaders: true,
   },
   proxy: {
-    '/strapi/': {
-      target: getenv('NUXT_STRAPI_URL', 'http://localhost:1337'),
-      pathRewrite: { '^/strapi/': '' },
+    '/cms/': {
+      target: wagtailUrl,
+      pathRewrite: { '^/cms/': '' },
     },
     '/graphql': {
-      target: getenv('NUXT_STRAPI_URL', 'http://localhost:1337'),
+      target: wagtailUrl,
     },
   },
   // Graphql client config https://github.com/nuxt-community/apollo-module

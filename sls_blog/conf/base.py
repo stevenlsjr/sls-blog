@@ -6,7 +6,7 @@ class BaseConfig(Configuration):
     DEBUG = values.BooleanValue(False)
     TEMPLATE_DEBUG = values.BooleanValue(DEBUG)
     DATABASES = values.DatabaseURLValue(
-        'postgres://steve@localhost/sls_blog')
+        'postgres://%2Fvar%2Flib%2Fpostgresql/sls_blog')
     SECRET_KEY = values.SecretValue()
     CACHES = values.CacheURLValue('locmem://default')
 
@@ -17,7 +17,7 @@ class BaseConfig(Configuration):
     # See https://docs.djangoproject.com/en/3.1/howto/deployment/checklist/
 
     ALLOWED_HOSTS = []
-    AUTH_USER_MODEL = 'stevenlsjr_auth.User'
+    AUTH_USER_MODEL = 'slsblog_auth.User'
     # Application definition
 
     INSTALLED_APPS = [
@@ -148,5 +148,5 @@ class BaseConfig(Configuration):
     STATIC_ROOT = values.PathValue(BASE_DIR / '.static')
     MEDIA_ROOT = values.PathValue(BASE_DIR / '.media')
     GRAPHENE = {"SCHEMA": "grapple.schema.schema"}
-    GRAPPLE_APPS = { "stevenlsjr_cms": ""}
+    GRAPPLE_APPS = { "slsblog_cms": ""}
     BASE_URL = values.URLValue('http://localhost:8000')

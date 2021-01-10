@@ -10,7 +10,7 @@ import wagtail.images.blocks
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('stevenlsjr_cms', '0002_auto_20200823_1303'),
+        ('slsblog_cms', '0002_auto_20200823_1303'),
     ]
 
     operations = [

@@ -1,6 +1,6 @@
 from django.apps import AppConfig
 
 
-class StevenlsjrAuthConfig(AppConfig):
+class AuthConfig(AppConfig):
     name = 'sls_blog.auth'
-    label = 'stevenlsjr_auth'
+    label = 'slsblog_auth'

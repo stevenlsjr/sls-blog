@@ -5,6 +5,7 @@ on:
 
 jobs:
   test:
+    environment: blog-client
     runs-on: ${{ matrix.os }}
 
     strategy:
@@ -44,7 +45,7 @@ jobs:
         run: yarn workspace @sls-blog/blog-client test
 
   buildx:
-    environment: strapi-server
+    environment: blog-client
 
     runs-on: ubuntu-latest
     steps:

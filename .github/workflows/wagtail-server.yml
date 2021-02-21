@@ -5,7 +5,7 @@ on:
 
 jobs:
   buildx:
-    environment: wagtail-server
+    environment: blog-server
 
     runs-on: ubuntu-latest
     steps:

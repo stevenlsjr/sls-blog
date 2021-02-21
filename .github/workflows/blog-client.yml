@@ -37,8 +37,8 @@ jobs:
       - name: Install dependencies 👨🏻‍💻
         run: yarn
 
-      - name: Run linter 👀
-        run: yarn workspace @sls-blog/blog-client lint
+      # - name: Run linter 👀
+      #   run: yarn workspace @sls-blog/blog-client lint
 
       - name: Run tests 🧪
         run: yarn workspace @sls-blog/blog-client test

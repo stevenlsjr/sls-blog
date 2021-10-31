@@ -1,0 +1,36 @@
+#! /bin/env node
+const path = require('path')
+const child = require('child_process')
+const basedir = path.resolve(__dirname, '..');
+
+
+const argv = require('yargs')
+  .env("BLOG")
+  .command('postgres', 'Start postgres server in docker', (yargs) => {
+    yargs.options({
+      'db-volume': {
+        alias: 'd',
+        default: path.resolve(basedir, '.db')
+      },
+      'container-cli': {
+        default: 'podman'
+      },
+      'pass': {
+        default: 'guest'
+      }
+    })
+  }).help().argv
+
+const ps = child.spawn(
+  argv.containerCli, [
+  'run',
+  '-v', `${argv.dbVolume}:/opt/pgdata`,
+  '-e', 'PGDATA=/opt/pgdata',
+  '-e', `POSTGRES_PASSWORD=${argv.pass}`,
+  '-p', '5432:5432',
+  'postgres:14-alpine'
+], { stdio: 'inherit' })
+
+ps.on('close', (code) => {
+  process.exit(code)
+})

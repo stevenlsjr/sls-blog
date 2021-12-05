@@ -16,7 +16,7 @@ from grapple.models import (
 )
 
 
-class BlogIndexPage(Page):
+class BlogLandingPage(Page):
     intro = RichTextField(blank=True)
 
     content_panels = Page.content_panels + [

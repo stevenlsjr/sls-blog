@@ -1,5 +1,6 @@
 from configurations import Configuration, values
 from pathlib import Path
+from django.utils.functional import classproperty
 
 
 class BaseConfig(Configuration):
@@ -132,21 +133,31 @@ class BaseConfig(Configuration):
     # Static files (CSS, JavaScript, Images)
     # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
-    DEFAULT_FILE_STORAGE =  values.Value('django.core.files.storage.FileSystemStorage')
-    STATICFILES_STORAGE = values.Value('django.contrib.staticfiles.storage.StaticFilesStorage')
+    DEFAULT_FILE_STORAGE = values.Value(
+        'django.core.files.storage.FileSystemStorage')
+    STATICFILES_STORAGE = values.Value(
+        'django.contrib.staticfiles.storage.StaticFilesStorage')
 
-
-    AZURE_ACCOUNT_NAME = values.Value( environ_required=False)
-    AZURE_ACCOUNT_KEY = values.Value( environ_required=False)
-    AZURE_CONTAINER = values.Value( environ_required=False)
-    PUBLIC_AZURE_CONTAINER = values.Value( environ_required=False)
-    AZURE_CONNECTION_STRING = values.Value(default=None, environ_required=False)
-    AZURE_CUSTOM_CONNECTION_STRING = values.Value(default=None, environ_required=False)
-    PUBLIC_AZURE_CONTAINER = values.Value( environ_required=False)
+    AZURE_ACCOUNT_NAME = values.Value(environ_required=False)
+    AZURE_ACCOUNT_KEY = values.Value(environ_required=False)
+    AZURE_CONTAINER = values.Value(environ_required=False)
+    PUBLIC_AZURE_CONTAINER = values.Value(environ_required=False)
+    AZURE_CONNECTION_STRING = values.Value(default=None,
+                                           environ_required=False)
+    AZURE_CUSTOM_CONNECTION_STRING = values.Value(default=None,
+                                                  environ_required=False)
+    PUBLIC_AZURE_CONTAINER = values.Value(environ_required=False)
     STATIC_URL = values.Value('/static/')
     MEDIA_URL = values.Value('/media/')
     STATIC_ROOT = values.PathValue(BASE_DIR / '.static')
     MEDIA_ROOT = values.PathValue(BASE_DIR / '.media')
-    GRAPHENE = {"SCHEMA": "grapple.schema.schema"}
-    GRAPPLE_APPS = { "slsblog_cms": ""}
+
+    def GRAPHENE(self):
+        cfg = {"SCHEMA": "grapple.schema.schema", "MIDDLEWARE": []}
+        if self.DEBUG:
+            cfg['MIDDLEWARE'].extend(
+                ['graphene_django.debug.DjangoDebugMiddleware'])
+        return cfg
+
+    GRAPPLE_APPS = {"slsblog_cms": ""}
     BASE_URL = values.URLValue('http://localhost:8000')

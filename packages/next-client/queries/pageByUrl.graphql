@@ -1,6 +1,0 @@
-query Query($pagePath: String) {
-  
-  page(urlPath: $pagePath) {
-    id
-  }
-}

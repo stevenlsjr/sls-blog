@@ -1,0 +1,12 @@
+query Query {
+  pages {
+    title
+    url
+    seoTitle
+    slug
+    ... on BlogPage {
+      intro
+      
+    }
+  }
+}

@@ -1,0 +1,8 @@
+query ValidPagePaths($rootPageUrl: String) {
+  page(urlPath: $rootPageUrl) {
+    urlPath,
+    children {
+      urlPath
+    }
+  }
+}

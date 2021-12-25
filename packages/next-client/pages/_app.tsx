@@ -7,13 +7,14 @@ import {
   useQuery,
   gql,
 } from "@apollo/client";
-import { makeClient } from "../services/apollo-client";
+
+import { makeClient, useApollo } from "../services/apollo-client";
 
 function MyApp({ Component, pageProps }: AppProps) {
-  const client = makeClient();
+  const client = useApollo(pageProps.initialApolloState);
+
   return (
     <ApolloProvider client={client}>
-      {" "}
       <Component {...pageProps} />{" "}
     </ApolloProvider>
   );

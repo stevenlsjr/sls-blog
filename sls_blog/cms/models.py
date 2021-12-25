@@ -23,6 +23,9 @@ class BlogLandingPage(Page):
         FieldPanel('intro', classname="full")
     ]
 
+    graphql_fields = [
+        GraphQLString("intro"),
+    ]
 
 DEFAULT_BLOCK_TYPES = [
     ('rich_text', RichTextBlock()),

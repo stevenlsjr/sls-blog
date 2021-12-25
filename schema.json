@@ -2259,6 +2259,18 @@
               "deprecationReason": null,
               "description": null,
               "isDeprecated": false,
+              "name": "intro",
+              "type": {
+                "kind": "SCALAR",
+                "name": "String",
+                "ofType": null
+              }
+            },
+            {
+              "args": [],
+              "deprecationReason": null,
+              "description": null,
+              "isDeprecated": false,
               "name": "pageType",
               "type": {
                 "kind": "SCALAR",

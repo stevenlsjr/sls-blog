@@ -1,0 +1,16 @@
+query PageByUrl($pagePath: String) {
+  page(urlPath: $pagePath) {
+    id
+    url
+    urlPath
+    title
+    seoTitle
+    pageType
+    ... on BlogPage {
+      id
+    }
+    ... on BlogLandingPage {
+      intro
+    }
+  }
+}

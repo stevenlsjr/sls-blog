@@ -1,5 +1,6 @@
 {
-  "graphql-config.load.configName": ".graphqlrc",
+  "vscode-graphql.debug": true,
+  
   "python.pythonPath": "/home/steve/.local/share/virtualenvs/sls-blog-JTFabM9o/bin/python",
   "python.formatting.provider": "yapf"
 }

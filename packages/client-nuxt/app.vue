@@ -4,7 +4,11 @@
   </div>
 </template>
 
-<script lang="ts" , setup>
-
-provideApolloClient();
+<script lang="ts">
+import { defineComponent } from "vue";
+export default defineComponent({
+  async setup() {
+    provideApolloClient();
+  },
+});
 </script>

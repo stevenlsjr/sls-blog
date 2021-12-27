@@ -1,9 +1,10 @@
-query Query {
+query ListPages {
   pages {
     title
     url
     seoTitle
     slug
+    
     ... on BlogPage {
       intro
       

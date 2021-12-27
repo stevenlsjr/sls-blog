@@ -1,5 +1,14 @@
-schema: './schema.json'
+schema: '../../schema.json'
+documents: 
+  - ./queries/**/*.ts
+  - ./queries/**/*.graphql
 extensions:
   endpoints:
     default:
       url: 'http://localhost:8000'
+generates:
+  ./generated/gql.ts:
+    plugins:
+      - typescript
+      - typescript-operations
+      - typed-document-node

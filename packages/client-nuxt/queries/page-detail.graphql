@@ -1,0 +1,44 @@
+query PageDetail($url: String) {
+  page(urlPath: $url) {
+    id
+    urlPath
+    url
+    slug
+    title
+    seoTitle
+    contentType
+    pageType
+    parent {
+      title
+      urlPath
+    }
+    ... on BlogLandingPage {
+      intro
+      children {
+        id
+        urlPath
+        title
+      }
+    }
+    ... on BlogPage {
+      intro
+      body {
+        id
+        rawValue
+        field
+        blockType
+        ... on RichTextBlock {
+          value
+        }
+        ... on ImageChooserBlock {
+          image {
+            src: rendition(width: 600) {
+              url
+            }
+            srcSet(sizes: [400, 600, 1000])
+          }
+        }
+      }
+    }
+  }
+}

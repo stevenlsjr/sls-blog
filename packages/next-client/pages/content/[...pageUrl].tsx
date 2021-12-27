@@ -23,12 +23,22 @@ function transformPageUrl(path: string) {
 export async function getStaticPaths() {
   const client = initializeApollo();
 
-  const { data: {data} } = await client.query<ValidPagePathsQueryResult>({
-    query: ValidPagePathsDocument,
-    variables: CMS_URL_ROOT,
-  });
-
-
+  const { data } =
+    await client.query<ValidPagePathsQueryResult>({
+      query: ValidPagePathsDocument,
+      variables: {},
+    });
+  const paths = ((data as any).pages ?? [])
+    .flatMap(page =>{
+      console.log(page)
+      if (page){
+        return [
+          {params: {'...pageUrl': page.urlPath}}
+        ]
+      } else {
+        return []
+      }
+    })
 
   return {
     paths,

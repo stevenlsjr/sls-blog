@@ -22,5 +22,6 @@ export default defineNuxtConfig({
       devtools: true,
     },
   },
+  ssr: false,
   debug: true
 });

@@ -1,32 +1,34 @@
 <template>
   <div>
     <h1>hello</h1>
+    <div v-if="loading">Loading</div>
+    <code v-if="error">
+      <pre>
+        {{ error }}
+      </pre>
+    </code>
+    <code v-else>
+      <pre>
+        {{ result }}
+      </pre>
+    </code>
   </div>
 </template>
 
 <script lang="ts">
 import { useQuery } from "@vue/apollo-composable";
 import gql from "graphql-tag";
+import { ListPagesDocument } from "../generated/gql";
 
 export default defineComponent({
   setup() {
-    const {result} = useQuery(gql`
-      query Query {
-        pages {
-          title
-          url
-          seoTitle
-          slug
-          ... on BlogPage {
-            intro
-          }
-        }
-      }
-    `);
+    const { result, loading, error } = useQuery(ListPagesDocument);
 
     return {
-      result
-    }
+      result,
+      loading,
+      error,
+    };
   },
 });
 </script>

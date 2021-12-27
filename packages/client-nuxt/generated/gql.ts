@@ -1,11 +1,9 @@
-import { gql } from '@apollo/client';
-import * as Apollo from '@apollo/client';
+import { TypedDocumentNode as DocumentNode } from '@graphql-typed-document-node/core';
 export type Maybe<T> = T | null;
 export type InputMaybe<T> = Maybe<T>;
 export type Exact<T extends { [key: string]: unknown }> = { [K in keyof T]: T[K] };
 export type MakeOptional<T, K extends keyof T> = Omit<T, K> & { [SubKey in K]?: Maybe<T[SubKey]> };
 export type MakeMaybe<T, K extends keyof T> = Omit<T, K> & { [SubKey in K]: Maybe<T[SubKey]> };
-const defaultOptions =  {}
 /** All built-in and custom scalars, mapped to their actual values */
 export type Scalars = {
   ID: string;
@@ -986,99 +984,28 @@ export type UserType = {
   username: Scalars['String'];
 };
 
-export type PageByUrlQueryVariables = Exact<{
-  pagePath?: InputMaybe<Scalars['String']>;
+export type ListPageChildrenQueryVariables = Exact<{
+  pageId?: InputMaybe<Scalars['Int']>;
+  limit?: InputMaybe<Scalars['PositiveInt']>;
+  offset?: InputMaybe<Scalars['PositiveInt']>;
 }>;
 
 
-export type PageByUrlQuery = { __typename?: 'Query', page?: { __typename?: 'BlogLandingPage', intro?: string | null | undefined, id?: string | null | undefined, url?: string | null | undefined, urlPath: string, title: string, seoTitle: string, pageType?: string | null | undefined } | { __typename?: 'BlogPage', id?: string | null | undefined, url?: string | null | undefined, urlPath: string, title: string, seoTitle: string, pageType?: string | null | undefined } | { __typename?: 'Page', id?: string | null | undefined, url?: string | null | undefined, urlPath: string, title: string, seoTitle: string, pageType?: string | null | undefined } | null | undefined };
+export type ListPageChildrenQuery = { __typename?: 'Query', page?: { __typename?: 'BlogLandingPage', id?: string | null | undefined, children: Array<{ __typename?: 'BlogLandingPage', urlPath: string, title: string, seoTitle: string } | { __typename?: 'BlogPage', intro?: string | null | undefined, urlPath: string, title: string, seoTitle: string } | { __typename?: 'Page', urlPath: string, title: string, seoTitle: string }> } | { __typename?: 'BlogPage', id?: string | null | undefined, children: Array<{ __typename?: 'BlogLandingPage', urlPath: string, title: string, seoTitle: string } | { __typename?: 'BlogPage', intro?: string | null | undefined, urlPath: string, title: string, seoTitle: string } | { __typename?: 'Page', urlPath: string, title: string, seoTitle: string }> } | { __typename?: 'Page', id?: string | null | undefined, children: Array<{ __typename?: 'BlogLandingPage', urlPath: string, title: string, seoTitle: string } | { __typename?: 'BlogPage', intro?: string | null | undefined, urlPath: string, title: string, seoTitle: string } | { __typename?: 'Page', urlPath: string, title: string, seoTitle: string }> } | null | undefined };
 
-export type ValidPagePathsQueryVariables = Exact<{ [key: string]: never; }>;
-
-
-export type ValidPagePathsQuery = { __typename?: 'Query', pages: Array<{ __typename?: 'BlogLandingPage', urlPath: string, children: Array<{ __typename?: 'BlogLandingPage', urlPath: string } | { __typename?: 'BlogPage', urlPath: string } | { __typename?: 'Page', urlPath: string }> } | { __typename?: 'BlogPage', urlPath: string, children: Array<{ __typename?: 'BlogLandingPage', urlPath: string } | { __typename?: 'BlogPage', urlPath: string } | { __typename?: 'Page', urlPath: string }> } | { __typename?: 'Page', urlPath: string, children: Array<{ __typename?: 'BlogLandingPage', urlPath: string } | { __typename?: 'BlogPage', urlPath: string } | { __typename?: 'Page', urlPath: string }> }> };
+export type ListPagesQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-export const PageByUrlDocument = gql`
-    query PageByUrl($pagePath: String) {
-  page(urlPath: $pagePath) {
-    id
-    url
-    urlPath
-    title
-    seoTitle
-    pageType
-    ... on BlogPage {
-      id
-    }
-    ... on BlogLandingPage {
-      intro
-    }
-  }
-}
-    `;
+export type ListPagesQuery = { __typename?: 'Query', pages: Array<{ __typename?: 'BlogLandingPage', title: string, url?: string | null | undefined, seoTitle: string, slug: string } | { __typename?: 'BlogPage', intro?: string | null | undefined, title: string, url?: string | null | undefined, seoTitle: string, slug: string } | { __typename?: 'Page', title: string, url?: string | null | undefined, seoTitle: string, slug: string }> };
 
-/**
- * __usePageByUrlQuery__
- *
- * To run a query within a React component, call `usePageByUrlQuery` and pass it any options that fit your needs.
- * When your component renders, `usePageByUrlQuery` returns an object from Apollo Client that contains loading, error, and data properties
- * you can use to render your UI.
- *
- * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
- *
- * @example
- * const { data, loading, error } = usePageByUrlQuery({
- *   variables: {
- *      pagePath: // value for 'pagePath'
- *   },
- * });
- */
-export function usePageByUrlQuery(baseOptions?: Apollo.QueryHookOptions<PageByUrlQuery, PageByUrlQueryVariables>) {
-        const options = {...defaultOptions, ...baseOptions}
-        return Apollo.useQuery<PageByUrlQuery, PageByUrlQueryVariables>(PageByUrlDocument, options);
-      }
-export function usePageByUrlLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<PageByUrlQuery, PageByUrlQueryVariables>) {
-          const options = {...defaultOptions, ...baseOptions}
-          return Apollo.useLazyQuery<PageByUrlQuery, PageByUrlQueryVariables>(PageByUrlDocument, options);
-        }
-export type PageByUrlQueryHookResult = ReturnType<typeof usePageByUrlQuery>;
-export type PageByUrlLazyQueryHookResult = ReturnType<typeof usePageByUrlLazyQuery>;
-export type PageByUrlQueryResult = Apollo.QueryResult<PageByUrlQuery, PageByUrlQueryVariables>;
-export const ValidPagePathsDocument = gql`
-    query ValidPagePaths {
-  pages {
-    urlPath
-    children {
-      urlPath
-    }
-  }
-}
-    `;
+export type PageDetailQueryVariables = Exact<{
+  url?: InputMaybe<Scalars['String']>;
+}>;
 
-/**
- * __useValidPagePathsQuery__
- *
- * To run a query within a React component, call `useValidPagePathsQuery` and pass it any options that fit your needs.
- * When your component renders, `useValidPagePathsQuery` returns an object from Apollo Client that contains loading, error, and data properties
- * you can use to render your UI.
- *
- * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
- *
- * @example
- * const { data, loading, error } = useValidPagePathsQuery({
- *   variables: {
- *   },
- * });
- */
-export function useValidPagePathsQuery(baseOptions?: Apollo.QueryHookOptions<ValidPagePathsQuery, ValidPagePathsQueryVariables>) {
-        const options = {...defaultOptions, ...baseOptions}
-        return Apollo.useQuery<ValidPagePathsQuery, ValidPagePathsQueryVariables>(ValidPagePathsDocument, options);
-      }
-export function useValidPagePathsLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<ValidPagePathsQuery, ValidPagePathsQueryVariables>) {
-          const options = {...defaultOptions, ...baseOptions}
-          return Apollo.useLazyQuery<ValidPagePathsQuery, ValidPagePathsQueryVariables>(ValidPagePathsDocument, options);
-        }
-export type ValidPagePathsQueryHookResult = ReturnType<typeof useValidPagePathsQuery>;
-export type ValidPagePathsLazyQueryHookResult = ReturnType<typeof useValidPagePathsLazyQuery>;
-export type ValidPagePathsQueryResult = Apollo.QueryResult<ValidPagePathsQuery, ValidPagePathsQueryVariables>;
+
+export type PageDetailQuery = { __typename?: 'Query', page?: { __typename?: 'BlogLandingPage', intro?: string | null | undefined, id?: string | null | undefined, urlPath: string, url?: string | null | undefined, slug: string, title: string, seoTitle: string, contentType: string, pageType?: string | null | undefined, children: Array<{ __typename?: 'BlogLandingPage', id?: string | null | undefined, urlPath: string, title: string } | { __typename?: 'BlogPage', id?: string | null | undefined, urlPath: string, title: string } | { __typename?: 'Page', id?: string | null | undefined, urlPath: string, title: string }>, parent?: { __typename?: 'BlogLandingPage', title: string, urlPath: string } | { __typename?: 'BlogPage', title: string, urlPath: string } | { __typename?: 'Page', title: string, urlPath: string } | null | undefined } | { __typename?: 'BlogPage', intro?: string | null | undefined, id?: string | null | undefined, urlPath: string, url?: string | null | undefined, slug: string, title: string, seoTitle: string, contentType: string, pageType?: string | null | undefined, body?: Array<{ __typename?: 'BlockQuoteBlock', id?: string | null | undefined, rawValue: string, field: string, blockType: string } | { __typename?: 'BooleanBlock', id?: string | null | undefined, rawValue: string, field: string, blockType: string } | { __typename?: 'CharBlock', id?: string | null | undefined, rawValue: string, field: string, blockType: string } | { __typename?: 'ChoiceBlock', id?: string | null | undefined, rawValue: string, field: string, blockType: string } | { __typename?: 'DateBlock', id?: string | null | undefined, rawValue: string, field: string, blockType: string } | { __typename?: 'DateTimeBlock', id?: string | null | undefined, rawValue: string, field: string, blockType: string } | { __typename?: 'DecimalBlock', id?: string | null | undefined, rawValue: string, field: string, blockType: string } | { __typename?: 'DocumentChooserBlock', id?: string | null | undefined, rawValue: string, field: string, blockType: string } | { __typename?: 'EmailBlock', id?: string | null | undefined, rawValue: string, field: string, blockType: string } | { __typename?: 'EmbedBlock', id?: string | null | undefined, rawValue: string, field: string, blockType: string } | { __typename?: 'FloatBlock', id?: string | null | undefined, rawValue: string, field: string, blockType: string } | { __typename?: 'ImageChooserBlock', id?: string | null | undefined, rawValue: string, field: string, blockType: string, image: { __typename?: 'ImageObjectType', srcSet?: string | null | undefined, src?: { __typename?: 'ImageRenditionObjectType', url: string } | null | undefined } } | { __typename?: 'IntegerBlock', id?: string | null | undefined, rawValue: string, field: string, blockType: string } | { __typename?: 'ListBlock', id?: string | null | undefined, rawValue: string, field: string, blockType: string } | { __typename?: 'PageChooserBlock', id?: string | null | undefined, rawValue: string, field: string, blockType: string } | { __typename?: 'RawHTMLBlock', id?: string | null | undefined, rawValue: string, field: string, blockType: string } | { __typename?: 'RegexBlock', id?: string | null | undefined, rawValue: string, field: string, blockType: string } | { __typename?: 'RichTextBlock', value: string, id?: string | null | undefined, rawValue: string, field: string, blockType: string } | { __typename?: 'SnippetChooserBlock', id?: string | null | undefined, rawValue: string, field: string, blockType: string } | { __typename?: 'StaticBlock', id?: string | null | undefined, rawValue: string, field: string, blockType: string } | { __typename?: 'StreamBlock', id?: string | null | undefined, rawValue: string, field: string, blockType: string } | { __typename?: 'StreamFieldBlock', id?: string | null | undefined, rawValue: string, field: string, blockType: string } | { __typename?: 'StructBlock', id?: string | null | undefined, rawValue: string, field: string, blockType: string } | { __typename?: 'TextBlock', id?: string | null | undefined, rawValue: string, field: string, blockType: string } | { __typename?: 'TimeBlock', id?: string | null | undefined, rawValue: string, field: string, blockType: string } | { __typename?: 'URLBlock', id?: string | null | undefined, rawValue: string, field: string, blockType: string } | null | undefined> | null | undefined, parent?: { __typename?: 'BlogLandingPage', title: string, urlPath: string } | { __typename?: 'BlogPage', title: string, urlPath: string } | { __typename?: 'Page', title: string, urlPath: string } | null | undefined } | { __typename?: 'Page', id?: string | null | undefined, urlPath: string, url?: string | null | undefined, slug: string, title: string, seoTitle: string, contentType: string, pageType?: string | null | undefined, parent?: { __typename?: 'BlogLandingPage', title: string, urlPath: string } | { __typename?: 'BlogPage', title: string, urlPath: string } | { __typename?: 'Page', title: string, urlPath: string } | null | undefined } | null | undefined };
+
+
+export const ListPageChildrenDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"ListPageChildren"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"pageId"}},"type":{"kind":"NamedType","name":{"kind":"Name","value":"Int"}}},{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"limit"}},"type":{"kind":"NamedType","name":{"kind":"Name","value":"PositiveInt"}},"defaultValue":{"kind":"IntValue","value":"10"}},{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"offset"}},"type":{"kind":"NamedType","name":{"kind":"Name","value":"PositiveInt"}},"defaultValue":{"kind":"IntValue","value":"0"}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"page"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"id"},"value":{"kind":"Variable","name":{"kind":"Name","value":"pageId"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"children"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"limit"},"value":{"kind":"Variable","name":{"kind":"Name","value":"limit"}}},{"kind":"Argument","name":{"kind":"Name","value":"offset"},"value":{"kind":"Variable","name":{"kind":"Name","value":"offset"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"urlPath"}},{"kind":"Field","name":{"kind":"Name","value":"title"}},{"kind":"Field","name":{"kind":"Name","value":"seoTitle"}},{"kind":"InlineFragment","typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"BlogPage"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"intro"}}]}}]}}]}}]}}]} as unknown as DocumentNode<ListPageChildrenQuery, ListPageChildrenQueryVariables>;
+export const ListPagesDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"ListPages"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"pages"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"title"}},{"kind":"Field","name":{"kind":"Name","value":"url"}},{"kind":"Field","name":{"kind":"Name","value":"seoTitle"}},{"kind":"Field","name":{"kind":"Name","value":"slug"}},{"kind":"InlineFragment","typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"BlogPage"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"intro"}}]}}]}}]}}]} as unknown as DocumentNode<ListPagesQuery, ListPagesQueryVariables>;
+export const PageDetailDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"PageDetail"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"url"}},"type":{"kind":"NamedType","name":{"kind":"Name","value":"String"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"page"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"urlPath"},"value":{"kind":"Variable","name":{"kind":"Name","value":"url"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"urlPath"}},{"kind":"Field","name":{"kind":"Name","value":"url"}},{"kind":"Field","name":{"kind":"Name","value":"slug"}},{"kind":"Field","name":{"kind":"Name","value":"title"}},{"kind":"Field","name":{"kind":"Name","value":"seoTitle"}},{"kind":"Field","name":{"kind":"Name","value":"contentType"}},{"kind":"Field","name":{"kind":"Name","value":"pageType"}},{"kind":"Field","name":{"kind":"Name","value":"parent"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"title"}},{"kind":"Field","name":{"kind":"Name","value":"urlPath"}}]}},{"kind":"InlineFragment","typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"BlogLandingPage"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"intro"}},{"kind":"Field","name":{"kind":"Name","value":"children"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"urlPath"}},{"kind":"Field","name":{"kind":"Name","value":"title"}}]}}]}},{"kind":"InlineFragment","typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"BlogPage"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"intro"}},{"kind":"Field","name":{"kind":"Name","value":"body"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"rawValue"}},{"kind":"Field","name":{"kind":"Name","value":"field"}},{"kind":"Field","name":{"kind":"Name","value":"blockType"}},{"kind":"InlineFragment","typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"RichTextBlock"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"value"}}]}},{"kind":"InlineFragment","typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"ImageChooserBlock"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"image"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","alias":{"kind":"Name","value":"src"},"name":{"kind":"Name","value":"rendition"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"width"},"value":{"kind":"IntValue","value":"600"}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"url"}}]}},{"kind":"Field","name":{"kind":"Name","value":"srcSet"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"sizes"},"value":{"kind":"ListValue","values":[{"kind":"IntValue","value":"400"},{"kind":"IntValue","value":"600"},{"kind":"IntValue","value":"1000"}]}}]}]}}]}}]}}]}}]}}]}}]} as unknown as DocumentNode<PageDetailQuery, PageDetailQueryVariables>;

@@ -1,6 +1,6 @@
-query ValidPagePaths($rootPageUrl: String) {
-  page(urlPath: $rootPageUrl) {
-    urlPath,
+query ValidPagePaths {
+  pages {
+    urlPath
     children {
       urlPath
     }

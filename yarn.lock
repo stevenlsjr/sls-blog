@@ -1341,6 +1341,21 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@graphql-codegen/typed-document-node@npm:^2.2.1":
+  version: 2.2.1
+  resolution: "@graphql-codegen/typed-document-node@npm:2.2.1"
+  dependencies:
+    "@graphql-codegen/plugin-helpers": ^2.3.0
+    "@graphql-codegen/visitor-plugin-common": 2.5.1
+    auto-bind: ~4.0.0
+    change-case-all: 1.0.14
+    tslib: ~2.3.0
+  peerDependencies:
+    graphql: ^0.8.0 || ^0.9.0 || ^0.10.0 || ^0.11.0 || ^0.12.0 || ^0.13.0 || ^14.0.0 || ^15.0.0 || ^16.0.0
+  checksum: a93ddbf8339183ee5434bff83bfc53eb647f339d3c1865deb0b205d6d8322ac80f8cb9758d335b1155b01a430946939fe0af8663c08a14fae723e51824578234
+  languageName: node
+  linkType: hard
+
 "@graphql-codegen/typescript-operations@npm:^2.2.1":
   version: 2.2.1
   resolution: "@graphql-codegen/typescript-operations@npm:2.2.1"
@@ -3575,6 +3590,10 @@ __metadata:
   resolution: "@slsblog/client-nuxt@workspace:packages/client-nuxt"
   dependencies:
     "@apollo/client": ^3.5.6
+    "@graphql-codegen/cli": ^2.3.0
+    "@graphql-codegen/typed-document-node": ^2.2.1
+    "@graphql-codegen/typescript": ^2.4.1
+    "@graphql-codegen/typescript-operations": ^2.2.1
     "@types/react": ^17.0.37
     "@vue/apollo-composable": ^4.0.0-alpha.16
     "@vue/test-utils": next

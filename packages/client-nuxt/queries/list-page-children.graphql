@@ -1,0 +1,13 @@
+query ListPageChildren($pageId: Int, $limit: PositiveInt = 10, $offset: PositiveInt = 0) {
+  page(id: $pageId) {
+    id
+    children(limit: $limit, offset: $offset) {
+      urlPath,
+      title
+      seoTitle
+      ... on BlogPage {
+        intro
+      }
+    }
+  }
+}

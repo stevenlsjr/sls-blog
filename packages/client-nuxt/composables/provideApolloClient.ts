@@ -26,9 +26,10 @@ export function provideApolloClient() {
         }
       : {
           // This will temporary disable query force-fetching
-          ssrForceFetchDelay: 100,
+          // ssrForceFetchDelay: 100,
         }),
   });
+
 
   provide(DefaultApolloClient, apolloClient);
   if (!isSSR && typeof window !== "undefined") {

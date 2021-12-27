@@ -22,33 +22,15 @@ class BaseConfig(Configuration):
     # Application definition
 
     INSTALLED_APPS = [
-        'django.contrib.admin',
-        'django.contrib.auth',
-        'django.contrib.contenttypes',
-        'django.contrib.sessions',
-        'django.contrib.messages',
-        'django.contrib.staticfiles',
-        'corsheaders',
-        'wagtail.contrib.forms',
-        'wagtail.contrib.redirects',
-        'wagtail.embeds',
-        'wagtail.sites',
-        'wagtail.users',
-        'wagtail.snippets',
-        'wagtail.documents',
-        'wagtail.images',
-        'wagtail.search',
-        'wagtail.admin',
-        'wagtail.core',
-        'modelcluster',
-        'taggit',
-        'wagtail.api.v2',
-        'rest_framework',
-        "graphene_django",
-        "grapple",
-        'sls_blog.auth',
-        'sls_blog.cms',
-        # "channels",
+        'django.contrib.admin', 'django.contrib.auth',
+        'django.contrib.contenttypes', 'django.contrib.sessions',
+        'django.contrib.messages', 'django.contrib.staticfiles', 'corsheaders',
+        'wagtail.contrib.forms', 'wagtail.contrib.redirects', 'wagtail.embeds',
+        'wagtail.sites', 'wagtail.users', 'wagtail.snippets',
+        'wagtail.documents', 'wagtail.images', 'wagtail.search',
+        'wagtail.admin', 'wagtail.core', 'modelcluster', 'taggit',
+        'wagtail.api.v2', 'rest_framework', "graphene_django", "grapple",
+        'sls_blog.auth', 'sls_blog.cms', "channels", 'wagtail_headless_preview'
     ]
 
     REST_FRAMEWORK = {
@@ -94,6 +76,7 @@ class BaseConfig(Configuration):
     ]
 
     WSGI_APPLICATION = 'sls_blog.wsgi.application'
+    ASGI_APPLICATION = 'sls_blog.asgi.application'
 
     # Password validation
     # https://docs.djangoproject.com/en/3.1/ref/settings/#auth-password-validators
@@ -153,11 +136,27 @@ class BaseConfig(Configuration):
     MEDIA_ROOT = values.PathValue(BASE_DIR / '.media')
 
     def GRAPHENE(self):
-        cfg = {"SCHEMA": "grapple.schema.schema", "MIDDLEWARE": []}
+        cfg = {
+            "SCHEMA": "grapple.schema.schema",
+            "MIDDLEWARE": [],
+            "SUBSCRIPTION_PATH": "/subscriptions"
+        }
         if self.DEBUG:
             cfg['MIDDLEWARE'].extend(
                 ['graphene_django.debug.DjangoDebugMiddleware'])
         return cfg
 
-    GRAPPLE_APPS = {"slsblog_cms": ""}
+    GRAPPLE = {
+        'APPS': {
+            "slsblog_cms": ""
+        },
+        'EXPOSE_GRAPHIQL': values.BooleanValue(True)
+    }
+
     BASE_URL = values.URLValue('http://localhost:8000')
+
+    HEADLESS_PREVIEW_CLIENT_URLS = values.DictValue({
+        'default':
+        'http://localhost:3000/',
+    })
+    HEADLESS_PREVIEW_LIVE = values.BooleanValue(True)

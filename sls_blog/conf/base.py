@@ -22,15 +22,35 @@ class BaseConfig(Configuration):
     # Application definition
 
     INSTALLED_APPS = [
-        'django.contrib.admin', 'django.contrib.auth',
-        'django.contrib.contenttypes', 'django.contrib.sessions',
-        'django.contrib.messages', 'django.contrib.staticfiles', 'corsheaders',
-        'wagtail.contrib.forms', 'wagtail.contrib.redirects', 'wagtail.embeds',
-        'wagtail.sites', 'wagtail.users', 'wagtail.snippets',
-        'wagtail.documents', 'wagtail.images', 'wagtail.search',
-        'wagtail.admin', 'wagtail.core', 'modelcluster', 'taggit',
-        'wagtail.api.v2', 'rest_framework', "graphene_django", "grapple",
-        'sls_blog.auth', 'sls_blog.cms', "channels", 'wagtail_headless_preview'
+        'django.contrib.admin',
+        'django.contrib.auth',
+        'django.contrib.contenttypes',
+        'django.contrib.sessions',
+        'django.contrib.messages',
+        'django.contrib.staticfiles',
+        'corsheaders',
+        'wagtail.contrib.forms',
+        'wagtail.contrib.redirects',
+        'wagtail.embeds',
+        'wagtail.sites',
+        'wagtail.users',
+        'wagtail.snippets',
+        'wagtail.documents',
+        'wagtail.images',
+        'wagtail.search',
+        'wagtail.admin',
+        'wagtail.core',
+        'modelcluster',
+        'taggit',
+        'wagtail.api.v2',
+        'rest_framework',
+        "channels",
+        "graphql_ws.django",
+        "graphene_django",
+        "grapple",
+        'sls_blog.auth',
+        'sls_blog.cms',
+        'wagtail_headless_preview',
     ]
 
     REST_FRAMEWORK = {
@@ -76,7 +96,8 @@ class BaseConfig(Configuration):
     ]
 
     WSGI_APPLICATION = 'sls_blog.wsgi.application'
-    ASGI_APPLICATION = 'sls_blog.asgi.application'
+    # ASGI_APPLICATION = 'sls_blog.asgi.application'
+    ASGI_APPLICATION = "graphql_ws.django.routing.application"
 
     # Password validation
     # https://docs.djangoproject.com/en/3.1/ref/settings/#auth-password-validators
@@ -138,12 +159,12 @@ class BaseConfig(Configuration):
     def GRAPHENE(self):
         cfg = {
             "SCHEMA": "grapple.schema.schema",
-            "MIDDLEWARE": [],
+            "MIDDLEWARE": ["grapple.middleware.GrappleMiddleware"],
             "SUBSCRIPTION_PATH": "/subscriptions"
         }
         if self.DEBUG:
-            cfg['MIDDLEWARE'].extend(
-                ['graphene_django.debug.DjangoDebugMiddleware'])
+            cfg['MIDDLEWARE'].insert(
+                0, 'graphene_django.debug.DjangoDebugMiddleware')
         return cfg
 
     GRAPPLE = {
@@ -157,6 +178,6 @@ class BaseConfig(Configuration):
 
     HEADLESS_PREVIEW_CLIENT_URLS = values.DictValue({
         'default':
-        'http://localhost:3000/',
+        'http://localhost:3000/preview',
     })
     HEADLESS_PREVIEW_LIVE = values.BooleanValue(True)

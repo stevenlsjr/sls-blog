@@ -5,6 +5,9 @@ import { defineNuxtConfig } from "nuxt3";
 const graphqlUri =
   process.env["GRAPHQL_URI"] || "http://localhost:8000/graphql/";
 
+const graphqlWsUri =
+  process.env["GRAPHQL_WS_URI"] || "ws://localhost:8000/subscriptions";
+
 export default defineNuxtConfig({
   build: {
     transpile: ["@apollo/client", "ts-invariant", "tslib"],
@@ -12,9 +15,14 @@ export default defineNuxtConfig({
   alias: {
     tslib: "tslib/tslib.es6.js",
   },
+  css: [
+    '@/assets/css/main.scss',
+    // '@/css/global.scss',
+  ],
   dev: true,
   publicRuntimeConfig: {
     graphqlUri,
+    graphqlWsUri,
   },
   privateRuntimeConfig: {},
   vue: {
@@ -23,5 +31,6 @@ export default defineNuxtConfig({
     },
   },
   ssr: false,
-  debug: true
+  debug: true,
+  buildModules: ["nuxt-windicss"],
 });

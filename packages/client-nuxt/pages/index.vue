@@ -1,6 +1,5 @@
 <template>
   <div>
-    <h1>hello</h1>
     <div v-if="loading">Loading</div>
     <code v-if="error">
       <pre>

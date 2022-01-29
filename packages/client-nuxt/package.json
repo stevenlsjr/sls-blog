@@ -16,7 +16,9 @@
     "@vue/test-utils": "next",
     "apollo-codegen": "^0.20.2",
     "jest": "^27.4.5",
-    "nuxt3": "latest"
+    "nuxt-windicss": "^2.2.2",
+    "nuxt3": "latest",
+    "sass": "^1.49.0"
   },
   "dependencies": {
     "@apollo/client": "^3.5.6",

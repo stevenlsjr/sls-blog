@@ -9,6 +9,7 @@ from wagtail.images.blocks import ImageChooserBlock, ImageChooserBlockComparison
 from wagtail.core.models import Page
 from wagtail.search import index
 from .blocks import RichTextBlock
+from wagtail_headless_preview.models import HeadlessPreviewMixin
 
 from grapple.models import (
     GraphQLString,
@@ -16,7 +17,7 @@ from grapple.models import (
 )
 
 
-class BlogLandingPage(Page):
+class BlogLandingPage(HeadlessPreviewMixin, Page):
     intro = RichTextField(blank=True)
 
     content_panels = Page.content_panels + [
@@ -36,7 +37,7 @@ DEFAULT_BLOCK_TYPES = [
 
 
 
-class BlogPage(Page):
+class BlogPage(HeadlessPreviewMixin, Page):
     intro = models.CharField(max_length=250)
     body = fields.StreamField(DEFAULT_BLOCK_TYPES)
 

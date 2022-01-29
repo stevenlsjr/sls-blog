@@ -13,10 +13,12 @@ channels = "*"
 dj-database-url = "*"
 django = "*"
 django-cache-url = "*"
+django-channels-graphql-ws = "*"
 django-configurations = "*"
 django-cors-headers = "*"
 django-filter = ">=2"
 django-redis = "*"
+django-storages = {version = "*", features = ["azure"]}
 djangorestframework = "*"
 djangorestframework-simplejwt = "*"
 factory-boy = "*"
@@ -27,10 +29,8 @@ markdown = "*"
 psycopg2-binary = "*"
 uvicorn = "*"
 wagtail = "*"
-wagtail-grapple = "*"
+wagtail-grapple = {version = "*", features = ["channels"]}
 wagtail-headless-preview = "*"
-django-storages ={version = "*", features = ["azure"]}
-django-channels-graphql-ws = "*"
 
 [dev-packages]
 factory_boy = "*"

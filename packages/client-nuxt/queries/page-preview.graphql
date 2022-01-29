@@ -1,0 +1,45 @@
+query PreviewPage($token: String, $contentType: String) {
+  previewPage: page(token: $token, contentType: $contentType) {
+    id
+    urlPath
+    url
+    slug
+    title
+    seoTitle
+    contentType
+    pageType
+    parent {
+      title
+      urlPath
+    }
+    ... on BlogLandingPage {
+      intro
+      children {
+        id
+        urlPath
+        title
+      }
+    }
+    ... on BlogPage {
+      intro
+      body {
+        id
+        rawValue
+        field
+        blockType
+        ... on RichTextBlock {
+          value
+        }
+        ... on ImageChooserBlock {
+          image {
+            title,
+            src: rendition(width: 600) {
+              url
+            }
+            srcSet(sizes: [400, 600, 1000])
+          }
+        }
+      }
+    }
+  }
+}

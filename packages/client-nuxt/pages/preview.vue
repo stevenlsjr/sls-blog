@@ -18,25 +18,43 @@
 </template>
 
 <script lang="ts">
-import { Ref } from "vue";
-import { useApolloClient, useQuery } from "@vue/apollo-composable";
-import gql from "graphql-tag";
-import { PageDetailDocument } from "~~/generated/gql";
+import { PreviewPageDocument } from "../generated/gql";
+import { useQuery } from "@vue/apollo-composable";
+
+function usePreviewParams() {
+  const route = useRoute();
+  const tokenParam = route.query.token || undefined;
+  let contentTypeParam = route.query.content_type || undefined;
+  let token: string | undefined;
+  let contentType: string | undefined;
+  if (Array.isArray(tokenParam)) {
+    token = tokenParam[0];
+  } else {
+    token = tokenParam;
+  }
+
+  if (Array.isArray(contentTypeParam)) {
+    contentType = contentTypeParam[0];
+  } else {
+    contentType = contentTypeParam;
+  }
+
+  return { params: { token, contentType } };
+}
 
 export default defineComponent({
-  layout: null,
-  async setup() {
+  setup() {
     const route = useRoute();
-    const router = useRouter();
-    const pagePath = route.path.replace(/^\/content\//, "/");
 
-    const { loading, error, result } = useQuery(PageDetailDocument, {
-      url: pagePath,
+    const { params } = usePreviewParams();
+
+    const { result, loading, error } = useQuery(PreviewPageDocument, {
+      ...params,
     });
 
     const page = computed(() => {
       if (!loading.value) {
-        return result.value.page ?? null;
+        return result.value.previewPage ?? null;
       } else {
         return null;
       }

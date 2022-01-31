@@ -20,11 +20,9 @@ export default defineComponent({
   props: {
     block: { type: Object as PropType<StreamFieldInterface> },
   },
-  setup({ block }) {
-    const blockComponent = blockMap[block.blockType] || defaultComponent;
-    console.log(blockComponent)
+  setup(props) {
+    const blockComponent = blockMap[props.block.blockType] || defaultComponent;
     return {
-      block,
       blockComponent
     }
   },

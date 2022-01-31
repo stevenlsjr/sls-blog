@@ -37,7 +37,6 @@ class BlogPageFactory(DjangoModelFactory):
         model = BlogPage
         django_get_or_create = ('title',)
     title = factory.Faker('catch_phrase')
-    date = factory.LazyFunction(datetime.utcnow)
     intro = factory.Faker('sentence')
 
     body = factory.LazyFunction(fake_richtext)

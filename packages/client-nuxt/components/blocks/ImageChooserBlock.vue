@@ -15,8 +15,7 @@ export default defineComponent({
   props: {
     block: { ...blockProp<ImageChooserBlock>() },
   },
-  setup({ block }) {
-    console.log(block)
+  setup(props) {
   },
 });
 </script>

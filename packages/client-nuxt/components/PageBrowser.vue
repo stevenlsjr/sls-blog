@@ -16,9 +16,9 @@ export type PageListing = Pick<Page,
 
 export default defineComponent({
   props: {
-    pages: { type: Array as PropType<Partial<PageListing>[] },
+    pages: { type: Array as PropType<Partial<PageListing>[]> },
   },
-  setup({pages}) {
+  setup(props) {
 
   }
 });

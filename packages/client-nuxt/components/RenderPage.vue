@@ -1,33 +1,51 @@
 <template>
-  <component :is="pageComponent" :page="page"> </component>
+  <div v-if="loading">Loading</div>
+  <div v-else-if="error">Error</div>
+  <div v-else-if="notFound"><not-found></not-found></div>
+  <div v-else-if="page">
+    <wagtail-page :page="page"></wagtail-page>
+  </div>
+  <div v-else>
+    <h3>Error: cannot load page</h3>
+    <pre>
+      page: {{ page }}
+      error: {{ error }}
+      loading: {{ loading }}
+
+      notFund: {{ notFound }}
+    </pre>
+  </div>
 </template>
 
 <script lang="ts">
+import { isNumericLiteral } from "typescript";
 import { defineComponent, PropType, Component } from "vue";
 import { PageDetailQuery } from "../generated/gql";
-import BlogLandingPageVue from "./page-types/BlogLandingPage.vue";
-import BlogPageVue from "./page-types/BlogPage.vue";
-import WagtailPageVue from "./page-types/WagtailPage.vue";
-
-export interface Props {
-  page: any;
-}
-
-const pageTypeLookup: Record<string, Component> = {
-  BlogLandingPage: BlogLandingPageVue,
-  BlogPage: BlogPageVue,
-};
+import WagtailPage from "./page-types/WagtailPage.vue";
+import isNil  from "lodash/isNil";
 
 export default defineComponent({
   props: {
     page: {
-      type: Object as PropType<PageDetailQuery["page"]>,
-      required: true,
+      type: Object as PropType<PageDetailQuery["page"] | undefined>,
+      required: false,
+    },
+    loading: {
+      type: Boolean,
+      default: false,
+    },
+    error: {
+      type: Object,
+      required: false,
     },
   },
-  setup({ page }) {
-    let pageComponent = pageTypeLookup[page.__typename] ?? WagtailPageVue;
-    return { page, pageComponent };
+  setup(props) {
+    const { page, loading, error } = props;
+    const notFound = computed(() => {
+      return isNil(page) && !(loading || error);
+    });
+    return { notFound };
   },
+  components: { WagtailPage },
 });
 </script>

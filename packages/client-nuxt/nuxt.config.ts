@@ -1,4 +1,5 @@
-import { defineNuxtConfig } from "nuxt3";
+import { defineNuxtConfig, NuxtConfig } from "nuxt3";
+import type { NuxtWindiOptions } from "nuxt-windicss";
 
 // https://v3.nuxtjs.org/docs/directory-structure/nuxt.config
 
@@ -15,11 +16,6 @@ export default defineNuxtConfig({
   alias: {
     tslib: "tslib/tslib.es6.js",
   },
-  css: [
-    '@/assets/css/main.scss',
-    // '@/css/global.scss',
-  ],
-  dev: true,
   publicRuntimeConfig: {
     graphqlUri,
     graphqlWsUri,
@@ -30,7 +26,28 @@ export default defineNuxtConfig({
       devtools: true,
     },
   },
-  ssr: false,
+  dev: true,
   debug: true,
+  ssr: false,
+  css: [
+    "@/assets/css/main.css",
+    // '@/css/global.scss',
+  ],
+  windicss: {
+    analyze: {
+      server: {
+        port: 4444,
+        open: false,
+      },
+    },
+    preflight: {
+      alias: {
+        // add nuxt aliases
+        'nuxt-link': 'a',
+        // @nuxt/image module
+        'nuxt-img': 'img',
+      },
+    },
+  },
   buildModules: ["nuxt-windicss"],
-});
+} as NuxtConfig & { windicss: NuxtWindiOptions });

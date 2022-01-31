@@ -1,33 +1,19 @@
 <template>
   <div>
-    <div v-if="loading">Loading</div>
-    <code v-if="error">
-      <pre>
-        {{ error }}
-      </pre>
-    </code>
-    <code v-else>
-      <pre>
-        {{ result }}
-      </pre>
-    </code>
+    <h1>My Wagtail/nuxt blog app</h1>
+    <div>
+      <p>go to pages: <nuxt-link class="text-blue-700" to="/pages/">pages</nuxt-link></p>
+    </div>
   </div>
 </template>
 
 <script lang="ts">
-import { useQuery } from "@vue/apollo-composable";
-import gql from "graphql-tag";
-import { ListPagesDocument } from "../generated/gql";
 
 export default defineComponent({
   setup() {
-    const { result, loading, error } = useQuery(ListPagesDocument);
-
-    return {
-      result,
-      loading,
-      error,
-    };
+    const router = useRouter();
+    // router.replace('/pages/')
+    return {};
   },
 });
 </script>

@@ -1,14 +1,11 @@
 <template>
-  <div>
-    <slot name="header"></slot>
+  <div class="">
+    <DefaultNavbar> </DefaultNavbar>
+
+    <slot name="header"> </slot>
     <slot name="breadcrumbs"></slot>
-    <slot></slot>
-
+    <div class="conainer mx-auto">
+      <slot></slot>
+    </div>
   </div>
-
 </template>
-
-<script lang="ts">
-export default defineComponent({
-})
-</script>

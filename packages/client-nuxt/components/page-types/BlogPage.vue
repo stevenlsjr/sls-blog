@@ -31,8 +31,7 @@ export default defineComponent({
     props: {
         page: { required: true, type: Object as PropType<PageType> },
     },
-    setup({ page }) {
-        return { page };
+    setup(props) {
     },
     components: { StreamingBlock }
 });

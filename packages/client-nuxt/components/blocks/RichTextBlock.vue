@@ -11,7 +11,7 @@ export default defineComponent({
   props: {
     block: {...blockProp<RichTextBlock>()},
   },
-  setup({block}) {
+  setup() {
 
   }
 });

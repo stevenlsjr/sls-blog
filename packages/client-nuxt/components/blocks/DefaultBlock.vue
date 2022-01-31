@@ -12,8 +12,8 @@ export default defineComponent({
   props: {
     block: blockProp(),
   },
-  setup({ block }) {
-    return { block };
+  setup(props) {
+    return {}
   },
 });
 </script>

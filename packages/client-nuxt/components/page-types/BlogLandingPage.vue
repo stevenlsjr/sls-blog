@@ -3,11 +3,11 @@
     <h1>{{ page.title }}</h1>
     <ul v-if="childPages.length > 0">
       <li v-for="child in childPages">
-        <a :href="'/content' + child.urlPath">
+        <nuxt-link :to="'/pages' + child.urlPath">
           <div>
             {{ child.title }}
           </div>
-        </a>
+        </nuxt-link>
       </li>
     </ul>
     <div v-else>Loading Pages</div>
@@ -28,7 +28,8 @@ export default defineComponent({
   props: {
     page: { required: true, type: Object as PropType<PageType> },
   },
-  setup({ page }) {
+  setup(props) {
+    const {page} = props;
     const { loading, error, result } = useQuery(ListPageChildrenDocument, {
       pageId: Number.parseInt(page.id, 10),
     });

@@ -3,16 +3,11 @@
     <nuxt-layout name="default">
       <template #breadcrumbs>
         <div v-if="parentPage">
-          <nuxt-link :to="'/content' + parentPage.urlPath">up</nuxt-link>
+          <nuxt-link :to="'/pages' + parentPage.urlPath">up</nuxt-link>
         </div>
       </template>
 
-      <div v-if="loading">Loading</div>
-      <div v-else-if="error">Error</div>
-      <div v-else-if="!page"><not-found></not-found></div>
-      <div v-else>
-        <render-page :page="page"></render-page>
-      </div>
+      <render-page :page="page" :loading="loading" :error="error"></render-page>
     </nuxt-layout>
   </div>
 </template>

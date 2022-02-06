@@ -21,6 +21,9 @@ export default defineNuxtConfig({
     graphqlWsUri,
   },
   privateRuntimeConfig: {},
+  nitro: {
+    sourceMap: true
+  },
   vue: {
     config: {
       devtools: true,
@@ -28,7 +31,7 @@ export default defineNuxtConfig({
   },
   dev: true,
   debug: true,
-  ssr: false,
+  ssr: true,
   css: [
     "@/assets/css/main.css",
     // '@/css/global.scss',

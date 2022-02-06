@@ -41,47 +41,42 @@ function getLinks(
 }
 
 export function setupApolloClient() {
-  const apolloState: Ref<NormalizedCacheObject | undefined > = useState("__APOLLO_STATE__", ()=>undefined)
-  const nuxtApp = useNuxtApp();
-  const isSSR = (nuxtApp.ssrContext ?? false) !== false;
+  const apolloState: Ref<NormalizedCacheObject | undefined> = useState(
+    "__APOLLO_STATE__",
+    () => undefined
+  );
+  const nuxt = useNuxtApp();
+  const isSSR = process.server;
   const { graphqlUri, graphqlWsUri } = useRuntimeConfig();
   const cache = new InMemoryCache();
-  if (!isSSR) {
-    if (typeof window !== "undefined") {
-      const state = apolloState.value;
-
-      if (state) {
-        console.log(state)
-        // If you have multiple clients, use `state.<client_id>`
-        cache.restore(state);
-      }
-    }
-  }
-
   const link = getLinks(graphqlUri, graphqlWsUri, isSSR);
-  const apolloClient = new ApolloClient({
-    link,
-    cache,
-    ...(isSSR
-      ? {
-          // Set this on the server to optimize queries when SSR
-          ssrMode: true,
-        }
-      : {
-          // This will temporary disable query force-fetching
-          ssrForceFetchDelay: 100,
-        }),
-  });
+  let apolloClient: ApolloClient<NormalizedCacheObject>;
+  const key = "default";
+
+  if (isSSR) {
+    apolloClient = new ApolloClient({
+      link,
+      cache,
+      // Set this on the server to optimize queries when SSR
+      ssrMode: true,
+    });
+    nuxt.hook("app:rendered", () => {
+      // serialize apollo state for browser
+      nuxt.payload.data["apollo-" + key] = apolloClient.extract();
+    });
+  } else {
+    const data = nuxt.payload.data["apollo-" + key];
+    if (data) {
+      // deserialize server-side apollo cache
+      cache.restore(JSON.parse(JSON.stringify(data)));
+    }
+    apolloClient = new ApolloClient({
+      link,
+      cache,
+      // This will temporary disable query force-fetching
+      ssrForceFetchDelay: 100,
+    });
+  }
 
   provide(DefaultApolloClient, apolloClient);
-  if (!isSSR && typeof window !== "undefined") {
-    (window as any).APOLLO = apolloClient;
-  }
-  if (isSSR){
-    // setup hook to serialize apollo state after render
-    nuxtApp.hook('app:rendered', ()=>{
-      const state = apolloClient.cache.extract();
-      apolloState.value = state
-    })
-  }
 }

@@ -1,10 +1,6 @@
 <template>
-  <div>
-    <div class="flex flex-row">
-      <div>1</div>
-      <div>2</div>
-      <div>3</div>
-    </div>
+  <div class="m-4">
+  
     <h1>BlogPage: {{ page.__typename }}</h1>
     <article>
       <h1>{{page.title}}</h1>

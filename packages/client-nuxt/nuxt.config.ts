@@ -1,5 +1,5 @@
 import { defineNuxtConfig, NuxtConfig } from "nuxt3";
-import type { NuxtWindiOptions } from "nuxt-windicss";
+import "@nuxtjs/tailwindcss";
 
 // https://v3.nuxtjs.org/docs/directory-structure/nuxt.config
 
@@ -22,7 +22,7 @@ export default defineNuxtConfig({
   },
   privateRuntimeConfig: {},
   nitro: {
-    sourceMap: true
+    sourceMap: true,
   },
   vue: {
     config: {
@@ -36,21 +36,10 @@ export default defineNuxtConfig({
     "@/assets/css/main.css",
     // '@/css/global.scss',
   ],
-  windicss: {
-    analyze: {
-      server: {
-        port: 4444,
-        open: false,
-      },
-    },
-    preflight: {
-      alias: {
-        // add nuxt aliases
-        'nuxt-link': 'a',
-        // @nuxt/image module
-        'nuxt-img': 'img',
-      },
-    },
+
+  tailwindcss: {
+    exposeConfig: true,
   },
-  buildModules: ["nuxt-windicss"],
-} as NuxtConfig & { windicss: NuxtWindiOptions });
+
+  buildModules: ["@nuxtjs/tailwindcss"],
+} as NuxtConfig & { tailwindcss: any });

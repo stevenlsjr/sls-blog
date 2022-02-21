@@ -14,6 +14,7 @@
     "@graphql-codegen/typed-document-node": "^2.2.1",
     "@graphql-codegen/typescript": "^2.4.1",
     "@graphql-codegen/typescript-operations": "^2.2.1",
+    "@nuxtjs/tailwindcss": "5.0.0-4",
     "@swc/cli": "^0.1.55",
     "@swc/core": "^1.2.139",
     "@swc/jest": "^0.2.17",
@@ -25,7 +26,7 @@
     "bulma": "^0.9.3",
     "jest": "^27.5.1",
     "nuxt-windicss": "^2.2.5",
-    "nuxt3": "3.0.0-27389502.88da719",
+    "nuxt3": "latest",
     "sass": "^1.49.0",
     "typescript": "^4.5.5"
   },

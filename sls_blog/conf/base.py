@@ -1,6 +1,7 @@
 from configurations import Configuration, values
 from pathlib import Path
 from django.utils.functional import classproperty
+from django.utils.translation import gettext_lazy as _
 
 
 class BaseConfig(Configuration):
@@ -77,6 +78,13 @@ class BaseConfig(Configuration):
 
     ROOT_URLCONF = 'sls_blog.urls'
     WAGTAIL_SITE_NAME = 'Stevenlsjr Blog'
+    WAGTAIL_I18N_ENABLED = True
+    LANGUAGES = WAGTAIL_CONTENT_LANGUAGES = [
+    ('en-us', _("English (United States)")),
+    ('en-gb', _("English (United Kingdom)")),
+    ('es-es', _("Spanish (Spain)")),
+    ('es-mx', _("Spanish (Mexico)")),
+]
 
     CORS_ORIGIN_WHITELIST = values.ListValue(default=[])
     CORS_ORIGIN_ALLOW_ALL = values.BooleanValue(default=False)

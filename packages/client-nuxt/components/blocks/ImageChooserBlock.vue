@@ -1,7 +1,7 @@
 <template>
   <div>
-    <picture>
-      <img :srcset="block.image.srcSet" :alt="block.image.title">
+    <picture >
+      <img class="max-h-1/2 max-w-1/3"  :srcset="block.image.srcSet" :alt="block.image.title">
     </picture>
 
   </div>

@@ -4,7 +4,6 @@
   "devDependencies": {
     "@swc/jest": "^0.2.15",
     "@types/jest": "^27.0.3",
-    "@vue/apollo-ssr": "^4.0.0-alpha.16",
     "jest": "^27.4.5",
     "lerna": "^3.22.1"
   },

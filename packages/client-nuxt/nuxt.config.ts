@@ -1,5 +1,5 @@
 import { defineNuxtConfig, NuxtConfig } from "nuxt3";
-import "@nuxtjs/tailwindcss";
+import {} from "nuxt-windicss";
 
 // https://v3.nuxtjs.org/docs/directory-structure/nuxt.config
 
@@ -33,13 +33,8 @@ export default defineNuxtConfig({
   debug: true,
   ssr: true,
   css: [
-    "@/assets/css/main.css",
+    "@/assets/css/main.scss",
     // '@/css/global.scss',
   ],
 
-  tailwindcss: {
-    exposeConfig: true,
-  },
-
-  buildModules: ["@nuxtjs/tailwindcss"],
-} as NuxtConfig & { tailwindcss: any });
+});

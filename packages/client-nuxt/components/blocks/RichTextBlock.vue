@@ -1,5 +1,5 @@
 <template>
-  <div v-html="block.value"></div>
+  <div class="content" v-html="block.value"></div>
 </template>
 
 <script lang="ts">
@@ -9,10 +9,8 @@ import { PropType } from "vue";
 
 export default defineComponent({
   props: {
-    block: {...blockProp<RichTextBlock>()},
+    block: { ...blockProp<RichTextBlock>() },
   },
-  setup() {
-
-  }
+  setup() {},
 });
 </script>

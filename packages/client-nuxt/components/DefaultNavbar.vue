@@ -1,5 +1,5 @@
 <template>
-  <nav class="bg-gray-800 text-gray-200 p-2">
+  <nav class="">
     <ul>
       <li>My Wagtail</li>
     </ul>

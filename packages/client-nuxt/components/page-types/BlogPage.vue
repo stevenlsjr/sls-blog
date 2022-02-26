@@ -1,16 +1,14 @@
 <template>
-  <div class="m-4">
-  
-    <h1>BlogPage: {{ page.__typename }}</h1>
-    <article>
-      <h1>{{page.title}}</h1>
-
-      <section v-for="block in page.body" :key="block.id">
-        <streaming-block :block="block"></streaming-block>
-      </section>
- 
-    </article>
-  </div>
+  <article class="container">
+    <section class="hero is-primary">
+      <div class="hero-body ">
+        <h1 class="title">{{ page.title }}</h1>
+      </div>
+    </section>
+    <section v-for="block in page.body" :key="block.id" class="section columns">
+      <streaming-block :block="block"></streaming-block>
+    </section>
+  </article>
 </template>
 
 <script lang="ts">
@@ -24,11 +22,10 @@ export type PageType = Extract<
 >;
 
 export default defineComponent({
-    props: {
-        page: { required: true, type: Object as PropType<PageType> },
-    },
-    setup(props) {
-    },
-    components: { StreamingBlock }
+  props: {
+    page: { required: true, type: Object as PropType<PageType> },
+  },
+  setup(props) {},
+  components: { StreamingBlock },
 });
 </script>

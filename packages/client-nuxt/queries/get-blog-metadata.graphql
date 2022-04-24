@@ -1,0 +1,9 @@
+query GetBlogMetadata($hostname:String, $port: PositiveInt) {
+  currentSite(hostname: $hostname, port:$port) {
+    siteName
+    hostname
+    port
+    isDefaultSite
+  }
+}
+

@@ -13,9 +13,9 @@ import { Ref } from "vue";
 import { useApolloClient, useQuery } from "@vue/apollo-composable";
 import gql from "graphql-tag";
 import { PageDetailDocument } from "~/generated/gql";
+import RenderPage from "~~/components/RenderPage.vue";
 
 export default defineComponent({
-  layout: null,
   async setup() {
     const route = useRoute();
     const router = useRouter();
@@ -48,6 +48,9 @@ export default defineComponent({
       loading,
       error,
     };
+  },
+  components: {
+    RenderPage,
   },
 });
 </script>

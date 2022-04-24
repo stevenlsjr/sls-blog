@@ -9,6 +9,8 @@ const graphqlUri =
 const graphqlWsUri =
   process.env["GRAPHQL_WS_URI"] || "ws://localhost:8000/subscriptions";
 
+const blogRootPage = process.env["BLOG_ROOT_PAGE"] ?? "my-blog";
+
 export default defineNuxtConfig({
   build: {
     transpile: ["@apollo/client", "ts-invariant", "tslib"],
@@ -19,6 +21,7 @@ export default defineNuxtConfig({
   publicRuntimeConfig: {
     graphqlUri,
     graphqlWsUri,
+    blogRootPage
   },
   privateRuntimeConfig: {},
   nitro: {
@@ -36,5 +39,4 @@ export default defineNuxtConfig({
     "@/assets/css/main.scss",
     // '@/css/global.scss',
   ],
-
 });

@@ -12,7 +12,7 @@
 export default defineComponent({
   setup() {
     const router = useRouter();
-    router.replace('/pages/')
+    // router.replace('/pages/')
     return {};
   },
 });

@@ -57,12 +57,222 @@
       "queryType": {
         "name": "Query"
       },
-      "subscriptionType": null,
+      "subscriptionType": {
+        "name": "Subscription"
+      },
       "types": [
         {
           "description": null,
           "enumValues": null,
           "fields": [
+            {
+              "args": [
+                {
+                  "defaultValue": null,
+                  "description": null,
+                  "name": "hostname",
+                  "type": {
+                    "kind": "SCALAR",
+                    "name": "String",
+                    "ofType": null
+                  }
+                },
+                {
+                  "defaultValue": null,
+                  "description": null,
+                  "name": "id",
+                  "type": {
+                    "kind": "SCALAR",
+                    "name": "ID",
+                    "ofType": null
+                  }
+                }
+              ],
+              "deprecationReason": null,
+              "description": null,
+              "isDeprecated": false,
+              "name": "site",
+              "type": {
+                "kind": "OBJECT",
+                "name": "SiteObjectType",
+                "ofType": null
+              }
+            },
+            {
+              "args": [
+                {
+                  "defaultValue": null,
+                  "description": "Limit a number of resulting objects.",
+                  "name": "limit",
+                  "type": {
+                    "kind": "SCALAR",
+                    "name": "PositiveInt",
+                    "ofType": null
+                  }
+                },
+                {
+                  "defaultValue": null,
+                  "description": "Number of records skipped from the beginning of the results set.",
+                  "name": "offset",
+                  "type": {
+                    "kind": "SCALAR",
+                    "name": "PositiveInt",
+                    "ofType": null
+                  }
+                },
+                {
+                  "defaultValue": null,
+                  "description": "Use the Django queryset order format.",
+                  "name": "order",
+                  "type": {
+                    "kind": "SCALAR",
+                    "name": "String",
+                    "ofType": null
+                  }
+                },
+                {
+                  "defaultValue": null,
+                  "description": "Filter the results using Wagtail's search.",
+                  "name": "searchQuery",
+                  "type": {
+                    "kind": "SCALAR",
+                    "name": "String",
+                    "ofType": null
+                  }
+                },
+                {
+                  "defaultValue": null,
+                  "description": "Filter by ID",
+                  "name": "id",
+                  "type": {
+                    "kind": "SCALAR",
+                    "name": "ID",
+                    "ofType": null
+                  }
+                }
+              ],
+              "deprecationReason": null,
+              "description": null,
+              "isDeprecated": false,
+              "name": "sites",
+              "type": {
+                "kind": "NON_NULL",
+                "name": null,
+                "ofType": {
+                  "kind": "LIST",
+                  "name": null,
+                  "ofType": {
+                    "kind": "NON_NULL",
+                    "name": null,
+                    "ofType": {
+                      "kind": "OBJECT",
+                      "name": "SiteObjectType",
+                      "ofType": null
+                    }
+                  }
+                }
+              }
+            },
+            {
+              "args": [
+                {
+                  "defaultValue": null,
+                  "description": null,
+                  "name": "id",
+                  "type": {
+                    "kind": "SCALAR",
+                    "name": "ID",
+                    "ofType": null
+                  }
+                },
+                {
+                  "defaultValue": null,
+                  "description": null,
+                  "name": "siteId",
+                  "type": {
+                    "kind": "SCALAR",
+                    "name": "ID",
+                    "ofType": null
+                  }
+                }
+              ],
+              "deprecationReason": null,
+              "description": null,
+              "isDeprecated": false,
+              "name": "branding",
+              "type": {
+                "kind": "OBJECT",
+                "name": "BlogBrandingObject",
+                "ofType": null
+              }
+            },
+            {
+              "args": [
+                {
+                  "defaultValue": null,
+                  "description": "Limit a number of resulting objects.",
+                  "name": "limit",
+                  "type": {
+                    "kind": "SCALAR",
+                    "name": "PositiveInt",
+                    "ofType": null
+                  }
+                },
+                {
+                  "defaultValue": null,
+                  "description": "Number of records skipped from the beginning of the results set.",
+                  "name": "offset",
+                  "type": {
+                    "kind": "SCALAR",
+                    "name": "PositiveInt",
+                    "ofType": null
+                  }
+                },
+                {
+                  "defaultValue": null,
+                  "description": "Use the Django queryset order format.",
+                  "name": "order",
+                  "type": {
+                    "kind": "SCALAR",
+                    "name": "String",
+                    "ofType": null
+                  }
+                },
+                {
+                  "defaultValue": null,
+                  "description": "Filter the results using Wagtail's search.",
+                  "name": "searchQuery",
+                  "type": {
+                    "kind": "SCALAR",
+                    "name": "String",
+                    "ofType": null
+                  }
+                },
+                {
+                  "defaultValue": null,
+                  "description": "Filter by ID",
+                  "name": "id",
+                  "type": {
+                    "kind": "SCALAR",
+                    "name": "ID",
+                    "ofType": null
+                  }
+                }
+              ],
+              "deprecationReason": null,
+              "description": null,
+              "isDeprecated": false,
+              "name": "brandings",
+              "type": {
+                "kind": "LIST",
+                "name": null,
+                "ofType": {
+                  "kind": "OBJECT",
+                  "name": "BlogBranding",
+                  "ofType": null
+                }
+              }
+            },
             {
               "args": [],
               "deprecationReason": null,
@@ -380,6 +590,22 @@
               }
             },
             {
+              "args": [],
+              "deprecationReason": null,
+              "description": null,
+              "isDeprecated": false,
+              "name": "documentType",
+              "type": {
+                "kind": "NON_NULL",
+                "name": null,
+                "ofType": {
+                  "kind": "SCALAR",
+                  "name": "String",
+                  "ofType": null
+                }
+              }
+            },
+            {
               "args": [
                 {
                   "defaultValue": null,
@@ -500,114 +726,6 @@
                   "kind": "SCALAR",
                   "name": "String",
                   "ofType": null
-                }
-              }
-            },
-            {
-              "args": [
-                {
-                  "defaultValue": null,
-                  "description": null,
-                  "name": "hostname",
-                  "type": {
-                    "kind": "SCALAR",
-                    "name": "String",
-                    "ofType": null
-                  }
-                },
-                {
-                  "defaultValue": null,
-                  "description": null,
-                  "name": "id",
-                  "type": {
-                    "kind": "SCALAR",
-                    "name": "ID",
-                    "ofType": null
-                  }
-                }
-              ],
-              "deprecationReason": null,
-              "description": null,
-              "isDeprecated": false,
-              "name": "site",
-              "type": {
-                "kind": "OBJECT",
-                "name": "SiteObjectType",
-                "ofType": null
-              }
-            },
-            {
-              "args": [
-                {
-                  "defaultValue": null,
-                  "description": "Limit a number of resulting objects.",
-                  "name": "limit",
-                  "type": {
-                    "kind": "SCALAR",
-                    "name": "PositiveInt",
-                    "ofType": null
-                  }
-                },
-                {
-                  "defaultValue": null,
-                  "description": "Number of records skipped from the beginning of the results set.",
-                  "name": "offset",
-                  "type": {
-                    "kind": "SCALAR",
-                    "name": "PositiveInt",
-                    "ofType": null
-                  }
-                },
-                {
-                  "defaultValue": null,
-                  "description": "Use the Django queryset order format.",
-                  "name": "order",
-                  "type": {
-                    "kind": "SCALAR",
-                    "name": "String",
-                    "ofType": null
-                  }
-                },
-                {
-                  "defaultValue": null,
-                  "description": "Filter the results using Wagtail's search.",
-                  "name": "searchQuery",
-                  "type": {
-                    "kind": "SCALAR",
-                    "name": "String",
-                    "ofType": null
-                  }
-                },
-                {
-                  "defaultValue": null,
-                  "description": "Filter by ID",
-                  "name": "id",
-                  "type": {
-                    "kind": "SCALAR",
-                    "name": "ID",
-                    "ofType": null
-                  }
-                }
-              ],
-              "deprecationReason": null,
-              "description": null,
-              "isDeprecated": false,
-              "name": "sites",
-              "type": {
-                "kind": "NON_NULL",
-                "name": null,
-                "ofType": {
-                  "kind": "LIST",
-                  "name": null,
-                  "ofType": {
-                    "kind": "NON_NULL",
-                    "name": null,
-                    "ofType": {
-                      "kind": "OBJECT",
-                      "name": "SiteObjectType",
-                      "ofType": null
-                    }
-                  }
                 }
               }
             },
@@ -780,30 +898,154 @@
               }
             },
             {
-              "args": [],
-              "deprecationReason": null,
-              "description": null,
-              "isDeprecated": false,
-              "name": "users",
-              "type": {
-                "kind": "LIST",
-                "name": null,
-                "ofType": {
-                  "kind": "OBJECT",
-                  "name": "UserType",
-                  "ofType": null
-                }
-              }
-            },
-            {
               "args": [
                 {
                   "defaultValue": null,
                   "description": null,
-                  "name": "id",
+                  "name": "before",
+                  "type": {
+                    "kind": "SCALAR",
+                    "name": "String",
+                    "ofType": null
+                  }
+                },
+                {
+                  "defaultValue": null,
+                  "description": null,
+                  "name": "after",
+                  "type": {
+                    "kind": "SCALAR",
+                    "name": "String",
+                    "ofType": null
+                  }
+                },
+                {
+                  "defaultValue": null,
+                  "description": null,
+                  "name": "first",
                   "type": {
                     "kind": "SCALAR",
                     "name": "Int",
+                    "ofType": null
+                  }
+                },
+                {
+                  "defaultValue": null,
+                  "description": null,
+                  "name": "last",
+                  "type": {
+                    "kind": "SCALAR",
+                    "name": "Int",
+                    "ofType": null
+                  }
+                },
+                {
+                  "defaultValue": null,
+                  "description": null,
+                  "name": "username_Iexact",
+                  "type": {
+                    "kind": "SCALAR",
+                    "name": "String",
+                    "ofType": null
+                  }
+                },
+                {
+                  "defaultValue": null,
+                  "description": null,
+                  "name": "username_Icontains",
+                  "type": {
+                    "kind": "SCALAR",
+                    "name": "String",
+                    "ofType": null
+                  }
+                },
+                {
+                  "defaultValue": null,
+                  "description": null,
+                  "name": "email_Iexact",
+                  "type": {
+                    "kind": "SCALAR",
+                    "name": "String",
+                    "ofType": null
+                  }
+                },
+                {
+                  "defaultValue": null,
+                  "description": null,
+                  "name": "email_Icontains",
+                  "type": {
+                    "kind": "SCALAR",
+                    "name": "String",
+                    "ofType": null
+                  }
+                },
+                {
+                  "defaultValue": null,
+                  "description": null,
+                  "name": "isStaff",
+                  "type": {
+                    "kind": "SCALAR",
+                    "name": "Boolean",
+                    "ofType": null
+                  }
+                },
+                {
+                  "defaultValue": null,
+                  "description": null,
+                  "name": "isActive",
+                  "type": {
+                    "kind": "SCALAR",
+                    "name": "Boolean",
+                    "ofType": null
+                  }
+                },
+                {
+                  "defaultValue": null,
+                  "description": null,
+                  "name": "dateJoined",
+                  "type": {
+                    "kind": "SCALAR",
+                    "name": "DateTime",
+                    "ofType": null
+                  }
+                },
+                {
+                  "defaultValue": null,
+                  "description": null,
+                  "name": "dateJoined_Gt",
+                  "type": {
+                    "kind": "SCALAR",
+                    "name": "DateTime",
+                    "ofType": null
+                  }
+                },
+                {
+                  "defaultValue": null,
+                  "description": null,
+                  "name": "dateJoined_Lt",
+                  "type": {
+                    "kind": "SCALAR",
+                    "name": "DateTime",
+                    "ofType": null
+                  }
+                },
+                {
+                  "defaultValue": null,
+                  "description": null,
+                  "name": "dateJoined_Gte",
+                  "type": {
+                    "kind": "SCALAR",
+                    "name": "DateTime",
+                    "ofType": null
+                  }
+                },
+                {
+                  "defaultValue": null,
+                  "description": null,
+                  "name": "dateJoined_Lte",
+                  "type": {
+                    "kind": "SCALAR",
+                    "name": "DateTime",
                     "ofType": null
                   }
                 }
@@ -811,7 +1053,34 @@
               "deprecationReason": null,
               "description": null,
               "isDeprecated": false,
-              "name": "userById",
+              "name": "users",
+              "type": {
+                "kind": "OBJECT",
+                "name": "UserTypeConnection",
+                "ofType": null
+              }
+            },
+            {
+              "args": [
+                {
+                  "defaultValue": null,
+                  "description": "The ID of the object",
+                  "name": "id",
+                  "type": {
+                    "kind": "NON_NULL",
+                    "name": null,
+                    "ofType": {
+                      "kind": "SCALAR",
+                      "name": "ID",
+                      "ofType": null
+                    }
+                  }
+                }
+              ],
+              "deprecationReason": null,
+              "description": null,
+              "isDeprecated": false,
+              "name": "user",
               "type": {
                 "kind": "OBJECT",
                 "name": "UserType",
@@ -819,14 +1088,35 @@
               }
             },
             {
-              "args": [],
+              "args": [
+                {
+                  "defaultValue": null,
+                  "description": null,
+                  "name": "hostname",
+                  "type": {
+                    "kind": "SCALAR",
+                    "name": "String",
+                    "ofType": null
+                  }
+                },
+                {
+                  "defaultValue": null,
+                  "description": null,
+                  "name": "port",
+                  "type": {
+                    "kind": "SCALAR",
+                    "name": "PositiveInt",
+                    "ofType": null
+                  }
+                }
+              ],
               "deprecationReason": null,
               "description": null,
               "isDeprecated": false,
-              "name": "userIdentity",
+              "name": "currentSite",
               "type": {
                 "kind": "OBJECT",
-                "name": "UserIdentityType",
+                "name": "SiteObjectType",
                 "ofType": null
               }
             }
@@ -844,9 +1134,25 @@
             {
               "args": [],
               "deprecationReason": null,
-              "description": null,
+              "description": "",
               "isDeprecated": false,
-              "name": "oldPath",
+              "name": "id",
+              "type": {
+                "kind": "NON_NULL",
+                "name": null,
+                "ofType": {
+                  "kind": "SCALAR",
+                  "name": "ID",
+                  "ofType": null
+                }
+              }
+            },
+            {
+              "args": [],
+              "deprecationReason": null,
+              "description": "",
+              "isDeprecated": false,
+              "name": "hostname",
               "type": {
                 "kind": "NON_NULL",
                 "name": null,
@@ -860,9 +1166,25 @@
             {
               "args": [],
               "deprecationReason": null,
-              "description": null,
+              "description": "Set this to something other than 80 if you need a specific port number to appear in URLs (e.g. development on port 8000). Does not affect request handling (so port forwarding still works).",
               "isDeprecated": false,
-              "name": "oldUrl",
+              "name": "port",
+              "type": {
+                "kind": "NON_NULL",
+                "name": null,
+                "ofType": {
+                  "kind": "SCALAR",
+                  "name": "Int",
+                  "ofType": null
+                }
+              }
+            },
+            {
+              "args": [],
+              "deprecationReason": null,
+              "description": "Human-readable name for the site.",
+              "isDeprecated": false,
+              "name": "siteName",
               "type": {
                 "kind": "NON_NULL",
                 "name": null,
@@ -876,9 +1198,410 @@
             {
               "args": [],
               "deprecationReason": null,
+              "description": "",
+              "isDeprecated": false,
+              "name": "rootPage",
+              "type": {
+                "kind": "NON_NULL",
+                "name": null,
+                "ofType": {
+                  "kind": "OBJECT",
+                  "name": "PageNode",
+                  "ofType": null
+                }
+              }
+            },
+            {
+              "args": [],
+              "deprecationReason": null,
+              "description": "If true, this site will handle requests for all other hostnames that do not have a site entry of their own",
+              "isDeprecated": false,
+              "name": "isDefaultSite",
+              "type": {
+                "kind": "NON_NULL",
+                "name": null,
+                "ofType": {
+                  "kind": "SCALAR",
+                  "name": "Boolean",
+                  "ofType": null
+                }
+              }
+            },
+            {
+              "args": [],
+              "deprecationReason": null,
               "description": null,
               "isDeprecated": false,
-              "name": "newUrl",
+              "name": "siteBranding",
+              "type": {
+                "kind": "OBJECT",
+                "name": "SiteBlogBranding",
+                "ofType": null
+              }
+            },
+            {
+              "args": [],
+              "deprecationReason": null,
+              "description": "",
+              "isDeprecated": false,
+              "name": "blogbrandingSet",
+              "type": {
+                "kind": "NON_NULL",
+                "name": null,
+                "ofType": {
+                  "kind": "LIST",
+                  "name": null,
+                  "ofType": {
+                    "kind": "NON_NULL",
+                    "name": null,
+                    "ofType": {
+                      "kind": "OBJECT",
+                      "name": "BlogBrandingObject",
+                      "ofType": null
+                    }
+                  }
+                }
+              }
+            },
+            {
+              "args": [
+                {
+                  "defaultValue": null,
+                  "description": "Filter by content type. Uses the `app.Model` notation.",
+                  "name": "contentType",
+                  "type": {
+                    "kind": "SCALAR",
+                    "name": "String",
+                    "ofType": null
+                  }
+                },
+                {
+                  "defaultValue": null,
+                  "description": "Limit a number of resulting objects.",
+                  "name": "limit",
+                  "type": {
+                    "kind": "SCALAR",
+                    "name": "PositiveInt",
+                    "ofType": null
+                  }
+                },
+                {
+                  "defaultValue": null,
+                  "description": "Number of records skipped from the beginning of the results set.",
+                  "name": "offset",
+                  "type": {
+                    "kind": "SCALAR",
+                    "name": "PositiveInt",
+                    "ofType": null
+                  }
+                },
+                {
+                  "defaultValue": null,
+                  "description": "Use the Django queryset order format.",
+                  "name": "order",
+                  "type": {
+                    "kind": "SCALAR",
+                    "name": "String",
+                    "ofType": null
+                  }
+                },
+                {
+                  "defaultValue": null,
+                  "description": "Filter the results using Wagtail's search.",
+                  "name": "searchQuery",
+                  "type": {
+                    "kind": "SCALAR",
+                    "name": "String",
+                    "ofType": null
+                  }
+                },
+                {
+                  "defaultValue": null,
+                  "description": "Filter by ID",
+                  "name": "id",
+                  "type": {
+                    "kind": "SCALAR",
+                    "name": "ID",
+                    "ofType": null
+                  }
+                }
+              ],
+              "deprecationReason": null,
+              "description": null,
+              "isDeprecated": false,
+              "name": "pages",
+              "type": {
+                "kind": "NON_NULL",
+                "name": null,
+                "ofType": {
+                  "kind": "LIST",
+                  "name": null,
+                  "ofType": {
+                    "kind": "NON_NULL",
+                    "name": null,
+                    "ofType": {
+                      "kind": "INTERFACE",
+                      "name": "PageInterface",
+                      "ofType": null
+                    }
+                  }
+                }
+              }
+            },
+            {
+              "args": [
+                {
+                  "defaultValue": null,
+                  "description": null,
+                  "name": "id",
+                  "type": {
+                    "kind": "SCALAR",
+                    "name": "Int",
+                    "ofType": null
+                  }
+                },
+                {
+                  "defaultValue": null,
+                  "description": null,
+                  "name": "slug",
+                  "type": {
+                    "kind": "SCALAR",
+                    "name": "String",
+                    "ofType": null
+                  }
+                },
+                {
+                  "defaultValue": null,
+                  "description": null,
+                  "name": "urlPath",
+                  "type": {
+                    "kind": "SCALAR",
+                    "name": "String",
+                    "ofType": null
+                  }
+                },
+                {
+                  "defaultValue": null,
+                  "description": null,
+                  "name": "token",
+                  "type": {
+                    "kind": "SCALAR",
+                    "name": "String",
+                    "ofType": null
+                  }
+                },
+                {
+                  "defaultValue": null,
+                  "description": null,
+                  "name": "contentType",
+                  "type": {
+                    "kind": "SCALAR",
+                    "name": "String",
+                    "ofType": null
+                  }
+                }
+              ],
+              "deprecationReason": null,
+              "description": null,
+              "isDeprecated": false,
+              "name": "page",
+              "type": {
+                "kind": "INTERFACE",
+                "name": "PageInterface",
+                "ofType": null
+              }
+            }
+          ],
+          "inputFields": null,
+          "interfaces": [],
+          "kind": "OBJECT",
+          "name": "SiteObjectType",
+          "possibleTypes": null
+        },
+        {
+          "description": "The `ID` scalar type represents a unique identifier, often used to refetch an object or as key for a cache. The ID type appears in a JSON response as a String; however, it is not intended to be human-readable. When expected as an input type, any string (such as `\"4\"`) or integer (such as `4`) input value will be accepted as an ID.",
+          "enumValues": null,
+          "fields": null,
+          "inputFields": null,
+          "interfaces": null,
+          "kind": "SCALAR",
+          "name": "ID",
+          "possibleTypes": null
+        },
+        {
+          "description": "The `String` scalar type represents textual data, represented as UTF-8 character sequences. The String type is most often used by GraphQL to represent free-form human-readable text.",
+          "enumValues": null,
+          "fields": null,
+          "inputFields": null,
+          "interfaces": null,
+          "kind": "SCALAR",
+          "name": "String",
+          "possibleTypes": null
+        },
+        {
+          "description": "The `Int` scalar type represents non-fractional signed whole numeric values. Int can represent values between -(2^31 - 1) and 2^31 - 1 since represented in JSON as double-precision floating point numbers specifiedby [IEEE 754](http://en.wikipedia.org/wiki/IEEE_floating_point).",
+          "enumValues": null,
+          "fields": null,
+          "inputFields": null,
+          "interfaces": null,
+          "kind": "SCALAR",
+          "name": "Int",
+          "possibleTypes": null
+        },
+        {
+          "description": null,
+          "enumValues": null,
+          "fields": [
+            {
+              "args": [],
+              "deprecationReason": null,
+              "description": "The ID of the object.",
+              "isDeprecated": false,
+              "name": "id",
+              "type": {
+                "kind": "NON_NULL",
+                "name": null,
+                "ofType": {
+                  "kind": "SCALAR",
+                  "name": "ID",
+                  "ofType": null
+                }
+              }
+            }
+          ],
+          "inputFields": null,
+          "interfaces": [
+            {
+              "kind": "INTERFACE",
+              "name": "Node",
+              "ofType": null
+            }
+          ],
+          "kind": "OBJECT",
+          "name": "PageNode",
+          "possibleTypes": null
+        },
+        {
+          "description": "An object with an ID",
+          "enumValues": null,
+          "fields": [
+            {
+              "args": [],
+              "deprecationReason": null,
+              "description": "The ID of the object.",
+              "isDeprecated": false,
+              "name": "id",
+              "type": {
+                "kind": "NON_NULL",
+                "name": null,
+                "ofType": {
+                  "kind": "SCALAR",
+                  "name": "ID",
+                  "ofType": null
+                }
+              }
+            }
+          ],
+          "inputFields": null,
+          "interfaces": null,
+          "kind": "INTERFACE",
+          "name": "Node",
+          "possibleTypes": [
+            {
+              "kind": "OBJECT",
+              "name": "PageNode",
+              "ofType": null
+            },
+            {
+              "kind": "OBJECT",
+              "name": "UserType",
+              "ofType": null
+            }
+          ]
+        },
+        {
+          "description": "The `Boolean` scalar type represents `true` or `false`.",
+          "enumValues": null,
+          "fields": null,
+          "inputFields": null,
+          "interfaces": null,
+          "kind": "SCALAR",
+          "name": "Boolean",
+          "possibleTypes": null
+        },
+        {
+          "description": null,
+          "enumValues": null,
+          "fields": [
+            {
+              "args": [],
+              "deprecationReason": null,
+              "description": null,
+              "isDeprecated": false,
+              "name": "id",
+              "type": {
+                "kind": "SCALAR",
+                "name": "ID",
+                "ofType": null
+              }
+            }
+          ],
+          "inputFields": null,
+          "interfaces": [],
+          "kind": "OBJECT",
+          "name": "SiteBlogBranding",
+          "possibleTypes": null
+        },
+        {
+          "description": null,
+          "enumValues": null,
+          "fields": [
+            {
+              "args": [],
+              "deprecationReason": null,
+              "description": "",
+              "isDeprecated": false,
+              "name": "id",
+              "type": {
+                "kind": "NON_NULL",
+                "name": null,
+                "ofType": {
+                  "kind": "SCALAR",
+                  "name": "ID",
+                  "ofType": null
+                }
+              }
+            },
+            {
+              "args": [],
+              "deprecationReason": null,
+              "description": "",
+              "isDeprecated": false,
+              "name": "sites",
+              "type": {
+                "kind": "NON_NULL",
+                "name": null,
+                "ofType": {
+                  "kind": "LIST",
+                  "name": null,
+                  "ofType": {
+                    "kind": "NON_NULL",
+                    "name": null,
+                    "ofType": {
+                      "kind": "OBJECT",
+                      "name": "SiteObjectTypeExt",
+                      "ofType": null
+                    }
+                  }
+                }
+              }
+            },
+            {
+              "args": [],
+              "deprecationReason": null,
+              "description": "",
+              "isDeprecated": false,
+              "name": "title",
               "type": {
                 "kind": "NON_NULL",
                 "name": null,
@@ -891,6 +1614,357 @@
             },
             {
               "args": [],
+              "deprecationReason": null,
+              "description": "",
+              "isDeprecated": false,
+              "name": "isLive",
+              "type": {
+                "kind": "NON_NULL",
+                "name": null,
+                "ofType": {
+                  "kind": "SCALAR",
+                  "name": "Boolean",
+                  "ofType": null
+                }
+              }
+            },
+            {
+              "args": [],
+              "deprecationReason": null,
+              "description": "",
+              "isDeprecated": false,
+              "name": "createdAt",
+              "type": {
+                "kind": "NON_NULL",
+                "name": null,
+                "ofType": {
+                  "kind": "SCALAR",
+                  "name": "DateTime",
+                  "ofType": null
+                }
+              }
+            },
+            {
+              "args": [],
+              "deprecationReason": null,
+              "description": "",
+              "isDeprecated": false,
+              "name": "updatedAt",
+              "type": {
+                "kind": "NON_NULL",
+                "name": null,
+                "ofType": {
+                  "kind": "SCALAR",
+                  "name": "DateTime",
+                  "ofType": null
+                }
+              }
+            },
+            {
+              "args": [],
+              "deprecationReason": null,
+              "description": "",
+              "isDeprecated": false,
+              "name": "branding",
+              "type": {
+                "kind": "NON_NULL",
+                "name": null,
+                "ofType": {
+                  "kind": "LIST",
+                  "name": null,
+                  "ofType": {
+                    "kind": "NON_NULL",
+                    "name": null,
+                    "ofType": {
+                      "kind": "OBJECT",
+                      "name": "SiteBlogBranding",
+                      "ofType": null
+                    }
+                  }
+                }
+              }
+            }
+          ],
+          "inputFields": null,
+          "interfaces": [],
+          "kind": "OBJECT",
+          "name": "BlogBrandingObject",
+          "possibleTypes": null
+        },
+        {
+          "description": null,
+          "enumValues": null,
+          "fields": [
+            {
+              "args": [],
+              "deprecationReason": null,
+              "description": "",
+              "isDeprecated": false,
+              "name": "id",
+              "type": {
+                "kind": "NON_NULL",
+                "name": null,
+                "ofType": {
+                  "kind": "SCALAR",
+                  "name": "ID",
+                  "ofType": null
+                }
+              }
+            },
+            {
+              "args": [],
+              "deprecationReason": null,
+              "description": "",
+              "isDeprecated": false,
+              "name": "hostname",
+              "type": {
+                "kind": "NON_NULL",
+                "name": null,
+                "ofType": {
+                  "kind": "SCALAR",
+                  "name": "String",
+                  "ofType": null
+                }
+              }
+            },
+            {
+              "args": [],
+              "deprecationReason": null,
+              "description": "Set this to something other than 80 if you need a specific port number to appear in URLs (e.g. development on port 8000). Does not affect request handling (so port forwarding still works).",
+              "isDeprecated": false,
+              "name": "port",
+              "type": {
+                "kind": "NON_NULL",
+                "name": null,
+                "ofType": {
+                  "kind": "SCALAR",
+                  "name": "Int",
+                  "ofType": null
+                }
+              }
+            },
+            {
+              "args": [],
+              "deprecationReason": null,
+              "description": "Human-readable name for the site.",
+              "isDeprecated": false,
+              "name": "siteName",
+              "type": {
+                "kind": "NON_NULL",
+                "name": null,
+                "ofType": {
+                  "kind": "SCALAR",
+                  "name": "String",
+                  "ofType": null
+                }
+              }
+            },
+            {
+              "args": [],
+              "deprecationReason": null,
+              "description": "",
+              "isDeprecated": false,
+              "name": "rootPage",
+              "type": {
+                "kind": "NON_NULL",
+                "name": null,
+                "ofType": {
+                  "kind": "OBJECT",
+                  "name": "PageNode",
+                  "ofType": null
+                }
+              }
+            },
+            {
+              "args": [],
+              "deprecationReason": null,
+              "description": "If true, this site will handle requests for all other hostnames that do not have a site entry of their own",
+              "isDeprecated": false,
+              "name": "isDefaultSite",
+              "type": {
+                "kind": "NON_NULL",
+                "name": null,
+                "ofType": {
+                  "kind": "SCALAR",
+                  "name": "Boolean",
+                  "ofType": null
+                }
+              }
+            },
+            {
+              "args": [],
+              "deprecationReason": null,
+              "description": null,
+              "isDeprecated": false,
+              "name": "siteBranding",
+              "type": {
+                "kind": "OBJECT",
+                "name": "SiteBlogBranding",
+                "ofType": null
+              }
+            },
+            {
+              "args": [],
+              "deprecationReason": null,
+              "description": "",
+              "isDeprecated": false,
+              "name": "blogbrandingSet",
+              "type": {
+                "kind": "NON_NULL",
+                "name": null,
+                "ofType": {
+                  "kind": "LIST",
+                  "name": null,
+                  "ofType": {
+                    "kind": "NON_NULL",
+                    "name": null,
+                    "ofType": {
+                      "kind": "OBJECT",
+                      "name": "BlogBrandingObject",
+                      "ofType": null
+                    }
+                  }
+                }
+              }
+            },
+            {
+              "args": [
+                {
+                  "defaultValue": null,
+                  "description": "Filter by content type. Uses the `app.Model` notation.",
+                  "name": "contentType",
+                  "type": {
+                    "kind": "SCALAR",
+                    "name": "String",
+                    "ofType": null
+                  }
+                },
+                {
+                  "defaultValue": null,
+                  "description": "Limit a number of resulting objects.",
+                  "name": "limit",
+                  "type": {
+                    "kind": "SCALAR",
+                    "name": "PositiveInt",
+                    "ofType": null
+                  }
+                },
+                {
+                  "defaultValue": null,
+                  "description": "Number of records skipped from the beginning of the results set.",
+                  "name": "offset",
+                  "type": {
+                    "kind": "SCALAR",
+                    "name": "PositiveInt",
+                    "ofType": null
+                  }
+                },
+                {
+                  "defaultValue": null,
+                  "description": "Use the Django queryset order format.",
+                  "name": "order",
+                  "type": {
+                    "kind": "SCALAR",
+                    "name": "String",
+                    "ofType": null
+                  }
+                },
+                {
+                  "defaultValue": null,
+                  "description": "Filter the results using Wagtail's search.",
+                  "name": "searchQuery",
+                  "type": {
+                    "kind": "SCALAR",
+                    "name": "String",
+                    "ofType": null
+                  }
+                },
+                {
+                  "defaultValue": null,
+                  "description": "Filter by ID",
+                  "name": "id",
+                  "type": {
+                    "kind": "SCALAR",
+                    "name": "ID",
+                    "ofType": null
+                  }
+                }
+              ],
+              "deprecationReason": null,
+              "description": null,
+              "isDeprecated": false,
+              "name": "pages",
+              "type": {
+                "kind": "NON_NULL",
+                "name": null,
+                "ofType": {
+                  "kind": "LIST",
+                  "name": null,
+                  "ofType": {
+                    "kind": "NON_NULL",
+                    "name": null,
+                    "ofType": {
+                      "kind": "INTERFACE",
+                      "name": "PageInterface",
+                      "ofType": null
+                    }
+                  }
+                }
+              }
+            },
+            {
+              "args": [
+                {
+                  "defaultValue": null,
+                  "description": null,
+                  "name": "id",
+                  "type": {
+                    "kind": "SCALAR",
+                    "name": "Int",
+                    "ofType": null
+                  }
+                },
+                {
+                  "defaultValue": null,
+                  "description": null,
+                  "name": "slug",
+                  "type": {
+                    "kind": "SCALAR",
+                    "name": "String",
+                    "ofType": null
+                  }
+                },
+                {
+                  "defaultValue": null,
+                  "description": null,
+                  "name": "urlPath",
+                  "type": {
+                    "kind": "SCALAR",
+                    "name": "String",
+                    "ofType": null
+                  }
+                },
+                {
+                  "defaultValue": null,
+                  "description": null,
+                  "name": "token",
+                  "type": {
+                    "kind": "SCALAR",
+                    "name": "String",
+                    "ofType": null
+                  }
+                },
+                {
+                  "defaultValue": null,
+                  "description": null,
+                  "name": "contentType",
+                  "type": {
+                    "kind": "SCALAR",
+                    "name": "String",
+                    "ofType": null
+                  }
+                }
+              ],
               "deprecationReason": null,
               "description": null,
               "isDeprecated": false,
@@ -906,32 +1980,18 @@
               "deprecationReason": null,
               "description": null,
               "isDeprecated": false,
-              "name": "isPermanent",
+              "name": "branding",
               "type": {
-                "kind": "NON_NULL",
-                "name": null,
-                "ofType": {
-                  "kind": "SCALAR",
-                  "name": "Boolean",
-                  "ofType": null
-                }
+                "kind": "OBJECT",
+                "name": "BlogBrandingObject",
+                "ofType": null
               }
             }
           ],
           "inputFields": null,
           "interfaces": [],
           "kind": "OBJECT",
-          "name": "RedirectType",
-          "possibleTypes": null
-        },
-        {
-          "description": "The `String` scalar type represents textual data, represented as UTF-8 character sequences. The String type is most often used by GraphQL to represent free-form human-readable text.",
-          "enumValues": null,
-          "fields": null,
-          "inputFields": null,
-          "interfaces": null,
-          "kind": "SCALAR",
-          "name": "String",
+          "name": "SiteObjectTypeExt",
           "possibleTypes": null
         },
         {
@@ -1621,45 +2681,15 @@
             },
             {
               "kind": "OBJECT",
-              "name": "Page",
+              "name": "BlogPage",
               "ofType": null
             },
             {
               "kind": "OBJECT",
-              "name": "BlogPage",
+              "name": "Page",
               "ofType": null
             }
           ]
-        },
-        {
-          "description": "The `ID` scalar type represents a unique identifier, often used to refetch an object or as key for a cache. The ID type appears in a JSON response as a String; however, it is not intended to be human-readable. When expected as an input type, any string (such as `\"4\"`) or integer (such as `4`) input value will be accepted as an ID.",
-          "enumValues": null,
-          "fields": null,
-          "inputFields": null,
-          "interfaces": null,
-          "kind": "SCALAR",
-          "name": "ID",
-          "possibleTypes": null
-        },
-        {
-          "description": "The `Boolean` scalar type represents `true` or `false`.",
-          "enumValues": null,
-          "fields": null,
-          "inputFields": null,
-          "interfaces": null,
-          "kind": "SCALAR",
-          "name": "Boolean",
-          "possibleTypes": null
-        },
-        {
-          "description": "The `Int` scalar type represents non-fractional signed whole numeric values. Int can represent values between -(2^31 - 1) and 2^31 - 1 since represented in JSON as double-precision floating point numbers specifiedby [IEEE 754](http://en.wikipedia.org/wiki/IEEE_floating_point).",
-          "enumValues": null,
-          "fields": null,
-          "inputFields": null,
-          "interfaces": null,
-          "kind": "SCALAR",
-          "name": "Int",
-          "possibleTypes": null
         },
         {
           "description": "The `DateTime` scalar type represents a DateTime\nvalue as specified by\n[iso8601](https://en.wikipedia.org/wiki/ISO_8601).",
@@ -1679,6 +2709,116 @@
           "interfaces": null,
           "kind": "SCALAR",
           "name": "PositiveInt",
+          "possibleTypes": null
+        },
+        {
+          "description": null,
+          "enumValues": null,
+          "fields": [
+            {
+              "args": [],
+              "deprecationReason": null,
+              "description": null,
+              "isDeprecated": false,
+              "name": "id",
+              "type": {
+                "kind": "SCALAR",
+                "name": "ID",
+                "ofType": null
+              }
+            }
+          ],
+          "inputFields": null,
+          "interfaces": [],
+          "kind": "OBJECT",
+          "name": "BlogBranding",
+          "possibleTypes": null
+        },
+        {
+          "description": null,
+          "enumValues": null,
+          "fields": [
+            {
+              "args": [],
+              "deprecationReason": null,
+              "description": null,
+              "isDeprecated": false,
+              "name": "oldPath",
+              "type": {
+                "kind": "NON_NULL",
+                "name": null,
+                "ofType": {
+                  "kind": "SCALAR",
+                  "name": "String",
+                  "ofType": null
+                }
+              }
+            },
+            {
+              "args": [],
+              "deprecationReason": null,
+              "description": null,
+              "isDeprecated": false,
+              "name": "oldUrl",
+              "type": {
+                "kind": "NON_NULL",
+                "name": null,
+                "ofType": {
+                  "kind": "SCALAR",
+                  "name": "String",
+                  "ofType": null
+                }
+              }
+            },
+            {
+              "args": [],
+              "deprecationReason": null,
+              "description": null,
+              "isDeprecated": false,
+              "name": "newUrl",
+              "type": {
+                "kind": "NON_NULL",
+                "name": null,
+                "ofType": {
+                  "kind": "SCALAR",
+                  "name": "String",
+                  "ofType": null
+                }
+              }
+            },
+            {
+              "args": [],
+              "deprecationReason": null,
+              "description": null,
+              "isDeprecated": false,
+              "name": "page",
+              "type": {
+                "kind": "INTERFACE",
+                "name": "PageInterface",
+                "ofType": null
+              }
+            },
+            {
+              "args": [],
+              "deprecationReason": null,
+              "description": null,
+              "isDeprecated": false,
+              "name": "isPermanent",
+              "type": {
+                "kind": "NON_NULL",
+                "name": null,
+                "ofType": {
+                  "kind": "SCALAR",
+                  "name": "Boolean",
+                  "ofType": null
+                }
+              }
+            }
+          ],
+          "inputFields": null,
+          "interfaces": [],
+          "kind": "OBJECT",
+          "name": "RedirectType",
           "possibleTypes": null
         },
         {
@@ -1881,7 +3021,12 @@
             },
             {
               "kind": "OBJECT",
-              "name": "DocumentObjectType",
+              "name": "SiteBlogBranding",
+              "ofType": null
+            },
+            {
+              "kind": "OBJECT",
+              "name": "BlogBranding",
               "ofType": null
             }
           ]
@@ -1890,6 +3035,18 @@
           "description": null,
           "enumValues": null,
           "fields": [
+            {
+              "args": [],
+              "deprecationReason": null,
+              "description": null,
+              "isDeprecated": false,
+              "name": "id",
+              "type": {
+                "kind": "SCALAR",
+                "name": "ID",
+                "ofType": null
+              }
+            },
             {
               "args": [],
               "deprecationReason": null,
@@ -1932,18 +3089,6 @@
                   "name": "Int",
                   "ofType": null
                 }
-              }
-            },
-            {
-              "args": [],
-              "deprecationReason": null,
-              "description": null,
-              "isDeprecated": false,
-              "name": "id",
-              "type": {
-                "kind": "SCALAR",
-                "name": "ID",
-                "ofType": null
               }
             },
             {
@@ -2250,7 +3395,7 @@
               "name": "aliasOf",
               "type": {
                 "kind": "OBJECT",
-                "name": "Page",
+                "name": "PageNode",
                 "ofType": null
               }
             },
@@ -2814,6 +3959,22 @@
             {
               "args": [],
               "deprecationReason": null,
+              "description": "",
+              "isDeprecated": false,
+              "name": "email",
+              "type": {
+                "kind": "NON_NULL",
+                "name": null,
+                "ofType": {
+                  "kind": "SCALAR",
+                  "name": "String",
+                  "ofType": null
+                }
+              }
+            },
+            {
+              "args": [],
+              "deprecationReason": null,
               "description": "Designates whether the user can log into this admin site.",
               "isDeprecated": false,
               "name": "isStaff",
@@ -2839,6 +4000,22 @@
                 "ofType": {
                   "kind": "SCALAR",
                   "name": "Boolean",
+                  "ofType": null
+                }
+              }
+            },
+            {
+              "args": [],
+              "deprecationReason": null,
+              "description": "",
+              "isDeprecated": false,
+              "name": "dateJoined",
+              "type": {
+                "kind": "NON_NULL",
+                "name": null,
+                "ofType": {
+                  "kind": "SCALAR",
+                  "name": "DateTime",
                   "ofType": null
                 }
               }
@@ -2924,38 +4101,6 @@
               "deprecationReason": null,
               "description": "",
               "isDeprecated": false,
-              "name": "email",
-              "type": {
-                "kind": "NON_NULL",
-                "name": null,
-                "ofType": {
-                  "kind": "SCALAR",
-                  "name": "String",
-                  "ofType": null
-                }
-              }
-            },
-            {
-              "args": [],
-              "deprecationReason": null,
-              "description": "",
-              "isDeprecated": false,
-              "name": "dateJoined",
-              "type": {
-                "kind": "NON_NULL",
-                "name": null,
-                "ofType": {
-                  "kind": "SCALAR",
-                  "name": "DateTime",
-                  "ofType": null
-                }
-              }
-            },
-            {
-              "args": [],
-              "deprecationReason": null,
-              "description": "",
-              "isDeprecated": false,
               "name": "bio",
               "type": {
                 "kind": "SCALAR",
@@ -2964,7 +4109,48 @@
               }
             },
             {
-              "args": [],
+              "args": [
+                {
+                  "defaultValue": null,
+                  "description": null,
+                  "name": "before",
+                  "type": {
+                    "kind": "SCALAR",
+                    "name": "String",
+                    "ofType": null
+                  }
+                },
+                {
+                  "defaultValue": null,
+                  "description": null,
+                  "name": "after",
+                  "type": {
+                    "kind": "SCALAR",
+                    "name": "String",
+                    "ofType": null
+                  }
+                },
+                {
+                  "defaultValue": null,
+                  "description": null,
+                  "name": "first",
+                  "type": {
+                    "kind": "SCALAR",
+                    "name": "Int",
+                    "ofType": null
+                  }
+                },
+                {
+                  "defaultValue": null,
+                  "description": null,
+                  "name": "last",
+                  "type": {
+                    "kind": "SCALAR",
+                    "name": "Int",
+                    "ofType": null
+                  }
+                }
+              ],
               "deprecationReason": null,
               "description": "",
               "isDeprecated": false,
@@ -2973,22 +4159,55 @@
                 "kind": "NON_NULL",
                 "name": null,
                 "ofType": {
-                  "kind": "LIST",
-                  "name": null,
-                  "ofType": {
-                    "kind": "NON_NULL",
-                    "name": null,
-                    "ofType": {
-                      "kind": "OBJECT",
-                      "name": "Page",
-                      "ofType": null
-                    }
-                  }
+                  "kind": "OBJECT",
+                  "name": "PageNodeConnection",
+                  "ofType": null
                 }
               }
             },
             {
-              "args": [],
+              "args": [
+                {
+                  "defaultValue": null,
+                  "description": null,
+                  "name": "before",
+                  "type": {
+                    "kind": "SCALAR",
+                    "name": "String",
+                    "ofType": null
+                  }
+                },
+                {
+                  "defaultValue": null,
+                  "description": null,
+                  "name": "after",
+                  "type": {
+                    "kind": "SCALAR",
+                    "name": "String",
+                    "ofType": null
+                  }
+                },
+                {
+                  "defaultValue": null,
+                  "description": null,
+                  "name": "first",
+                  "type": {
+                    "kind": "SCALAR",
+                    "name": "Int",
+                    "ofType": null
+                  }
+                },
+                {
+                  "defaultValue": null,
+                  "description": null,
+                  "name": "last",
+                  "type": {
+                    "kind": "SCALAR",
+                    "name": "Int",
+                    "ofType": null
+                  }
+                }
+              ],
               "deprecationReason": null,
               "description": "",
               "isDeprecated": false,
@@ -2997,17 +4216,9 @@
                 "kind": "NON_NULL",
                 "name": null,
                 "ofType": {
-                  "kind": "LIST",
-                  "name": null,
-                  "ofType": {
-                    "kind": "NON_NULL",
-                    "name": null,
-                    "ofType": {
-                      "kind": "OBJECT",
-                      "name": "Page",
-                      "ofType": null
-                    }
-                  }
+                  "kind": "OBJECT",
+                  "name": "PageNodeConnection",
+                  "ofType": null
                 }
               }
             },
@@ -3067,15 +4278,141 @@
           "possibleTypes": null
         },
         {
-          "description": "Base Page type used if one isn't generated for the current model.\nAll other node types extend this.",
+          "description": null,
           "enumValues": null,
           "fields": [
             {
               "args": [],
               "deprecationReason": null,
-              "description": "",
+              "description": "Pagination data for this connection.",
               "isDeprecated": false,
-              "name": "path",
+              "name": "pageInfo",
+              "type": {
+                "kind": "NON_NULL",
+                "name": null,
+                "ofType": {
+                  "kind": "OBJECT",
+                  "name": "PageInfo",
+                  "ofType": null
+                }
+              }
+            },
+            {
+              "args": [],
+              "deprecationReason": null,
+              "description": "Contains the nodes in this connection.",
+              "isDeprecated": false,
+              "name": "edges",
+              "type": {
+                "kind": "NON_NULL",
+                "name": null,
+                "ofType": {
+                  "kind": "LIST",
+                  "name": null,
+                  "ofType": {
+                    "kind": "OBJECT",
+                    "name": "PageNodeEdge",
+                    "ofType": null
+                  }
+                }
+              }
+            }
+          ],
+          "inputFields": null,
+          "interfaces": [],
+          "kind": "OBJECT",
+          "name": "PageNodeConnection",
+          "possibleTypes": null
+        },
+        {
+          "description": "The Relay compliant `PageInfo` type, containing data necessary to paginate this connection.",
+          "enumValues": null,
+          "fields": [
+            {
+              "args": [],
+              "deprecationReason": null,
+              "description": "When paginating forwards, are there more items?",
+              "isDeprecated": false,
+              "name": "hasNextPage",
+              "type": {
+                "kind": "NON_NULL",
+                "name": null,
+                "ofType": {
+                  "kind": "SCALAR",
+                  "name": "Boolean",
+                  "ofType": null
+                }
+              }
+            },
+            {
+              "args": [],
+              "deprecationReason": null,
+              "description": "When paginating backwards, are there more items?",
+              "isDeprecated": false,
+              "name": "hasPreviousPage",
+              "type": {
+                "kind": "NON_NULL",
+                "name": null,
+                "ofType": {
+                  "kind": "SCALAR",
+                  "name": "Boolean",
+                  "ofType": null
+                }
+              }
+            },
+            {
+              "args": [],
+              "deprecationReason": null,
+              "description": "When paginating backwards, the cursor to continue.",
+              "isDeprecated": false,
+              "name": "startCursor",
+              "type": {
+                "kind": "SCALAR",
+                "name": "String",
+                "ofType": null
+              }
+            },
+            {
+              "args": [],
+              "deprecationReason": null,
+              "description": "When paginating forwards, the cursor to continue.",
+              "isDeprecated": false,
+              "name": "endCursor",
+              "type": {
+                "kind": "SCALAR",
+                "name": "String",
+                "ofType": null
+              }
+            }
+          ],
+          "inputFields": null,
+          "interfaces": [],
+          "kind": "OBJECT",
+          "name": "PageInfo",
+          "possibleTypes": null
+        },
+        {
+          "description": "A Relay edge containing a `PageNode` and its cursor.",
+          "enumValues": null,
+          "fields": [
+            {
+              "args": [],
+              "deprecationReason": null,
+              "description": "The item at the end of the edge",
+              "isDeprecated": false,
+              "name": "node",
+              "type": {
+                "kind": "OBJECT",
+                "name": "PageNode",
+                "ofType": null
+              }
+            },
+            {
+              "args": [],
+              "deprecationReason": null,
+              "description": "A cursor for use in pagination",
+              "isDeprecated": false,
+              "name": "cursor",
               "type": {
                 "kind": "NON_NULL",
                 "name": null,
@@ -3085,31 +4422,30 @@
                   "ofType": null
                 }
               }
-            },
+            }
+          ],
+          "inputFields": null,
+          "interfaces": [],
+          "kind": "OBJECT",
+          "name": "PageNodeEdge",
+          "possibleTypes": null
+        },
+        {
+          "description": "Base document type used if one isn't generated for the current model.\nAll other node types extend this.",
+          "enumValues": null,
+          "fields": [
             {
               "args": [],
               "deprecationReason": null,
               "description": null,
               "isDeprecated": false,
-              "name": "depth",
-              "type": {
-                "kind": "SCALAR",
-                "name": "Int",
-                "ofType": null
-              }
-            },
-            {
-              "args": [],
-              "deprecationReason": null,
-              "description": "",
-              "isDeprecated": false,
-              "name": "numchild",
+              "name": "id",
               "type": {
                 "kind": "NON_NULL",
                 "name": null,
                 "ofType": {
                   "kind": "SCALAR",
-                  "name": "Int",
+                  "name": "ID",
                   "ofType": null
                 }
               }
@@ -3119,25 +4455,13 @@
               "deprecationReason": null,
               "description": null,
               "isDeprecated": false,
-              "name": "id",
-              "type": {
-                "kind": "SCALAR",
-                "name": "ID",
-                "ofType": null
-              }
-            },
-            {
-              "args": [],
-              "deprecationReason": null,
-              "description": "",
-              "isDeprecated": false,
-              "name": "translationKey",
+              "name": "collection",
               "type": {
                 "kind": "NON_NULL",
                 "name": null,
                 "ofType": {
-                  "kind": "SCALAR",
-                  "name": "UUID",
+                  "kind": "OBJECT",
+                  "name": "CollectionObjectType",
                   "ofType": null
                 }
               }
@@ -3161,9 +4485,9 @@
             {
               "args": [],
               "deprecationReason": null,
-              "description": "",
+              "description": null,
               "isDeprecated": false,
-              "name": "draftTitle",
+              "name": "file",
               "type": {
                 "kind": "NON_NULL",
                 "name": null,
@@ -3179,45 +4503,13 @@
               "deprecationReason": null,
               "description": null,
               "isDeprecated": false,
-              "name": "slug",
+              "name": "createdAt",
               "type": {
                 "kind": "NON_NULL",
                 "name": null,
                 "ofType": {
                   "kind": "SCALAR",
-                  "name": "String",
-                  "ofType": null
-                }
-              }
-            },
-            {
-              "args": [],
-              "deprecationReason": null,
-              "description": null,
-              "isDeprecated": false,
-              "name": "contentType",
-              "type": {
-                "kind": "NON_NULL",
-                "name": null,
-                "ofType": {
-                  "kind": "SCALAR",
-                  "name": "String",
-                  "ofType": null
-                }
-              }
-            },
-            {
-              "args": [],
-              "deprecationReason": null,
-              "description": null,
-              "isDeprecated": false,
-              "name": "live",
-              "type": {
-                "kind": "NON_NULL",
-                "name": null,
-                "ofType": {
-                  "kind": "SCALAR",
-                  "name": "Boolean",
+                  "name": "DateTime",
                   "ofType": null
                 }
               }
@@ -3227,39 +4519,7 @@
               "deprecationReason": null,
               "description": "",
               "isDeprecated": false,
-              "name": "hasUnpublishedChanges",
-              "type": {
-                "kind": "NON_NULL",
-                "name": null,
-                "ofType": {
-                  "kind": "SCALAR",
-                  "name": "Boolean",
-                  "ofType": null
-                }
-              }
-            },
-            {
-              "args": [],
-              "deprecationReason": null,
-              "description": null,
-              "isDeprecated": false,
-              "name": "urlPath",
-              "type": {
-                "kind": "NON_NULL",
-                "name": null,
-                "ofType": {
-                  "kind": "SCALAR",
-                  "name": "String",
-                  "ofType": null
-                }
-              }
-            },
-            {
-              "args": [],
-              "deprecationReason": null,
-              "description": "",
-              "isDeprecated": false,
-              "name": "owner",
+              "name": "uploadedByUser",
               "type": {
                 "kind": "OBJECT",
                 "name": "UserIdentityType",
@@ -3271,7 +4531,19 @@
               "deprecationReason": null,
               "description": null,
               "isDeprecated": false,
-              "name": "seoTitle",
+              "name": "fileSize",
+              "type": {
+                "kind": "SCALAR",
+                "name": "Int",
+                "ofType": null
+              }
+            },
+            {
+              "args": [],
+              "deprecationReason": null,
+              "description": null,
+              "isDeprecated": false,
+              "name": "fileHash",
               "type": {
                 "kind": "NON_NULL",
                 "name": null,
@@ -3280,242 +4552,6 @@
                   "name": "String",
                   "ofType": null
                 }
-              }
-            },
-            {
-              "args": [],
-              "deprecationReason": null,
-              "description": null,
-              "isDeprecated": false,
-              "name": "showInMenus",
-              "type": {
-                "kind": "NON_NULL",
-                "name": null,
-                "ofType": {
-                  "kind": "SCALAR",
-                  "name": "Boolean",
-                  "ofType": null
-                }
-              }
-            },
-            {
-              "args": [],
-              "deprecationReason": null,
-              "description": null,
-              "isDeprecated": false,
-              "name": "searchDescription",
-              "type": {
-                "kind": "SCALAR",
-                "name": "String",
-                "ofType": null
-              }
-            },
-            {
-              "args": [],
-              "deprecationReason": null,
-              "description": "",
-              "isDeprecated": false,
-              "name": "goLiveAt",
-              "type": {
-                "kind": "SCALAR",
-                "name": "DateTime",
-                "ofType": null
-              }
-            },
-            {
-              "args": [],
-              "deprecationReason": null,
-              "description": "",
-              "isDeprecated": false,
-              "name": "expireAt",
-              "type": {
-                "kind": "SCALAR",
-                "name": "DateTime",
-                "ofType": null
-              }
-            },
-            {
-              "args": [],
-              "deprecationReason": null,
-              "description": "",
-              "isDeprecated": false,
-              "name": "expired",
-              "type": {
-                "kind": "NON_NULL",
-                "name": null,
-                "ofType": {
-                  "kind": "SCALAR",
-                  "name": "Boolean",
-                  "ofType": null
-                }
-              }
-            },
-            {
-              "args": [],
-              "deprecationReason": null,
-              "description": null,
-              "isDeprecated": false,
-              "name": "locked",
-              "type": {
-                "kind": "SCALAR",
-                "name": "Boolean",
-                "ofType": null
-              }
-            },
-            {
-              "args": [],
-              "deprecationReason": null,
-              "description": "",
-              "isDeprecated": false,
-              "name": "lockedAt",
-              "type": {
-                "kind": "SCALAR",
-                "name": "DateTime",
-                "ofType": null
-              }
-            },
-            {
-              "args": [],
-              "deprecationReason": null,
-              "description": "",
-              "isDeprecated": false,
-              "name": "lockedBy",
-              "type": {
-                "kind": "OBJECT",
-                "name": "UserIdentityType",
-                "ofType": null
-              }
-            },
-            {
-              "args": [],
-              "deprecationReason": null,
-              "description": null,
-              "isDeprecated": false,
-              "name": "firstPublishedAt",
-              "type": {
-                "kind": "SCALAR",
-                "name": "DateTime",
-                "ofType": null
-              }
-            },
-            {
-              "args": [],
-              "deprecationReason": null,
-              "description": null,
-              "isDeprecated": false,
-              "name": "lastPublishedAt",
-              "type": {
-                "kind": "SCALAR",
-                "name": "DateTime",
-                "ofType": null
-              }
-            },
-            {
-              "args": [],
-              "deprecationReason": null,
-              "description": "",
-              "isDeprecated": false,
-              "name": "latestRevisionCreatedAt",
-              "type": {
-                "kind": "SCALAR",
-                "name": "DateTime",
-                "ofType": null
-              }
-            },
-            {
-              "args": [],
-              "deprecationReason": null,
-              "description": "",
-              "isDeprecated": false,
-              "name": "aliasOf",
-              "type": {
-                "kind": "OBJECT",
-                "name": "Page",
-                "ofType": null
-              }
-            },
-            {
-              "args": [],
-              "deprecationReason": null,
-              "description": "",
-              "isDeprecated": false,
-              "name": "sitesRootedHere",
-              "type": {
-                "kind": "NON_NULL",
-                "name": null,
-                "ofType": {
-                  "kind": "LIST",
-                  "name": null,
-                  "ofType": {
-                    "kind": "NON_NULL",
-                    "name": null,
-                    "ofType": {
-                      "kind": "OBJECT",
-                      "name": "SiteObjectType",
-                      "ofType": null
-                    }
-                  }
-                }
-              }
-            },
-            {
-              "args": [],
-              "deprecationReason": null,
-              "description": "",
-              "isDeprecated": false,
-              "name": "aliases",
-              "type": {
-                "kind": "NON_NULL",
-                "name": null,
-                "ofType": {
-                  "kind": "LIST",
-                  "name": null,
-                  "ofType": {
-                    "kind": "NON_NULL",
-                    "name": null,
-                    "ofType": {
-                      "kind": "OBJECT",
-                      "name": "Page",
-                      "ofType": null
-                    }
-                  }
-                }
-              }
-            },
-            {
-              "args": [],
-              "deprecationReason": null,
-              "description": null,
-              "isDeprecated": false,
-              "name": "bloglandingpage",
-              "type": {
-                "kind": "OBJECT",
-                "name": "BlogLandingPage",
-                "ofType": null
-              }
-            },
-            {
-              "args": [],
-              "deprecationReason": null,
-              "description": null,
-              "isDeprecated": false,
-              "name": "blogpage",
-              "type": {
-                "kind": "OBJECT",
-                "name": "BlogPage",
-                "ofType": null
-              }
-            },
-            {
-              "args": [],
-              "deprecationReason": null,
-              "description": null,
-              "isDeprecated": false,
-              "name": "pageType",
-              "type": {
-                "kind": "SCALAR",
-                "name": "String",
-                "ofType": null
               }
             },
             {
@@ -3525,9 +4561,13 @@
               "isDeprecated": false,
               "name": "url",
               "type": {
-                "kind": "SCALAR",
-                "name": "String",
-                "ofType": null
+                "kind": "NON_NULL",
+                "name": null,
+                "ofType": {
+                  "kind": "SCALAR",
+                  "name": "String",
+                  "ofType": null
+                }
               }
             },
             {
@@ -3535,70 +4575,7 @@
               "deprecationReason": null,
               "description": null,
               "isDeprecated": false,
-              "name": "parent",
-              "type": {
-                "kind": "INTERFACE",
-                "name": "PageInterface",
-                "ofType": null
-              }
-            },
-            {
-              "args": [
-                {
-                  "defaultValue": null,
-                  "description": "Limit a number of resulting objects.",
-                  "name": "limit",
-                  "type": {
-                    "kind": "SCALAR",
-                    "name": "PositiveInt",
-                    "ofType": null
-                  }
-                },
-                {
-                  "defaultValue": null,
-                  "description": "Number of records skipped from the beginning of the results set.",
-                  "name": "offset",
-                  "type": {
-                    "kind": "SCALAR",
-                    "name": "PositiveInt",
-                    "ofType": null
-                  }
-                },
-                {
-                  "defaultValue": null,
-                  "description": "Use the Django queryset order format.",
-                  "name": "order",
-                  "type": {
-                    "kind": "SCALAR",
-                    "name": "String",
-                    "ofType": null
-                  }
-                },
-                {
-                  "defaultValue": null,
-                  "description": "Filter the results using Wagtail's search.",
-                  "name": "searchQuery",
-                  "type": {
-                    "kind": "SCALAR",
-                    "name": "String",
-                    "ofType": null
-                  }
-                },
-                {
-                  "defaultValue": null,
-                  "description": "Filter by ID",
-                  "name": "id",
-                  "type": {
-                    "kind": "SCALAR",
-                    "name": "ID",
-                    "ofType": null
-                  }
-                }
-              ],
-              "deprecationReason": null,
-              "description": null,
-              "isDeprecated": false,
-              "name": "children",
+              "name": "tags",
               "type": {
                 "kind": "NON_NULL",
                 "name": null,
@@ -3609,383 +4586,8 @@
                     "kind": "NON_NULL",
                     "name": null,
                     "ofType": {
-                      "kind": "INTERFACE",
-                      "name": "PageInterface",
-                      "ofType": null
-                    }
-                  }
-                }
-              }
-            },
-            {
-              "args": [
-                {
-                  "defaultValue": null,
-                  "description": "Limit a number of resulting objects.",
-                  "name": "limit",
-                  "type": {
-                    "kind": "SCALAR",
-                    "name": "PositiveInt",
-                    "ofType": null
-                  }
-                },
-                {
-                  "defaultValue": null,
-                  "description": "Number of records skipped from the beginning of the results set.",
-                  "name": "offset",
-                  "type": {
-                    "kind": "SCALAR",
-                    "name": "PositiveInt",
-                    "ofType": null
-                  }
-                },
-                {
-                  "defaultValue": null,
-                  "description": "Use the Django queryset order format.",
-                  "name": "order",
-                  "type": {
-                    "kind": "SCALAR",
-                    "name": "String",
-                    "ofType": null
-                  }
-                },
-                {
-                  "defaultValue": null,
-                  "description": "Filter the results using Wagtail's search.",
-                  "name": "searchQuery",
-                  "type": {
-                    "kind": "SCALAR",
-                    "name": "String",
-                    "ofType": null
-                  }
-                },
-                {
-                  "defaultValue": null,
-                  "description": "Filter by ID",
-                  "name": "id",
-                  "type": {
-                    "kind": "SCALAR",
-                    "name": "ID",
-                    "ofType": null
-                  }
-                }
-              ],
-              "deprecationReason": null,
-              "description": null,
-              "isDeprecated": false,
-              "name": "siblings",
-              "type": {
-                "kind": "NON_NULL",
-                "name": null,
-                "ofType": {
-                  "kind": "LIST",
-                  "name": null,
-                  "ofType": {
-                    "kind": "NON_NULL",
-                    "name": null,
-                    "ofType": {
-                      "kind": "INTERFACE",
-                      "name": "PageInterface",
-                      "ofType": null
-                    }
-                  }
-                }
-              }
-            },
-            {
-              "args": [
-                {
-                  "defaultValue": null,
-                  "description": "Limit a number of resulting objects.",
-                  "name": "limit",
-                  "type": {
-                    "kind": "SCALAR",
-                    "name": "PositiveInt",
-                    "ofType": null
-                  }
-                },
-                {
-                  "defaultValue": null,
-                  "description": "Number of records skipped from the beginning of the results set.",
-                  "name": "offset",
-                  "type": {
-                    "kind": "SCALAR",
-                    "name": "PositiveInt",
-                    "ofType": null
-                  }
-                },
-                {
-                  "defaultValue": null,
-                  "description": "Use the Django queryset order format.",
-                  "name": "order",
-                  "type": {
-                    "kind": "SCALAR",
-                    "name": "String",
-                    "ofType": null
-                  }
-                },
-                {
-                  "defaultValue": null,
-                  "description": "Filter the results using Wagtail's search.",
-                  "name": "searchQuery",
-                  "type": {
-                    "kind": "SCALAR",
-                    "name": "String",
-                    "ofType": null
-                  }
-                },
-                {
-                  "defaultValue": null,
-                  "description": "Filter by ID",
-                  "name": "id",
-                  "type": {
-                    "kind": "SCALAR",
-                    "name": "ID",
-                    "ofType": null
-                  }
-                }
-              ],
-              "deprecationReason": null,
-              "description": null,
-              "isDeprecated": false,
-              "name": "nextSiblings",
-              "type": {
-                "kind": "NON_NULL",
-                "name": null,
-                "ofType": {
-                  "kind": "LIST",
-                  "name": null,
-                  "ofType": {
-                    "kind": "NON_NULL",
-                    "name": null,
-                    "ofType": {
-                      "kind": "INTERFACE",
-                      "name": "PageInterface",
-                      "ofType": null
-                    }
-                  }
-                }
-              }
-            },
-            {
-              "args": [
-                {
-                  "defaultValue": null,
-                  "description": "Limit a number of resulting objects.",
-                  "name": "limit",
-                  "type": {
-                    "kind": "SCALAR",
-                    "name": "PositiveInt",
-                    "ofType": null
-                  }
-                },
-                {
-                  "defaultValue": null,
-                  "description": "Number of records skipped from the beginning of the results set.",
-                  "name": "offset",
-                  "type": {
-                    "kind": "SCALAR",
-                    "name": "PositiveInt",
-                    "ofType": null
-                  }
-                },
-                {
-                  "defaultValue": null,
-                  "description": "Use the Django queryset order format.",
-                  "name": "order",
-                  "type": {
-                    "kind": "SCALAR",
-                    "name": "String",
-                    "ofType": null
-                  }
-                },
-                {
-                  "defaultValue": null,
-                  "description": "Filter the results using Wagtail's search.",
-                  "name": "searchQuery",
-                  "type": {
-                    "kind": "SCALAR",
-                    "name": "String",
-                    "ofType": null
-                  }
-                },
-                {
-                  "defaultValue": null,
-                  "description": "Filter by ID",
-                  "name": "id",
-                  "type": {
-                    "kind": "SCALAR",
-                    "name": "ID",
-                    "ofType": null
-                  }
-                }
-              ],
-              "deprecationReason": null,
-              "description": null,
-              "isDeprecated": false,
-              "name": "previousSiblings",
-              "type": {
-                "kind": "NON_NULL",
-                "name": null,
-                "ofType": {
-                  "kind": "LIST",
-                  "name": null,
-                  "ofType": {
-                    "kind": "NON_NULL",
-                    "name": null,
-                    "ofType": {
-                      "kind": "INTERFACE",
-                      "name": "PageInterface",
-                      "ofType": null
-                    }
-                  }
-                }
-              }
-            },
-            {
-              "args": [
-                {
-                  "defaultValue": null,
-                  "description": "Limit a number of resulting objects.",
-                  "name": "limit",
-                  "type": {
-                    "kind": "SCALAR",
-                    "name": "PositiveInt",
-                    "ofType": null
-                  }
-                },
-                {
-                  "defaultValue": null,
-                  "description": "Number of records skipped from the beginning of the results set.",
-                  "name": "offset",
-                  "type": {
-                    "kind": "SCALAR",
-                    "name": "PositiveInt",
-                    "ofType": null
-                  }
-                },
-                {
-                  "defaultValue": null,
-                  "description": "Use the Django queryset order format.",
-                  "name": "order",
-                  "type": {
-                    "kind": "SCALAR",
-                    "name": "String",
-                    "ofType": null
-                  }
-                },
-                {
-                  "defaultValue": null,
-                  "description": "Filter the results using Wagtail's search.",
-                  "name": "searchQuery",
-                  "type": {
-                    "kind": "SCALAR",
-                    "name": "String",
-                    "ofType": null
-                  }
-                },
-                {
-                  "defaultValue": null,
-                  "description": "Filter by ID",
-                  "name": "id",
-                  "type": {
-                    "kind": "SCALAR",
-                    "name": "ID",
-                    "ofType": null
-                  }
-                }
-              ],
-              "deprecationReason": null,
-              "description": null,
-              "isDeprecated": false,
-              "name": "descendants",
-              "type": {
-                "kind": "NON_NULL",
-                "name": null,
-                "ofType": {
-                  "kind": "LIST",
-                  "name": null,
-                  "ofType": {
-                    "kind": "NON_NULL",
-                    "name": null,
-                    "ofType": {
-                      "kind": "INTERFACE",
-                      "name": "PageInterface",
-                      "ofType": null
-                    }
-                  }
-                }
-              }
-            },
-            {
-              "args": [
-                {
-                  "defaultValue": null,
-                  "description": "Limit a number of resulting objects.",
-                  "name": "limit",
-                  "type": {
-                    "kind": "SCALAR",
-                    "name": "PositiveInt",
-                    "ofType": null
-                  }
-                },
-                {
-                  "defaultValue": null,
-                  "description": "Number of records skipped from the beginning of the results set.",
-                  "name": "offset",
-                  "type": {
-                    "kind": "SCALAR",
-                    "name": "PositiveInt",
-                    "ofType": null
-                  }
-                },
-                {
-                  "defaultValue": null,
-                  "description": "Use the Django queryset order format.",
-                  "name": "order",
-                  "type": {
-                    "kind": "SCALAR",
-                    "name": "String",
-                    "ofType": null
-                  }
-                },
-                {
-                  "defaultValue": null,
-                  "description": "Filter the results using Wagtail's search.",
-                  "name": "searchQuery",
-                  "type": {
-                    "kind": "SCALAR",
-                    "name": "String",
-                    "ofType": null
-                  }
-                },
-                {
-                  "defaultValue": null,
-                  "description": "Filter by ID",
-                  "name": "id",
-                  "type": {
-                    "kind": "SCALAR",
-                    "name": "ID",
-                    "ofType": null
-                  }
-                }
-              ],
-              "deprecationReason": null,
-              "description": null,
-              "isDeprecated": false,
-              "name": "ancestors",
-              "type": {
-                "kind": "NON_NULL",
-                "name": null,
-                "ofType": {
-                  "kind": "LIST",
-                  "name": null,
-                  "ofType": {
-                    "kind": "NON_NULL",
-                    "name": null,
-                    "ofType": {
-                      "kind": "INTERFACE",
-                      "name": "PageInterface",
+                      "kind": "OBJECT",
+                      "name": "TagObjectType",
                       "ofType": null
                     }
                   }
@@ -3994,15 +4596,9 @@
             }
           ],
           "inputFields": null,
-          "interfaces": [
-            {
-              "kind": "INTERFACE",
-              "name": "PageInterface",
-              "ofType": null
-            }
-          ],
+          "interfaces": [],
           "kind": "OBJECT",
-          "name": "Page",
+          "name": "DocumentObjectType",
           "possibleTypes": null
         },
         {
@@ -4012,7 +4608,460 @@
             {
               "args": [],
               "deprecationReason": null,
+              "description": null,
+              "isDeprecated": false,
+              "name": "id",
+              "type": {
+                "kind": "NON_NULL",
+                "name": null,
+                "ofType": {
+                  "kind": "SCALAR",
+                  "name": "ID",
+                  "ofType": null
+                }
+              }
+            },
+            {
+              "args": [],
+              "deprecationReason": null,
+              "description": null,
+              "isDeprecated": false,
+              "name": "collection",
+              "type": {
+                "kind": "NON_NULL",
+                "name": null,
+                "ofType": {
+                  "kind": "OBJECT",
+                  "name": "CollectionObjectType",
+                  "ofType": null
+                }
+              }
+            },
+            {
+              "args": [],
+              "deprecationReason": null,
+              "description": null,
+              "isDeprecated": false,
+              "name": "title",
+              "type": {
+                "kind": "NON_NULL",
+                "name": null,
+                "ofType": {
+                  "kind": "SCALAR",
+                  "name": "String",
+                  "ofType": null
+                }
+              }
+            },
+            {
+              "args": [],
+              "deprecationReason": null,
+              "description": null,
+              "isDeprecated": false,
+              "name": "file",
+              "type": {
+                "kind": "NON_NULL",
+                "name": null,
+                "ofType": {
+                  "kind": "SCALAR",
+                  "name": "String",
+                  "ofType": null
+                }
+              }
+            },
+            {
+              "args": [],
+              "deprecationReason": null,
+              "description": null,
+              "isDeprecated": false,
+              "name": "width",
+              "type": {
+                "kind": "NON_NULL",
+                "name": null,
+                "ofType": {
+                  "kind": "SCALAR",
+                  "name": "Int",
+                  "ofType": null
+                }
+              }
+            },
+            {
+              "args": [],
+              "deprecationReason": null,
+              "description": null,
+              "isDeprecated": false,
+              "name": "height",
+              "type": {
+                "kind": "NON_NULL",
+                "name": null,
+                "ofType": {
+                  "kind": "SCALAR",
+                  "name": "Int",
+                  "ofType": null
+                }
+              }
+            },
+            {
+              "args": [],
+              "deprecationReason": null,
+              "description": null,
+              "isDeprecated": false,
+              "name": "createdAt",
+              "type": {
+                "kind": "NON_NULL",
+                "name": null,
+                "ofType": {
+                  "kind": "SCALAR",
+                  "name": "DateTime",
+                  "ofType": null
+                }
+              }
+            },
+            {
+              "args": [],
+              "deprecationReason": null,
               "description": "",
+              "isDeprecated": false,
+              "name": "uploadedByUser",
+              "type": {
+                "kind": "OBJECT",
+                "name": "UserIdentityType",
+                "ofType": null
+              }
+            },
+            {
+              "args": [],
+              "deprecationReason": null,
+              "description": null,
+              "isDeprecated": false,
+              "name": "focalPointX",
+              "type": {
+                "kind": "SCALAR",
+                "name": "Int",
+                "ofType": null
+              }
+            },
+            {
+              "args": [],
+              "deprecationReason": null,
+              "description": null,
+              "isDeprecated": false,
+              "name": "focalPointY",
+              "type": {
+                "kind": "SCALAR",
+                "name": "Int",
+                "ofType": null
+              }
+            },
+            {
+              "args": [],
+              "deprecationReason": null,
+              "description": null,
+              "isDeprecated": false,
+              "name": "focalPointWidth",
+              "type": {
+                "kind": "SCALAR",
+                "name": "Int",
+                "ofType": null
+              }
+            },
+            {
+              "args": [],
+              "deprecationReason": null,
+              "description": null,
+              "isDeprecated": false,
+              "name": "focalPointHeight",
+              "type": {
+                "kind": "SCALAR",
+                "name": "Int",
+                "ofType": null
+              }
+            },
+            {
+              "args": [],
+              "deprecationReason": null,
+              "description": null,
+              "isDeprecated": false,
+              "name": "fileSize",
+              "type": {
+                "kind": "SCALAR",
+                "name": "Int",
+                "ofType": null
+              }
+            },
+            {
+              "args": [],
+              "deprecationReason": null,
+              "description": null,
+              "isDeprecated": false,
+              "name": "fileHash",
+              "type": {
+                "kind": "NON_NULL",
+                "name": null,
+                "ofType": {
+                  "kind": "SCALAR",
+                  "name": "String",
+                  "ofType": null
+                }
+              }
+            },
+            {
+              "args": [],
+              "deprecationReason": null,
+              "description": "",
+              "isDeprecated": false,
+              "name": "renditions",
+              "type": {
+                "kind": "NON_NULL",
+                "name": null,
+                "ofType": {
+                  "kind": "LIST",
+                  "name": null,
+                  "ofType": {
+                    "kind": "NON_NULL",
+                    "name": null,
+                    "ofType": {
+                      "kind": "OBJECT",
+                      "name": "ImageRenditionObjectType",
+                      "ofType": null
+                    }
+                  }
+                }
+              }
+            },
+            {
+              "args": [],
+              "deprecationReason": "Use the `url` attribute",
+              "description": null,
+              "isDeprecated": true,
+              "name": "src",
+              "type": {
+                "kind": "NON_NULL",
+                "name": null,
+                "ofType": {
+                  "kind": "SCALAR",
+                  "name": "String",
+                  "ofType": null
+                }
+              }
+            },
+            {
+              "args": [],
+              "deprecationReason": null,
+              "description": null,
+              "isDeprecated": false,
+              "name": "url",
+              "type": {
+                "kind": "NON_NULL",
+                "name": null,
+                "ofType": {
+                  "kind": "SCALAR",
+                  "name": "String",
+                  "ofType": null
+                }
+              }
+            },
+            {
+              "args": [],
+              "deprecationReason": null,
+              "description": null,
+              "isDeprecated": false,
+              "name": "aspectRatio",
+              "type": {
+                "kind": "NON_NULL",
+                "name": null,
+                "ofType": {
+                  "kind": "SCALAR",
+                  "name": "Float",
+                  "ofType": null
+                }
+              }
+            },
+            {
+              "args": [],
+              "deprecationReason": null,
+              "description": null,
+              "isDeprecated": false,
+              "name": "sizes",
+              "type": {
+                "kind": "NON_NULL",
+                "name": null,
+                "ofType": {
+                  "kind": "SCALAR",
+                  "name": "String",
+                  "ofType": null
+                }
+              }
+            },
+            {
+              "args": [],
+              "deprecationReason": null,
+              "description": null,
+              "isDeprecated": false,
+              "name": "tags",
+              "type": {
+                "kind": "NON_NULL",
+                "name": null,
+                "ofType": {
+                  "kind": "LIST",
+                  "name": null,
+                  "ofType": {
+                    "kind": "NON_NULL",
+                    "name": null,
+                    "ofType": {
+                      "kind": "OBJECT",
+                      "name": "TagObjectType",
+                      "ofType": null
+                    }
+                  }
+                }
+              }
+            },
+            {
+              "args": [
+                {
+                  "defaultValue": null,
+                  "description": null,
+                  "name": "max",
+                  "type": {
+                    "kind": "SCALAR",
+                    "name": "String",
+                    "ofType": null
+                  }
+                },
+                {
+                  "defaultValue": null,
+                  "description": null,
+                  "name": "min",
+                  "type": {
+                    "kind": "SCALAR",
+                    "name": "String",
+                    "ofType": null
+                  }
+                },
+                {
+                  "defaultValue": null,
+                  "description": null,
+                  "name": "width",
+                  "type": {
+                    "kind": "SCALAR",
+                    "name": "Int",
+                    "ofType": null
+                  }
+                },
+                {
+                  "defaultValue": null,
+                  "description": null,
+                  "name": "height",
+                  "type": {
+                    "kind": "SCALAR",
+                    "name": "Int",
+                    "ofType": null
+                  }
+                },
+                {
+                  "defaultValue": null,
+                  "description": null,
+                  "name": "fill",
+                  "type": {
+                    "kind": "SCALAR",
+                    "name": "String",
+                    "ofType": null
+                  }
+                },
+                {
+                  "defaultValue": null,
+                  "description": null,
+                  "name": "format",
+                  "type": {
+                    "kind": "SCALAR",
+                    "name": "String",
+                    "ofType": null
+                  }
+                },
+                {
+                  "defaultValue": null,
+                  "description": null,
+                  "name": "bgcolor",
+                  "type": {
+                    "kind": "SCALAR",
+                    "name": "String",
+                    "ofType": null
+                  }
+                },
+                {
+                  "defaultValue": null,
+                  "description": null,
+                  "name": "jpegquality",
+                  "type": {
+                    "kind": "SCALAR",
+                    "name": "Int",
+                    "ofType": null
+                  }
+                },
+                {
+                  "defaultValue": null,
+                  "description": null,
+                  "name": "webpquality",
+                  "type": {
+                    "kind": "SCALAR",
+                    "name": "Int",
+                    "ofType": null
+                  }
+                }
+              ],
+              "deprecationReason": null,
+              "description": null,
+              "isDeprecated": false,
+              "name": "rendition",
+              "type": {
+                "kind": "OBJECT",
+                "name": "ImageRenditionObjectType",
+                "ofType": null
+              }
+            },
+            {
+              "args": [
+                {
+                  "defaultValue": null,
+                  "description": null,
+                  "name": "sizes",
+                  "type": {
+                    "kind": "LIST",
+                    "name": null,
+                    "ofType": {
+                      "kind": "SCALAR",
+                      "name": "Int",
+                      "ofType": null
+                    }
+                  }
+                }
+              ],
+              "deprecationReason": null,
+              "description": null,
+              "isDeprecated": false,
+              "name": "srcSet",
+              "type": {
+                "kind": "SCALAR",
+                "name": "String",
+                "ofType": null
+              }
+            }
+          ],
+          "inputFields": null,
+          "interfaces": [],
+          "kind": "OBJECT",
+          "name": "ImageObjectType",
+          "possibleTypes": null
+        },
+        {
+          "description": null,
+          "enumValues": null,
+          "fields": [
+            {
+              "args": [],
+              "deprecationReason": null,
+              "description": null,
               "isDeprecated": false,
               "name": "id",
               "type": {
@@ -4030,7 +5079,7 @@
               "deprecationReason": null,
               "description": "",
               "isDeprecated": false,
-              "name": "hostname",
+              "name": "filterSpec",
               "type": {
                 "kind": "NON_NULL",
                 "name": null,
@@ -4044,9 +5093,25 @@
             {
               "args": [],
               "deprecationReason": null,
-              "description": "Set this to something other than 80 if you need a specific port number to appear in URLs (e.g. development on port 8000). Does not affect request handling (so port forwarding still works).",
+              "description": null,
               "isDeprecated": false,
-              "name": "port",
+              "name": "file",
+              "type": {
+                "kind": "NON_NULL",
+                "name": null,
+                "ofType": {
+                  "kind": "SCALAR",
+                  "name": "String",
+                  "ofType": null
+                }
+              }
+            },
+            {
+              "args": [],
+              "deprecationReason": null,
+              "description": null,
+              "isDeprecated": false,
+              "name": "width",
               "type": {
                 "kind": "NON_NULL",
                 "name": null,
@@ -4060,9 +5125,25 @@
             {
               "args": [],
               "deprecationReason": null,
-              "description": "Human-readable name for the site.",
+              "description": null,
               "isDeprecated": false,
-              "name": "siteName",
+              "name": "height",
+              "type": {
+                "kind": "NON_NULL",
+                "name": null,
+                "ofType": {
+                  "kind": "SCALAR",
+                  "name": "Int",
+                  "ofType": null
+                }
+              }
+            },
+            {
+              "args": [],
+              "deprecationReason": null,
+              "description": "",
+              "isDeprecated": false,
+              "name": "focalPointKey",
               "type": {
                 "kind": "NON_NULL",
                 "name": null,
@@ -4078,13 +5159,13 @@
               "deprecationReason": null,
               "description": "",
               "isDeprecated": false,
-              "name": "rootPage",
+              "name": "image",
               "type": {
                 "kind": "NON_NULL",
                 "name": null,
                 "ofType": {
                   "kind": "OBJECT",
-                  "name": "Page",
+                  "name": "ImageObjectType",
                   "ofType": null
                 }
               }
@@ -4092,76 +5173,197 @@
             {
               "args": [],
               "deprecationReason": null,
-              "description": "If true, this site will handle requests for all other hostnames that do not have a site entry of their own",
+              "description": null,
               "isDeprecated": false,
-              "name": "isDefaultSite",
+              "name": "title",
               "type": {
                 "kind": "NON_NULL",
                 "name": null,
                 "ofType": {
                   "kind": "SCALAR",
-                  "name": "Boolean",
+                  "name": "String",
                   "ofType": null
                 }
               }
             },
             {
-              "args": [
-                {
-                  "defaultValue": null,
-                  "description": "Limit a number of resulting objects.",
-                  "name": "limit",
-                  "type": {
-                    "kind": "SCALAR",
-                    "name": "PositiveInt",
-                    "ofType": null
-                  }
-                },
-                {
-                  "defaultValue": null,
-                  "description": "Number of records skipped from the beginning of the results set.",
-                  "name": "offset",
-                  "type": {
-                    "kind": "SCALAR",
-                    "name": "PositiveInt",
-                    "ofType": null
-                  }
-                },
-                {
-                  "defaultValue": null,
-                  "description": "Use the Django queryset order format.",
-                  "name": "order",
-                  "type": {
-                    "kind": "SCALAR",
-                    "name": "String",
-                    "ofType": null
-                  }
-                },
-                {
-                  "defaultValue": null,
-                  "description": "Filter the results using Wagtail's search.",
-                  "name": "searchQuery",
-                  "type": {
-                    "kind": "SCALAR",
-                    "name": "String",
-                    "ofType": null
-                  }
-                },
-                {
-                  "defaultValue": null,
-                  "description": "Filter by ID",
-                  "name": "id",
-                  "type": {
-                    "kind": "SCALAR",
-                    "name": "ID",
-                    "ofType": null
-                  }
-                }
-              ],
+              "args": [],
               "deprecationReason": null,
               "description": null,
               "isDeprecated": false,
-              "name": "pages",
+              "name": "createdAt",
+              "type": {
+                "kind": "NON_NULL",
+                "name": null,
+                "ofType": {
+                  "kind": "SCALAR",
+                  "name": "DateTime",
+                  "ofType": null
+                }
+              }
+            },
+            {
+              "args": [],
+              "deprecationReason": null,
+              "description": null,
+              "isDeprecated": false,
+              "name": "focalPointX",
+              "type": {
+                "kind": "SCALAR",
+                "name": "Int",
+                "ofType": null
+              }
+            },
+            {
+              "args": [],
+              "deprecationReason": null,
+              "description": null,
+              "isDeprecated": false,
+              "name": "focalPointY",
+              "type": {
+                "kind": "SCALAR",
+                "name": "Int",
+                "ofType": null
+              }
+            },
+            {
+              "args": [],
+              "deprecationReason": null,
+              "description": null,
+              "isDeprecated": false,
+              "name": "focalPointWidth",
+              "type": {
+                "kind": "SCALAR",
+                "name": "Int",
+                "ofType": null
+              }
+            },
+            {
+              "args": [],
+              "deprecationReason": null,
+              "description": null,
+              "isDeprecated": false,
+              "name": "focalPointHeight",
+              "type": {
+                "kind": "SCALAR",
+                "name": "Int",
+                "ofType": null
+              }
+            },
+            {
+              "args": [],
+              "deprecationReason": null,
+              "description": null,
+              "isDeprecated": false,
+              "name": "fileSize",
+              "type": {
+                "kind": "SCALAR",
+                "name": "Int",
+                "ofType": null
+              }
+            },
+            {
+              "args": [],
+              "deprecationReason": null,
+              "description": null,
+              "isDeprecated": false,
+              "name": "fileHash",
+              "type": {
+                "kind": "NON_NULL",
+                "name": null,
+                "ofType": {
+                  "kind": "SCALAR",
+                  "name": "String",
+                  "ofType": null
+                }
+              }
+            },
+            {
+              "args": [],
+              "deprecationReason": "Use the `url` attribute",
+              "description": null,
+              "isDeprecated": true,
+              "name": "src",
+              "type": {
+                "kind": "NON_NULL",
+                "name": null,
+                "ofType": {
+                  "kind": "SCALAR",
+                  "name": "String",
+                  "ofType": null
+                }
+              }
+            },
+            {
+              "args": [],
+              "deprecationReason": null,
+              "description": null,
+              "isDeprecated": false,
+              "name": "url",
+              "type": {
+                "kind": "NON_NULL",
+                "name": null,
+                "ofType": {
+                  "kind": "SCALAR",
+                  "name": "String",
+                  "ofType": null
+                }
+              }
+            },
+            {
+              "args": [],
+              "deprecationReason": null,
+              "description": null,
+              "isDeprecated": false,
+              "name": "aspectRatio",
+              "type": {
+                "kind": "NON_NULL",
+                "name": null,
+                "ofType": {
+                  "kind": "SCALAR",
+                  "name": "Float",
+                  "ofType": null
+                }
+              }
+            },
+            {
+              "args": [],
+              "deprecationReason": null,
+              "description": null,
+              "isDeprecated": false,
+              "name": "sizes",
+              "type": {
+                "kind": "NON_NULL",
+                "name": null,
+                "ofType": {
+                  "kind": "SCALAR",
+                  "name": "String",
+                  "ofType": null
+                }
+              }
+            },
+            {
+              "args": [],
+              "deprecationReason": null,
+              "description": null,
+              "isDeprecated": false,
+              "name": "collection",
+              "type": {
+                "kind": "NON_NULL",
+                "name": null,
+                "ofType": {
+                  "kind": "OBJECT",
+                  "name": "CollectionObjectType",
+                  "ofType": null
+                }
+              }
+            },
+            {
+              "args": [],
+              "deprecationReason": null,
+              "description": null,
+              "isDeprecated": false,
+              "name": "tags",
               "type": {
                 "kind": "NON_NULL",
                 "name": null,
@@ -4172,78 +5374,47 @@
                     "kind": "NON_NULL",
                     "name": null,
                     "ofType": {
-                      "kind": "INTERFACE",
-                      "name": "PageInterface",
+                      "kind": "OBJECT",
+                      "name": "TagObjectType",
                       "ofType": null
                     }
                   }
                 }
-              }
-            },
-            {
-              "args": [
-                {
-                  "defaultValue": null,
-                  "description": null,
-                  "name": "id",
-                  "type": {
-                    "kind": "SCALAR",
-                    "name": "Int",
-                    "ofType": null
-                  }
-                },
-                {
-                  "defaultValue": null,
-                  "description": null,
-                  "name": "slug",
-                  "type": {
-                    "kind": "SCALAR",
-                    "name": "String",
-                    "ofType": null
-                  }
-                },
-                {
-                  "defaultValue": null,
-                  "description": null,
-                  "name": "token",
-                  "type": {
-                    "kind": "SCALAR",
-                    "name": "String",
-                    "ofType": null
-                  }
-                },
-                {
-                  "defaultValue": null,
-                  "description": null,
-                  "name": "contentType",
-                  "type": {
-                    "kind": "SCALAR",
-                    "name": "String",
-                    "ofType": null
-                  }
-                }
-              ],
-              "deprecationReason": null,
-              "description": null,
-              "isDeprecated": false,
-              "name": "page",
-              "type": {
-                "kind": "INTERFACE",
-                "name": "PageInterface",
-                "ofType": null
               }
             }
           ],
           "inputFields": null,
           "interfaces": [],
           "kind": "OBJECT",
-          "name": "SiteObjectType",
+          "name": "ImageRenditionObjectType",
+          "possibleTypes": null
+        },
+        {
+          "description": "The `Float` scalar type represents signed double-precision fractional values as specified by [IEEE 754](http://en.wikipedia.org/wiki/IEEE_floating_point). ",
+          "enumValues": null,
+          "fields": null,
+          "inputFields": null,
+          "interfaces": null,
+          "kind": "SCALAR",
+          "name": "Float",
           "possibleTypes": null
         },
         {
           "description": null,
           "enumValues": null,
           "fields": [
+            {
+              "args": [],
+              "deprecationReason": null,
+              "description": null,
+              "isDeprecated": false,
+              "name": "id",
+              "type": {
+                "kind": "SCALAR",
+                "name": "ID",
+                "ofType": null
+              }
+            },
             {
               "args": [],
               "deprecationReason": null,
@@ -4286,18 +5457,6 @@
                   "name": "Int",
                   "ofType": null
                 }
-              }
-            },
-            {
-              "args": [],
-              "deprecationReason": null,
-              "description": null,
-              "isDeprecated": false,
-              "name": "id",
-              "type": {
-                "kind": "SCALAR",
-                "name": "ID",
-                "ofType": null
               }
             },
             {
@@ -4604,7 +5763,7 @@
               "name": "aliasOf",
               "type": {
                 "kind": "OBJECT",
-                "name": "Page",
+                "name": "PageNode",
                 "ofType": null
               }
             },
@@ -5338,7 +6497,7 @@
           ]
         },
         {
-          "description": "Base document type used if one isn't generated for the current model.\nAll other node types extend this.",
+          "description": "Base Page type used if one isn't generated for the current model.\nAll other node types extend this.",
           "enumValues": null,
           "fields": [
             {
@@ -5348,11 +6507,23 @@
               "isDeprecated": false,
               "name": "id",
               "type": {
+                "kind": "SCALAR",
+                "name": "ID",
+                "ofType": null
+              }
+            },
+            {
+              "args": [],
+              "deprecationReason": null,
+              "description": "",
+              "isDeprecated": false,
+              "name": "path",
+              "type": {
                 "kind": "NON_NULL",
                 "name": null,
                 "ofType": {
                   "kind": "SCALAR",
-                  "name": "ID",
+                  "name": "String",
                   "ofType": null
                 }
               }
@@ -5362,13 +6533,41 @@
               "deprecationReason": null,
               "description": null,
               "isDeprecated": false,
-              "name": "collection",
+              "name": "depth",
+              "type": {
+                "kind": "SCALAR",
+                "name": "Int",
+                "ofType": null
+              }
+            },
+            {
+              "args": [],
+              "deprecationReason": null,
+              "description": "",
+              "isDeprecated": false,
+              "name": "numchild",
               "type": {
                 "kind": "NON_NULL",
                 "name": null,
                 "ofType": {
-                  "kind": "OBJECT",
-                  "name": "CollectionObjectType",
+                  "kind": "SCALAR",
+                  "name": "Int",
+                  "ofType": null
+                }
+              }
+            },
+            {
+              "args": [],
+              "deprecationReason": null,
+              "description": "",
+              "isDeprecated": false,
+              "name": "translationKey",
+              "type": {
+                "kind": "NON_NULL",
+                "name": null,
+                "ofType": {
+                  "kind": "SCALAR",
+                  "name": "UUID",
                   "ofType": null
                 }
               }
@@ -5392,9 +6591,9 @@
             {
               "args": [],
               "deprecationReason": null,
-              "description": null,
+              "description": "",
               "isDeprecated": false,
-              "name": "file",
+              "name": "draftTitle",
               "type": {
                 "kind": "NON_NULL",
                 "name": null,
@@ -5410,13 +6609,45 @@
               "deprecationReason": null,
               "description": null,
               "isDeprecated": false,
-              "name": "createdAt",
+              "name": "slug",
               "type": {
                 "kind": "NON_NULL",
                 "name": null,
                 "ofType": {
                   "kind": "SCALAR",
-                  "name": "DateTime",
+                  "name": "String",
+                  "ofType": null
+                }
+              }
+            },
+            {
+              "args": [],
+              "deprecationReason": null,
+              "description": null,
+              "isDeprecated": false,
+              "name": "contentType",
+              "type": {
+                "kind": "NON_NULL",
+                "name": null,
+                "ofType": {
+                  "kind": "SCALAR",
+                  "name": "String",
+                  "ofType": null
+                }
+              }
+            },
+            {
+              "args": [],
+              "deprecationReason": null,
+              "description": null,
+              "isDeprecated": false,
+              "name": "live",
+              "type": {
+                "kind": "NON_NULL",
+                "name": null,
+                "ofType": {
+                  "kind": "SCALAR",
+                  "name": "Boolean",
                   "ofType": null
                 }
               }
@@ -5426,7 +6657,39 @@
               "deprecationReason": null,
               "description": "",
               "isDeprecated": false,
-              "name": "uploadedByUser",
+              "name": "hasUnpublishedChanges",
+              "type": {
+                "kind": "NON_NULL",
+                "name": null,
+                "ofType": {
+                  "kind": "SCALAR",
+                  "name": "Boolean",
+                  "ofType": null
+                }
+              }
+            },
+            {
+              "args": [],
+              "deprecationReason": null,
+              "description": null,
+              "isDeprecated": false,
+              "name": "urlPath",
+              "type": {
+                "kind": "NON_NULL",
+                "name": null,
+                "ofType": {
+                  "kind": "SCALAR",
+                  "name": "String",
+                  "ofType": null
+                }
+              }
+            },
+            {
+              "args": [],
+              "deprecationReason": null,
+              "description": "",
+              "isDeprecated": false,
+              "name": "owner",
               "type": {
                 "kind": "OBJECT",
                 "name": "UserIdentityType",
@@ -5438,11 +6701,15 @@
               "deprecationReason": null,
               "description": null,
               "isDeprecated": false,
-              "name": "fileSize",
+              "name": "seoTitle",
               "type": {
-                "kind": "SCALAR",
-                "name": "Int",
-                "ofType": null
+                "kind": "NON_NULL",
+                "name": null,
+                "ofType": {
+                  "kind": "SCALAR",
+                  "name": "String",
+                  "ofType": null
+                }
               }
             },
             {
@@ -5450,7 +6717,23 @@
               "deprecationReason": null,
               "description": null,
               "isDeprecated": false,
-              "name": "fileHash",
+              "name": "showInMenus",
+              "type": {
+                "kind": "NON_NULL",
+                "name": null,
+                "ofType": {
+                  "kind": "SCALAR",
+                  "name": "Boolean",
+                  "ofType": null
+                }
+              }
+            },
+            {
+              "args": [],
+              "deprecationReason": null,
+              "description": null,
+              "isDeprecated": false,
+              "name": "searchDescription",
               "type": {
                 "kind": "SCALAR",
                 "name": "String",
@@ -5460,60 +6743,13 @@
             {
               "args": [],
               "deprecationReason": null,
-              "description": null,
+              "description": "",
               "isDeprecated": false,
-              "name": "url",
+              "name": "goLiveAt",
               "type": {
-                "kind": "NON_NULL",
-                "name": null,
-                "ofType": {
-                  "kind": "SCALAR",
-                  "name": "String",
-                  "ofType": null
-                }
-              }
-            }
-          ],
-          "inputFields": null,
-          "interfaces": [],
-          "kind": "OBJECT",
-          "name": "DocumentObjectType",
-          "possibleTypes": null
-        },
-        {
-          "description": null,
-          "enumValues": null,
-          "fields": [
-            {
-              "args": [],
-              "deprecationReason": null,
-              "description": null,
-              "isDeprecated": false,
-              "name": "collection",
-              "type": {
-                "kind": "NON_NULL",
-                "name": null,
-                "ofType": {
-                  "kind": "OBJECT",
-                  "name": "CollectionObjectType",
-                  "ofType": null
-                }
-              }
-            },
-            {
-              "args": [],
-              "deprecationReason": null,
-              "description": null,
-              "isDeprecated": false,
-              "name": "id",
-              "type": {
-                "kind": "NON_NULL",
-                "name": null,
-                "ofType": {
-                  "kind": "SCALAR",
-                  "name": "ID",
-                  "ofType": null
-                }
+                "kind": "SCALAR",
+                "name": "DateTime",
+                "ofType": null
               }
             },
             {
@@ -5521,15 +6757,11 @@
               "deprecationReason": null,
               "description": "",
               "isDeprecated": false,
-              "name": "title",
+              "name": "expireAt",
               "type": {
-                "kind": "NON_NULL",
-                "name": null,
-                "ofType": {
-                  "kind": "SCALAR",
-                  "name": "String",
-                  "ofType": null
-                }
+                "kind": "SCALAR",
+                "name": "DateTime",
+                "ofType": null
               }
             },
             {
@@ -5537,13 +6769,13 @@
               "deprecationReason": null,
               "description": "",
               "isDeprecated": false,
-              "name": "file",
+              "name": "expired",
               "type": {
                 "kind": "NON_NULL",
                 "name": null,
                 "ofType": {
                   "kind": "SCALAR",
-                  "name": "String",
+                  "name": "Boolean",
                   "ofType": null
                 }
               }
@@ -5553,31 +6785,11 @@
               "deprecationReason": null,
               "description": null,
               "isDeprecated": false,
-              "name": "width",
+              "name": "locked",
               "type": {
-                "kind": "NON_NULL",
-                "name": null,
-                "ofType": {
-                  "kind": "SCALAR",
-                  "name": "Int",
-                  "ofType": null
-                }
-              }
-            },
-            {
-              "args": [],
-              "deprecationReason": null,
-              "description": null,
-              "isDeprecated": false,
-              "name": "height",
-              "type": {
-                "kind": "NON_NULL",
-                "name": null,
-                "ofType": {
-                  "kind": "SCALAR",
-                  "name": "Int",
-                  "ofType": null
-                }
+                "kind": "SCALAR",
+                "name": "Boolean",
+                "ofType": null
               }
             },
             {
@@ -5585,15 +6797,11 @@
               "deprecationReason": null,
               "description": "",
               "isDeprecated": false,
-              "name": "createdAt",
+              "name": "lockedAt",
               "type": {
-                "kind": "NON_NULL",
-                "name": null,
-                "ofType": {
-                  "kind": "SCALAR",
-                  "name": "DateTime",
-                  "ofType": null
-                }
+                "kind": "SCALAR",
+                "name": "DateTime",
+                "ofType": null
               }
             },
             {
@@ -5601,7 +6809,7 @@
               "deprecationReason": null,
               "description": "",
               "isDeprecated": false,
-              "name": "uploadedByUser",
+              "name": "lockedBy",
               "type": {
                 "kind": "OBJECT",
                 "name": "UserIdentityType",
@@ -5611,12 +6819,24 @@
             {
               "args": [],
               "deprecationReason": null,
-              "description": "",
+              "description": null,
               "isDeprecated": false,
-              "name": "focalPointX",
+              "name": "firstPublishedAt",
               "type": {
                 "kind": "SCALAR",
-                "name": "Int",
+                "name": "DateTime",
+                "ofType": null
+              }
+            },
+            {
+              "args": [],
+              "deprecationReason": null,
+              "description": null,
+              "isDeprecated": false,
+              "name": "lastPublishedAt",
+              "type": {
+                "kind": "SCALAR",
+                "name": "DateTime",
                 "ofType": null
               }
             },
@@ -5625,10 +6845,10 @@
               "deprecationReason": null,
               "description": "",
               "isDeprecated": false,
-              "name": "focalPointY",
+              "name": "latestRevisionCreatedAt",
               "type": {
                 "kind": "SCALAR",
-                "name": "Int",
+                "name": "DateTime",
                 "ofType": null
               }
             },
@@ -5637,10 +6857,10 @@
               "deprecationReason": null,
               "description": "",
               "isDeprecated": false,
-              "name": "focalPointWidth",
+              "name": "aliasOf",
               "type": {
-                "kind": "SCALAR",
-                "name": "Int",
+                "kind": "OBJECT",
+                "name": "PageNode",
                 "ofType": null
               }
             },
@@ -5649,47 +6869,7 @@
               "deprecationReason": null,
               "description": "",
               "isDeprecated": false,
-              "name": "focalPointHeight",
-              "type": {
-                "kind": "SCALAR",
-                "name": "Int",
-                "ofType": null
-              }
-            },
-            {
-              "args": [],
-              "deprecationReason": null,
-              "description": "",
-              "isDeprecated": false,
-              "name": "fileSize",
-              "type": {
-                "kind": "SCALAR",
-                "name": "Int",
-                "ofType": null
-              }
-            },
-            {
-              "args": [],
-              "deprecationReason": null,
-              "description": "",
-              "isDeprecated": false,
-              "name": "fileHash",
-              "type": {
-                "kind": "NON_NULL",
-                "name": null,
-                "ofType": {
-                  "kind": "SCALAR",
-                  "name": "String",
-                  "ofType": null
-                }
-              }
-            },
-            {
-              "args": [],
-              "deprecationReason": null,
-              "description": "",
-              "isDeprecated": false,
-              "name": "renditions",
+              "name": "sitesRootedHere",
               "type": {
                 "kind": "NON_NULL",
                 "name": null,
@@ -5701,74 +6881,10 @@
                     "name": null,
                     "ofType": {
                       "kind": "OBJECT",
-                      "name": "ImageRenditionObjectType",
+                      "name": "SiteObjectTypeExt",
                       "ofType": null
                     }
                   }
-                }
-              }
-            },
-            {
-              "args": [],
-              "deprecationReason": "Use the `url` attribute",
-              "description": null,
-              "isDeprecated": true,
-              "name": "src",
-              "type": {
-                "kind": "NON_NULL",
-                "name": null,
-                "ofType": {
-                  "kind": "SCALAR",
-                  "name": "String",
-                  "ofType": null
-                }
-              }
-            },
-            {
-              "args": [],
-              "deprecationReason": null,
-              "description": null,
-              "isDeprecated": false,
-              "name": "url",
-              "type": {
-                "kind": "NON_NULL",
-                "name": null,
-                "ofType": {
-                  "kind": "SCALAR",
-                  "name": "String",
-                  "ofType": null
-                }
-              }
-            },
-            {
-              "args": [],
-              "deprecationReason": null,
-              "description": null,
-              "isDeprecated": false,
-              "name": "aspectRatio",
-              "type": {
-                "kind": "NON_NULL",
-                "name": null,
-                "ofType": {
-                  "kind": "SCALAR",
-                  "name": "Float",
-                  "ofType": null
-                }
-              }
-            },
-            {
-              "args": [],
-              "deprecationReason": null,
-              "description": null,
-              "isDeprecated": false,
-              "name": "sizes",
-              "type": {
-                "kind": "NON_NULL",
-                "name": null,
-                "ofType": {
-                  "kind": "SCALAR",
-                  "name": "String",
-                  "ofType": null
                 }
               }
             },
@@ -5777,7 +6893,7 @@
                 {
                   "defaultValue": null,
                   "description": null,
-                  "name": "max",
+                  "name": "before",
                   "type": {
                     "kind": "SCALAR",
                     "name": "String",
@@ -5787,7 +6903,7 @@
                 {
                   "defaultValue": null,
                   "description": null,
-                  "name": "min",
+                  "name": "after",
                   "type": {
                     "kind": "SCALAR",
                     "name": "String",
@@ -5797,7 +6913,7 @@
                 {
                   "defaultValue": null,
                   "description": null,
-                  "name": "width",
+                  "name": "first",
                   "type": {
                     "kind": "SCALAR",
                     "name": "Int",
@@ -5807,57 +6923,7 @@
                 {
                   "defaultValue": null,
                   "description": null,
-                  "name": "height",
-                  "type": {
-                    "kind": "SCALAR",
-                    "name": "Int",
-                    "ofType": null
-                  }
-                },
-                {
-                  "defaultValue": null,
-                  "description": null,
-                  "name": "fill",
-                  "type": {
-                    "kind": "SCALAR",
-                    "name": "String",
-                    "ofType": null
-                  }
-                },
-                {
-                  "defaultValue": null,
-                  "description": null,
-                  "name": "format",
-                  "type": {
-                    "kind": "SCALAR",
-                    "name": "String",
-                    "ofType": null
-                  }
-                },
-                {
-                  "defaultValue": null,
-                  "description": null,
-                  "name": "bgcolor",
-                  "type": {
-                    "kind": "SCALAR",
-                    "name": "String",
-                    "ofType": null
-                  }
-                },
-                {
-                  "defaultValue": null,
-                  "description": null,
-                  "name": "jpegquality",
-                  "type": {
-                    "kind": "SCALAR",
-                    "name": "Int",
-                    "ofType": null
-                  }
-                },
-                {
-                  "defaultValue": null,
-                  "description": null,
-                  "name": "webpquality",
+                  "name": "last",
                   "type": {
                     "kind": "SCALAR",
                     "name": "Int",
@@ -5866,180 +6932,54 @@
                 }
               ],
               "deprecationReason": null,
+              "description": "",
+              "isDeprecated": false,
+              "name": "aliases",
+              "type": {
+                "kind": "NON_NULL",
+                "name": null,
+                "ofType": {
+                  "kind": "OBJECT",
+                  "name": "PageNodeConnection",
+                  "ofType": null
+                }
+              }
+            },
+            {
+              "args": [],
+              "deprecationReason": null,
               "description": null,
               "isDeprecated": false,
-              "name": "rendition",
+              "name": "bloglandingpage",
               "type": {
                 "kind": "OBJECT",
-                "name": "ImageRenditionObjectType",
+                "name": "BlogLandingPage",
                 "ofType": null
               }
             },
             {
-              "args": [
-                {
-                  "defaultValue": null,
-                  "description": null,
-                  "name": "sizes",
-                  "type": {
-                    "kind": "LIST",
-                    "name": null,
-                    "ofType": {
-                      "kind": "SCALAR",
-                      "name": "Int",
-                      "ofType": null
-                    }
-                  }
-                }
-              ],
+              "args": [],
               "deprecationReason": null,
               "description": null,
               "isDeprecated": false,
-              "name": "srcSet",
+              "name": "blogpage",
+              "type": {
+                "kind": "OBJECT",
+                "name": "BlogPage",
+                "ofType": null
+              }
+            },
+            {
+              "args": [],
+              "deprecationReason": null,
+              "description": null,
+              "isDeprecated": false,
+              "name": "pageType",
               "type": {
                 "kind": "SCALAR",
                 "name": "String",
                 "ofType": null
               }
-            }
-          ],
-          "inputFields": null,
-          "interfaces": [],
-          "kind": "OBJECT",
-          "name": "ImageObjectType",
-          "possibleTypes": null
-        },
-        {
-          "description": null,
-          "enumValues": null,
-          "fields": [
-            {
-              "args": [],
-              "deprecationReason": null,
-              "description": null,
-              "isDeprecated": false,
-              "name": "id",
-              "type": {
-                "kind": "NON_NULL",
-                "name": null,
-                "ofType": {
-                  "kind": "SCALAR",
-                  "name": "ID",
-                  "ofType": null
-                }
-              }
-            },
-            {
-              "args": [],
-              "deprecationReason": null,
-              "description": "",
-              "isDeprecated": false,
-              "name": "filterSpec",
-              "type": {
-                "kind": "NON_NULL",
-                "name": null,
-                "ofType": {
-                  "kind": "SCALAR",
-                  "name": "String",
-                  "ofType": null
-                }
-              }
-            },
-            {
-              "args": [],
-              "deprecationReason": null,
-              "description": "",
-              "isDeprecated": false,
-              "name": "file",
-              "type": {
-                "kind": "NON_NULL",
-                "name": null,
-                "ofType": {
-                  "kind": "SCALAR",
-                  "name": "String",
-                  "ofType": null
-                }
-              }
-            },
-            {
-              "args": [],
-              "deprecationReason": null,
-              "description": null,
-              "isDeprecated": false,
-              "name": "width",
-              "type": {
-                "kind": "NON_NULL",
-                "name": null,
-                "ofType": {
-                  "kind": "SCALAR",
-                  "name": "Int",
-                  "ofType": null
-                }
-              }
-            },
-            {
-              "args": [],
-              "deprecationReason": null,
-              "description": null,
-              "isDeprecated": false,
-              "name": "height",
-              "type": {
-                "kind": "NON_NULL",
-                "name": null,
-                "ofType": {
-                  "kind": "SCALAR",
-                  "name": "Int",
-                  "ofType": null
-                }
-              }
-            },
-            {
-              "args": [],
-              "deprecationReason": null,
-              "description": "",
-              "isDeprecated": false,
-              "name": "focalPointKey",
-              "type": {
-                "kind": "NON_NULL",
-                "name": null,
-                "ofType": {
-                  "kind": "SCALAR",
-                  "name": "String",
-                  "ofType": null
-                }
-              }
-            },
-            {
-              "args": [],
-              "deprecationReason": null,
-              "description": "",
-              "isDeprecated": false,
-              "name": "image",
-              "type": {
-                "kind": "NON_NULL",
-                "name": null,
-                "ofType": {
-                  "kind": "OBJECT",
-                  "name": "ImageObjectType",
-                  "ofType": null
-                }
-              }
-            },
-            {
-              "args": [],
-              "deprecationReason": "Use the `url` attribute",
-              "description": null,
-              "isDeprecated": true,
-              "name": "src",
-              "type": {
-                "kind": "NON_NULL",
-                "name": null,
-                "ofType": {
-                  "kind": "SCALAR",
-                  "name": "String",
-                  "ofType": null
-                }
-              }
             },
             {
               "args": [],
@@ -6048,13 +6988,9 @@
               "isDeprecated": false,
               "name": "url",
               "type": {
-                "kind": "NON_NULL",
-                "name": null,
-                "ofType": {
-                  "kind": "SCALAR",
-                  "name": "String",
-                  "ofType": null
-                }
+                "kind": "SCALAR",
+                "name": "String",
+                "ofType": null
               }
             },
             {
@@ -6062,64 +6998,474 @@
               "deprecationReason": null,
               "description": null,
               "isDeprecated": false,
-              "name": "aspectRatio",
+              "name": "parent",
+              "type": {
+                "kind": "INTERFACE",
+                "name": "PageInterface",
+                "ofType": null
+              }
+            },
+            {
+              "args": [
+                {
+                  "defaultValue": null,
+                  "description": "Limit a number of resulting objects.",
+                  "name": "limit",
+                  "type": {
+                    "kind": "SCALAR",
+                    "name": "PositiveInt",
+                    "ofType": null
+                  }
+                },
+                {
+                  "defaultValue": null,
+                  "description": "Number of records skipped from the beginning of the results set.",
+                  "name": "offset",
+                  "type": {
+                    "kind": "SCALAR",
+                    "name": "PositiveInt",
+                    "ofType": null
+                  }
+                },
+                {
+                  "defaultValue": null,
+                  "description": "Use the Django queryset order format.",
+                  "name": "order",
+                  "type": {
+                    "kind": "SCALAR",
+                    "name": "String",
+                    "ofType": null
+                  }
+                },
+                {
+                  "defaultValue": null,
+                  "description": "Filter the results using Wagtail's search.",
+                  "name": "searchQuery",
+                  "type": {
+                    "kind": "SCALAR",
+                    "name": "String",
+                    "ofType": null
+                  }
+                },
+                {
+                  "defaultValue": null,
+                  "description": "Filter by ID",
+                  "name": "id",
+                  "type": {
+                    "kind": "SCALAR",
+                    "name": "ID",
+                    "ofType": null
+                  }
+                }
+              ],
+              "deprecationReason": null,
+              "description": null,
+              "isDeprecated": false,
+              "name": "children",
               "type": {
                 "kind": "NON_NULL",
                 "name": null,
                 "ofType": {
-                  "kind": "SCALAR",
-                  "name": "Float",
-                  "ofType": null
+                  "kind": "LIST",
+                  "name": null,
+                  "ofType": {
+                    "kind": "NON_NULL",
+                    "name": null,
+                    "ofType": {
+                      "kind": "INTERFACE",
+                      "name": "PageInterface",
+                      "ofType": null
+                    }
+                  }
                 }
               }
             },
             {
-              "args": [],
+              "args": [
+                {
+                  "defaultValue": null,
+                  "description": "Limit a number of resulting objects.",
+                  "name": "limit",
+                  "type": {
+                    "kind": "SCALAR",
+                    "name": "PositiveInt",
+                    "ofType": null
+                  }
+                },
+                {
+                  "defaultValue": null,
+                  "description": "Number of records skipped from the beginning of the results set.",
+                  "name": "offset",
+                  "type": {
+                    "kind": "SCALAR",
+                    "name": "PositiveInt",
+                    "ofType": null
+                  }
+                },
+                {
+                  "defaultValue": null,
+                  "description": "Use the Django queryset order format.",
+                  "name": "order",
+                  "type": {
+                    "kind": "SCALAR",
+                    "name": "String",
+                    "ofType": null
+                  }
+                },
+                {
+                  "defaultValue": null,
+                  "description": "Filter the results using Wagtail's search.",
+                  "name": "searchQuery",
+                  "type": {
+                    "kind": "SCALAR",
+                    "name": "String",
+                    "ofType": null
+                  }
+                },
+                {
+                  "defaultValue": null,
+                  "description": "Filter by ID",
+                  "name": "id",
+                  "type": {
+                    "kind": "SCALAR",
+                    "name": "ID",
+                    "ofType": null
+                  }
+                }
+              ],
               "deprecationReason": null,
               "description": null,
               "isDeprecated": false,
-              "name": "sizes",
+              "name": "siblings",
               "type": {
                 "kind": "NON_NULL",
                 "name": null,
                 "ofType": {
-                  "kind": "SCALAR",
-                  "name": "String",
-                  "ofType": null
+                  "kind": "LIST",
+                  "name": null,
+                  "ofType": {
+                    "kind": "NON_NULL",
+                    "name": null,
+                    "ofType": {
+                      "kind": "INTERFACE",
+                      "name": "PageInterface",
+                      "ofType": null
+                    }
+                  }
                 }
               }
             },
             {
-              "args": [],
+              "args": [
+                {
+                  "defaultValue": null,
+                  "description": "Limit a number of resulting objects.",
+                  "name": "limit",
+                  "type": {
+                    "kind": "SCALAR",
+                    "name": "PositiveInt",
+                    "ofType": null
+                  }
+                },
+                {
+                  "defaultValue": null,
+                  "description": "Number of records skipped from the beginning of the results set.",
+                  "name": "offset",
+                  "type": {
+                    "kind": "SCALAR",
+                    "name": "PositiveInt",
+                    "ofType": null
+                  }
+                },
+                {
+                  "defaultValue": null,
+                  "description": "Use the Django queryset order format.",
+                  "name": "order",
+                  "type": {
+                    "kind": "SCALAR",
+                    "name": "String",
+                    "ofType": null
+                  }
+                },
+                {
+                  "defaultValue": null,
+                  "description": "Filter the results using Wagtail's search.",
+                  "name": "searchQuery",
+                  "type": {
+                    "kind": "SCALAR",
+                    "name": "String",
+                    "ofType": null
+                  }
+                },
+                {
+                  "defaultValue": null,
+                  "description": "Filter by ID",
+                  "name": "id",
+                  "type": {
+                    "kind": "SCALAR",
+                    "name": "ID",
+                    "ofType": null
+                  }
+                }
+              ],
               "deprecationReason": null,
               "description": null,
               "isDeprecated": false,
-              "name": "collection",
+              "name": "nextSiblings",
               "type": {
                 "kind": "NON_NULL",
                 "name": null,
                 "ofType": {
-                  "kind": "OBJECT",
-                  "name": "CollectionObjectType",
-                  "ofType": null
+                  "kind": "LIST",
+                  "name": null,
+                  "ofType": {
+                    "kind": "NON_NULL",
+                    "name": null,
+                    "ofType": {
+                      "kind": "INTERFACE",
+                      "name": "PageInterface",
+                      "ofType": null
+                    }
+                  }
+                }
+              }
+            },
+            {
+              "args": [
+                {
+                  "defaultValue": null,
+                  "description": "Limit a number of resulting objects.",
+                  "name": "limit",
+                  "type": {
+                    "kind": "SCALAR",
+                    "name": "PositiveInt",
+                    "ofType": null
+                  }
+                },
+                {
+                  "defaultValue": null,
+                  "description": "Number of records skipped from the beginning of the results set.",
+                  "name": "offset",
+                  "type": {
+                    "kind": "SCALAR",
+                    "name": "PositiveInt",
+                    "ofType": null
+                  }
+                },
+                {
+                  "defaultValue": null,
+                  "description": "Use the Django queryset order format.",
+                  "name": "order",
+                  "type": {
+                    "kind": "SCALAR",
+                    "name": "String",
+                    "ofType": null
+                  }
+                },
+                {
+                  "defaultValue": null,
+                  "description": "Filter the results using Wagtail's search.",
+                  "name": "searchQuery",
+                  "type": {
+                    "kind": "SCALAR",
+                    "name": "String",
+                    "ofType": null
+                  }
+                },
+                {
+                  "defaultValue": null,
+                  "description": "Filter by ID",
+                  "name": "id",
+                  "type": {
+                    "kind": "SCALAR",
+                    "name": "ID",
+                    "ofType": null
+                  }
+                }
+              ],
+              "deprecationReason": null,
+              "description": null,
+              "isDeprecated": false,
+              "name": "previousSiblings",
+              "type": {
+                "kind": "NON_NULL",
+                "name": null,
+                "ofType": {
+                  "kind": "LIST",
+                  "name": null,
+                  "ofType": {
+                    "kind": "NON_NULL",
+                    "name": null,
+                    "ofType": {
+                      "kind": "INTERFACE",
+                      "name": "PageInterface",
+                      "ofType": null
+                    }
+                  }
+                }
+              }
+            },
+            {
+              "args": [
+                {
+                  "defaultValue": null,
+                  "description": "Limit a number of resulting objects.",
+                  "name": "limit",
+                  "type": {
+                    "kind": "SCALAR",
+                    "name": "PositiveInt",
+                    "ofType": null
+                  }
+                },
+                {
+                  "defaultValue": null,
+                  "description": "Number of records skipped from the beginning of the results set.",
+                  "name": "offset",
+                  "type": {
+                    "kind": "SCALAR",
+                    "name": "PositiveInt",
+                    "ofType": null
+                  }
+                },
+                {
+                  "defaultValue": null,
+                  "description": "Use the Django queryset order format.",
+                  "name": "order",
+                  "type": {
+                    "kind": "SCALAR",
+                    "name": "String",
+                    "ofType": null
+                  }
+                },
+                {
+                  "defaultValue": null,
+                  "description": "Filter the results using Wagtail's search.",
+                  "name": "searchQuery",
+                  "type": {
+                    "kind": "SCALAR",
+                    "name": "String",
+                    "ofType": null
+                  }
+                },
+                {
+                  "defaultValue": null,
+                  "description": "Filter by ID",
+                  "name": "id",
+                  "type": {
+                    "kind": "SCALAR",
+                    "name": "ID",
+                    "ofType": null
+                  }
+                }
+              ],
+              "deprecationReason": null,
+              "description": null,
+              "isDeprecated": false,
+              "name": "descendants",
+              "type": {
+                "kind": "NON_NULL",
+                "name": null,
+                "ofType": {
+                  "kind": "LIST",
+                  "name": null,
+                  "ofType": {
+                    "kind": "NON_NULL",
+                    "name": null,
+                    "ofType": {
+                      "kind": "INTERFACE",
+                      "name": "PageInterface",
+                      "ofType": null
+                    }
+                  }
+                }
+              }
+            },
+            {
+              "args": [
+                {
+                  "defaultValue": null,
+                  "description": "Limit a number of resulting objects.",
+                  "name": "limit",
+                  "type": {
+                    "kind": "SCALAR",
+                    "name": "PositiveInt",
+                    "ofType": null
+                  }
+                },
+                {
+                  "defaultValue": null,
+                  "description": "Number of records skipped from the beginning of the results set.",
+                  "name": "offset",
+                  "type": {
+                    "kind": "SCALAR",
+                    "name": "PositiveInt",
+                    "ofType": null
+                  }
+                },
+                {
+                  "defaultValue": null,
+                  "description": "Use the Django queryset order format.",
+                  "name": "order",
+                  "type": {
+                    "kind": "SCALAR",
+                    "name": "String",
+                    "ofType": null
+                  }
+                },
+                {
+                  "defaultValue": null,
+                  "description": "Filter the results using Wagtail's search.",
+                  "name": "searchQuery",
+                  "type": {
+                    "kind": "SCALAR",
+                    "name": "String",
+                    "ofType": null
+                  }
+                },
+                {
+                  "defaultValue": null,
+                  "description": "Filter by ID",
+                  "name": "id",
+                  "type": {
+                    "kind": "SCALAR",
+                    "name": "ID",
+                    "ofType": null
+                  }
+                }
+              ],
+              "deprecationReason": null,
+              "description": null,
+              "isDeprecated": false,
+              "name": "ancestors",
+              "type": {
+                "kind": "NON_NULL",
+                "name": null,
+                "ofType": {
+                  "kind": "LIST",
+                  "name": null,
+                  "ofType": {
+                    "kind": "NON_NULL",
+                    "name": null,
+                    "ofType": {
+                      "kind": "INTERFACE",
+                      "name": "PageInterface",
+                      "ofType": null
+                    }
+                  }
                 }
               }
             }
           ],
           "inputFields": null,
-          "interfaces": [],
+          "interfaces": [
+            {
+              "kind": "INTERFACE",
+              "name": "PageInterface",
+              "ofType": null
+            }
+          ],
           "kind": "OBJECT",
-          "name": "ImageRenditionObjectType",
-          "possibleTypes": null
-        },
-        {
-          "description": "The `Float` scalar type represents signed double-precision fractional values as specified by [IEEE 754](http://en.wikipedia.org/wiki/IEEE_floating_point). ",
-          "enumValues": null,
-          "fields": null,
-          "inputFields": null,
-          "interfaces": null,
-          "kind": "SCALAR",
-          "name": "Float",
+          "name": "Page",
           "possibleTypes": null
         },
         {
@@ -6129,7 +7475,93 @@
             {
               "args": [],
               "deprecationReason": null,
-              "description": "",
+              "description": "Pagination data for this connection.",
+              "isDeprecated": false,
+              "name": "pageInfo",
+              "type": {
+                "kind": "NON_NULL",
+                "name": null,
+                "ofType": {
+                  "kind": "OBJECT",
+                  "name": "PageInfo",
+                  "ofType": null
+                }
+              }
+            },
+            {
+              "args": [],
+              "deprecationReason": null,
+              "description": "Contains the nodes in this connection.",
+              "isDeprecated": false,
+              "name": "edges",
+              "type": {
+                "kind": "NON_NULL",
+                "name": null,
+                "ofType": {
+                  "kind": "LIST",
+                  "name": null,
+                  "ofType": {
+                    "kind": "OBJECT",
+                    "name": "UserTypeEdge",
+                    "ofType": null
+                  }
+                }
+              }
+            }
+          ],
+          "inputFields": null,
+          "interfaces": [],
+          "kind": "OBJECT",
+          "name": "UserTypeConnection",
+          "possibleTypes": null
+        },
+        {
+          "description": "A Relay edge containing a `UserType` and its cursor.",
+          "enumValues": null,
+          "fields": [
+            {
+              "args": [],
+              "deprecationReason": null,
+              "description": "The item at the end of the edge",
+              "isDeprecated": false,
+              "name": "node",
+              "type": {
+                "kind": "OBJECT",
+                "name": "UserType",
+                "ofType": null
+              }
+            },
+            {
+              "args": [],
+              "deprecationReason": null,
+              "description": "A cursor for use in pagination",
+              "isDeprecated": false,
+              "name": "cursor",
+              "type": {
+                "kind": "NON_NULL",
+                "name": null,
+                "ofType": {
+                  "kind": "SCALAR",
+                  "name": "String",
+                  "ofType": null
+                }
+              }
+            }
+          ],
+          "inputFields": null,
+          "interfaces": [],
+          "kind": "OBJECT",
+          "name": "UserTypeEdge",
+          "possibleTypes": null
+        },
+        {
+          "description": null,
+          "enumValues": null,
+          "fields": [
+            {
+              "args": [],
+              "deprecationReason": null,
+              "description": "The ID of the object.",
               "isDeprecated": false,
               "name": "id",
               "type": {
@@ -6148,6 +7580,22 @@
               "description": "Required. 150 characters or fewer. Letters, digits and @/./+/-/_ only.",
               "isDeprecated": false,
               "name": "username",
+              "type": {
+                "kind": "NON_NULL",
+                "name": null,
+                "ofType": {
+                  "kind": "SCALAR",
+                  "name": "String",
+                  "ofType": null
+                }
+              }
+            },
+            {
+              "args": [],
+              "deprecationReason": null,
+              "description": "",
+              "isDeprecated": false,
+              "name": "email",
               "type": {
                 "kind": "NON_NULL",
                 "name": null,
@@ -6189,12 +7637,118 @@
                   "ofType": null
                 }
               }
+            },
+            {
+              "args": [],
+              "deprecationReason": null,
+              "description": "",
+              "isDeprecated": false,
+              "name": "dateJoined",
+              "type": {
+                "kind": "NON_NULL",
+                "name": null,
+                "ofType": {
+                  "kind": "SCALAR",
+                  "name": "DateTime",
+                  "ofType": null
+                }
+              }
+            }
+          ],
+          "inputFields": null,
+          "interfaces": [
+            {
+              "kind": "INTERFACE",
+              "name": "Node",
+              "ofType": null
+            }
+          ],
+          "kind": "OBJECT",
+          "name": "UserType",
+          "possibleTypes": null
+        },
+        {
+          "description": null,
+          "enumValues": null,
+          "fields": [
+            {
+              "args": [
+                {
+                  "defaultValue": null,
+                  "description": null,
+                  "name": "id",
+                  "type": {
+                    "kind": "SCALAR",
+                    "name": "Int",
+                    "ofType": null
+                  }
+                },
+                {
+                  "defaultValue": null,
+                  "description": null,
+                  "name": "slug",
+                  "type": {
+                    "kind": "SCALAR",
+                    "name": "String",
+                    "ofType": null
+                  }
+                },
+                {
+                  "defaultValue": null,
+                  "description": "Filter by url path. Note: in a multi-site setup, returns the first available page based. Use `inSite: true` from the relevant site domain.",
+                  "name": "urlPath",
+                  "type": {
+                    "kind": "SCALAR",
+                    "name": "String",
+                    "ofType": null
+                  }
+                },
+                {
+                  "defaultValue": null,
+                  "description": "Filter by preview token as passed by the `wagtail-headless-preview` package.",
+                  "name": "token",
+                  "type": {
+                    "kind": "SCALAR",
+                    "name": "String",
+                    "ofType": null
+                  }
+                },
+                {
+                  "defaultValue": null,
+                  "description": "Filter by content type using the `app.ModelName` notation. e.g. `myapp.BlogPage`",
+                  "name": "contentType",
+                  "type": {
+                    "kind": "SCALAR",
+                    "name": "String",
+                    "ofType": null
+                  }
+                },
+                {
+                  "defaultValue": "false",
+                  "description": "Filter to pages in the current site only.",
+                  "name": "inSite",
+                  "type": {
+                    "kind": "SCALAR",
+                    "name": "Boolean",
+                    "ofType": null
+                  }
+                }
+              ],
+              "deprecationReason": null,
+              "description": null,
+              "isDeprecated": false,
+              "name": "page",
+              "type": {
+                "kind": "INTERFACE",
+                "name": "PageInterface",
+                "ofType": null
+              }
             }
           ],
           "inputFields": null,
           "interfaces": [],
           "kind": "OBJECT",
-          "name": "UserType",
+          "name": "Subscription",
           "possibleTypes": null
         },
         {

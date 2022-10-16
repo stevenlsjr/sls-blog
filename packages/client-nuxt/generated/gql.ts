@@ -42,9 +42,25 @@ export type BlockQuoteBlock = StreamFieldInterface & {
   value: Scalars['String'];
 };
 
+export type BlogBranding = {
+  __typename?: 'BlogBranding';
+  id?: Maybe<Scalars['ID']>;
+};
+
+export type BlogBrandingObject = {
+  __typename?: 'BlogBrandingObject';
+  branding: Array<SiteBlogBranding>;
+  createdAt: Scalars['DateTime'];
+  id: Scalars['ID'];
+  isLive: Scalars['Boolean'];
+  sites: Array<SiteObjectTypeExt>;
+  title: Scalars['String'];
+  updatedAt: Scalars['DateTime'];
+};
+
 export type BlogLandingPage = PageInterface & {
   __typename?: 'BlogLandingPage';
-  aliasOf?: Maybe<Page>;
+  aliasOf?: Maybe<PageNode>;
   ancestors: Array<PageInterface>;
   children: Array<PageInterface>;
   contentType: Scalars['String'];
@@ -138,7 +154,7 @@ export type BlogLandingPageSiblingsArgs = {
 
 export type BlogPage = PageInterface & {
   __typename?: 'BlogPage';
-  aliasOf?: Maybe<Page>;
+  aliasOf?: Maybe<PageNode>;
   ancestors: Array<PageInterface>;
   body?: Maybe<Array<Maybe<StreamFieldInterface>>>;
   children: Array<PageInterface>;
@@ -332,9 +348,10 @@ export type DocumentObjectType = {
   collection: CollectionObjectType;
   createdAt: Scalars['DateTime'];
   file: Scalars['String'];
-  fileHash?: Maybe<Scalars['String']>;
+  fileHash: Scalars['String'];
   fileSize?: Maybe<Scalars['Int']>;
   id: Scalars['ID'];
+  tags: Array<TagObjectType>;
   title: Scalars['String'];
   uploadedByUser?: Maybe<UserIdentityType>;
   url: Scalars['String'];
@@ -399,6 +416,7 @@ export type ImageObjectType = {
   /** @deprecated Use the `url` attribute */
   src: Scalars['String'];
   srcSet?: Maybe<Scalars['String']>;
+  tags: Array<TagObjectType>;
   title: Scalars['String'];
   uploadedByUser?: Maybe<UserIdentityType>;
   url: Scalars['String'];
@@ -427,15 +445,24 @@ export type ImageRenditionObjectType = {
   __typename?: 'ImageRenditionObjectType';
   aspectRatio: Scalars['Float'];
   collection: CollectionObjectType;
+  createdAt: Scalars['DateTime'];
   file: Scalars['String'];
+  fileHash: Scalars['String'];
+  fileSize?: Maybe<Scalars['Int']>;
   filterSpec: Scalars['String'];
+  focalPointHeight?: Maybe<Scalars['Int']>;
   focalPointKey: Scalars['String'];
+  focalPointWidth?: Maybe<Scalars['Int']>;
+  focalPointX?: Maybe<Scalars['Int']>;
+  focalPointY?: Maybe<Scalars['Int']>;
   height: Scalars['Int'];
   id: Scalars['ID'];
   image: ImageObjectType;
   sizes: Scalars['String'];
   /** @deprecated Use the `url` attribute */
   src: Scalars['String'];
+  tags: Array<TagObjectType>;
+  title: Scalars['String'];
   url: Scalars['String'];
   width: Scalars['Int'];
 };
@@ -458,14 +485,20 @@ export type ListBlock = StreamFieldInterface & {
   rawValue: Scalars['String'];
 };
 
+/** An object with an ID */
+export type Node = {
+  /** The ID of the object. */
+  id: Scalars['ID'];
+};
+
 /**
  * Base Page type used if one isn't generated for the current model.
  * All other node types extend this.
  */
 export type Page = PageInterface & {
   __typename?: 'Page';
-  aliasOf?: Maybe<Page>;
-  aliases: Array<Page>;
+  aliasOf?: Maybe<PageNode>;
+  aliases: PageNodeConnection;
   ancestors: Array<PageInterface>;
   bloglandingpage?: Maybe<BlogLandingPage>;
   blogpage?: Maybe<BlogPage>;
@@ -497,12 +530,24 @@ export type Page = PageInterface & {
   seoTitle: Scalars['String'];
   showInMenus: Scalars['Boolean'];
   siblings: Array<PageInterface>;
-  sitesRootedHere: Array<SiteObjectType>;
+  sitesRootedHere: Array<SiteObjectTypeExt>;
   slug: Scalars['String'];
   title: Scalars['String'];
   translationKey: Scalars['UUID'];
   url?: Maybe<Scalars['String']>;
   urlPath: Scalars['String'];
+};
+
+
+/**
+ * Base Page type used if one isn't generated for the current model.
+ * All other node types extend this.
+ */
+export type PageAliasesArgs = {
+  after?: InputMaybe<Scalars['String']>;
+  before?: InputMaybe<Scalars['String']>;
+  first?: InputMaybe<Scalars['Int']>;
+  last?: InputMaybe<Scalars['Int']>;
 };
 
 
@@ -592,6 +637,19 @@ export type PageChooserBlock = StreamFieldInterface & {
   rawValue: Scalars['String'];
 };
 
+/** The Relay compliant `PageInfo` type, containing data necessary to paginate this connection. */
+export type PageInfo = {
+  __typename?: 'PageInfo';
+  /** When paginating forwards, the cursor to continue. */
+  endCursor?: Maybe<Scalars['String']>;
+  /** When paginating forwards, are there more items? */
+  hasNextPage: Scalars['Boolean'];
+  /** When paginating backwards, are there more items? */
+  hasPreviousPage: Scalars['Boolean'];
+  /** When paginating backwards, the cursor to continue. */
+  startCursor?: Maybe<Scalars['String']>;
+};
+
 export type PageInterface = {
   ancestors: Array<PageInterface>;
   children: Array<PageInterface>;
@@ -671,10 +729,37 @@ export type PageInterfaceSiblingsArgs = {
   searchQuery?: InputMaybe<Scalars['String']>;
 };
 
+export type PageNode = Node & {
+  __typename?: 'PageNode';
+  /** The ID of the object. */
+  id: Scalars['ID'];
+};
+
+export type PageNodeConnection = {
+  __typename?: 'PageNodeConnection';
+  /** Contains the nodes in this connection. */
+  edges: Array<Maybe<PageNodeEdge>>;
+  /** Pagination data for this connection. */
+  pageInfo: PageInfo;
+};
+
+/** A Relay edge containing a `PageNode` and its cursor. */
+export type PageNodeEdge = {
+  __typename?: 'PageNodeEdge';
+  /** A cursor for use in pagination */
+  cursor: Scalars['String'];
+  /** The item at the end of the edge */
+  node?: Maybe<PageNode>;
+};
+
 export type Query = {
   __typename?: 'Query';
+  branding?: Maybe<BlogBrandingObject>;
+  brandings?: Maybe<Array<Maybe<BlogBranding>>>;
   collections: Array<Maybe<CollectionObjectType>>;
+  currentSite?: Maybe<SiteObjectType>;
   document?: Maybe<DocumentObjectType>;
+  documentType: Scalars['String'];
   documents: Array<DocumentObjectType>;
   image?: Maybe<ImageObjectType>;
   imageType: Scalars['String'];
@@ -687,9 +772,23 @@ export type Query = {
   sites: Array<SiteObjectType>;
   tag?: Maybe<TagObjectType>;
   tags: Array<TagObjectType>;
-  userById?: Maybe<UserType>;
-  userIdentity?: Maybe<UserIdentityType>;
-  users?: Maybe<Array<Maybe<UserType>>>;
+  user?: Maybe<UserType>;
+  users?: Maybe<UserTypeConnection>;
+};
+
+
+export type QueryBrandingArgs = {
+  id?: InputMaybe<Scalars['ID']>;
+  siteId?: InputMaybe<Scalars['ID']>;
+};
+
+
+export type QueryBrandingsArgs = {
+  id?: InputMaybe<Scalars['ID']>;
+  limit?: InputMaybe<Scalars['PositiveInt']>;
+  offset?: InputMaybe<Scalars['PositiveInt']>;
+  order?: InputMaybe<Scalars['String']>;
+  searchQuery?: InputMaybe<Scalars['String']>;
 };
 
 
@@ -698,6 +797,12 @@ export type QueryCollectionsArgs = {
   limit?: InputMaybe<Scalars['PositiveInt']>;
   offset?: InputMaybe<Scalars['PositiveInt']>;
   order?: InputMaybe<Scalars['String']>;
+};
+
+
+export type QueryCurrentSiteArgs = {
+  hostname?: InputMaybe<Scalars['String']>;
+  port?: InputMaybe<Scalars['PositiveInt']>;
 };
 
 
@@ -785,8 +890,27 @@ export type QueryTagsArgs = {
 };
 
 
-export type QueryUserByIdArgs = {
-  id?: InputMaybe<Scalars['Int']>;
+export type QueryUserArgs = {
+  id: Scalars['ID'];
+};
+
+
+export type QueryUsersArgs = {
+  after?: InputMaybe<Scalars['String']>;
+  before?: InputMaybe<Scalars['String']>;
+  dateJoined?: InputMaybe<Scalars['DateTime']>;
+  dateJoined_Gt?: InputMaybe<Scalars['DateTime']>;
+  dateJoined_Gte?: InputMaybe<Scalars['DateTime']>;
+  dateJoined_Lt?: InputMaybe<Scalars['DateTime']>;
+  dateJoined_Lte?: InputMaybe<Scalars['DateTime']>;
+  email_Icontains?: InputMaybe<Scalars['String']>;
+  email_Iexact?: InputMaybe<Scalars['String']>;
+  first?: InputMaybe<Scalars['Int']>;
+  isActive?: InputMaybe<Scalars['Boolean']>;
+  isStaff?: InputMaybe<Scalars['Boolean']>;
+  last?: InputMaybe<Scalars['Int']>;
+  username_Icontains?: InputMaybe<Scalars['String']>;
+  username_Iexact?: InputMaybe<Scalars['String']>;
 };
 
 export type RawHtmlBlock = StreamFieldInterface & {
@@ -825,10 +949,16 @@ export type RichTextBlock = StreamFieldInterface & {
   value: Scalars['String'];
 };
 
-export type Search = BlogLandingPage | BlogPage | DocumentObjectType | Page;
+export type Search = BlogBranding | BlogLandingPage | BlogPage | Page | SiteBlogBranding;
+
+export type SiteBlogBranding = {
+  __typename?: 'SiteBlogBranding';
+  id?: Maybe<Scalars['ID']>;
+};
 
 export type SiteObjectType = {
   __typename?: 'SiteObjectType';
+  blogbrandingSet: Array<BlogBrandingObject>;
   hostname: Scalars['String'];
   id: Scalars['ID'];
   /** If true, this site will handle requests for all other hostnames that do not have a site entry of their own */
@@ -837,7 +967,8 @@ export type SiteObjectType = {
   pages: Array<PageInterface>;
   /** Set this to something other than 80 if you need a specific port number to appear in URLs (e.g. development on port 8000). Does not affect request handling (so port forwarding still works). */
   port: Scalars['Int'];
-  rootPage: Page;
+  rootPage: PageNode;
+  siteBranding?: Maybe<SiteBlogBranding>;
   /** Human-readable name for the site. */
   siteName: Scalars['String'];
 };
@@ -848,10 +979,49 @@ export type SiteObjectTypePageArgs = {
   id?: InputMaybe<Scalars['Int']>;
   slug?: InputMaybe<Scalars['String']>;
   token?: InputMaybe<Scalars['String']>;
+  urlPath?: InputMaybe<Scalars['String']>;
 };
 
 
 export type SiteObjectTypePagesArgs = {
+  contentType?: InputMaybe<Scalars['String']>;
+  id?: InputMaybe<Scalars['ID']>;
+  limit?: InputMaybe<Scalars['PositiveInt']>;
+  offset?: InputMaybe<Scalars['PositiveInt']>;
+  order?: InputMaybe<Scalars['String']>;
+  searchQuery?: InputMaybe<Scalars['String']>;
+};
+
+export type SiteObjectTypeExt = {
+  __typename?: 'SiteObjectTypeExt';
+  blogbrandingSet: Array<BlogBrandingObject>;
+  branding?: Maybe<BlogBrandingObject>;
+  hostname: Scalars['String'];
+  id: Scalars['ID'];
+  /** If true, this site will handle requests for all other hostnames that do not have a site entry of their own */
+  isDefaultSite: Scalars['Boolean'];
+  page?: Maybe<PageInterface>;
+  pages: Array<PageInterface>;
+  /** Set this to something other than 80 if you need a specific port number to appear in URLs (e.g. development on port 8000). Does not affect request handling (so port forwarding still works). */
+  port: Scalars['Int'];
+  rootPage: PageNode;
+  siteBranding?: Maybe<SiteBlogBranding>;
+  /** Human-readable name for the site. */
+  siteName: Scalars['String'];
+};
+
+
+export type SiteObjectTypeExtPageArgs = {
+  contentType?: InputMaybe<Scalars['String']>;
+  id?: InputMaybe<Scalars['Int']>;
+  slug?: InputMaybe<Scalars['String']>;
+  token?: InputMaybe<Scalars['String']>;
+  urlPath?: InputMaybe<Scalars['String']>;
+};
+
+
+export type SiteObjectTypeExtPagesArgs = {
+  contentType?: InputMaybe<Scalars['String']>;
   id?: InputMaybe<Scalars['ID']>;
   limit?: InputMaybe<Scalars['PositiveInt']>;
   offset?: InputMaybe<Scalars['PositiveInt']>;
@@ -911,6 +1081,21 @@ export type StructBlock = StreamFieldInterface & {
   rawValue: Scalars['String'];
 };
 
+export type Subscription = {
+  __typename?: 'Subscription';
+  page?: Maybe<PageInterface>;
+};
+
+
+export type SubscriptionPageArgs = {
+  contentType?: InputMaybe<Scalars['String']>;
+  id?: InputMaybe<Scalars['Int']>;
+  inSite?: InputMaybe<Scalars['Boolean']>;
+  slug?: InputMaybe<Scalars['String']>;
+  token?: InputMaybe<Scalars['String']>;
+  urlPath?: InputMaybe<Scalars['String']>;
+};
+
 export type TagObjectType = {
   __typename?: 'TagObjectType';
   id: Scalars['ID'];
@@ -966,15 +1151,34 @@ export type UserIdentityType = {
   isSuperuser: Scalars['Boolean'];
   lastLogin?: Maybe<Scalars['DateTime']>;
   lastName: Scalars['String'];
-  lockedPages: Array<Page>;
-  ownedPages: Array<Page>;
+  lockedPages: PageNodeConnection;
+  ownedPages: PageNodeConnection;
   password: Scalars['String'];
   /** Required. 150 characters or fewer. Letters, digits and @/./+/-/_ only. */
   username: Scalars['String'];
 };
 
-export type UserType = {
+
+export type UserIdentityTypeLockedPagesArgs = {
+  after?: InputMaybe<Scalars['String']>;
+  before?: InputMaybe<Scalars['String']>;
+  first?: InputMaybe<Scalars['Int']>;
+  last?: InputMaybe<Scalars['Int']>;
+};
+
+
+export type UserIdentityTypeOwnedPagesArgs = {
+  after?: InputMaybe<Scalars['String']>;
+  before?: InputMaybe<Scalars['String']>;
+  first?: InputMaybe<Scalars['Int']>;
+  last?: InputMaybe<Scalars['Int']>;
+};
+
+export type UserType = Node & {
   __typename?: 'UserType';
+  dateJoined: Scalars['DateTime'];
+  email: Scalars['String'];
+  /** The ID of the object. */
   id: Scalars['ID'];
   /** Designates whether this user should be treated as active. Unselect this instead of deleting accounts. */
   isActive: Scalars['Boolean'];
@@ -984,10 +1188,30 @@ export type UserType = {
   username: Scalars['String'];
 };
 
-export type GetBlogMetadataQueryVariables = Exact<{ [key: string]: never; }>;
+export type UserTypeConnection = {
+  __typename?: 'UserTypeConnection';
+  /** Contains the nodes in this connection. */
+  edges: Array<Maybe<UserTypeEdge>>;
+  /** Pagination data for this connection. */
+  pageInfo: PageInfo;
+};
+
+/** A Relay edge containing a `UserType` and its cursor. */
+export type UserTypeEdge = {
+  __typename?: 'UserTypeEdge';
+  /** A cursor for use in pagination */
+  cursor: Scalars['String'];
+  /** The item at the end of the edge */
+  node?: Maybe<UserType>;
+};
+
+export type GetBlogMetadataQueryVariables = Exact<{
+  hostname?: InputMaybe<Scalars['String']>;
+  port?: InputMaybe<Scalars['PositiveInt']>;
+}>;
 
 
-export type GetBlogMetadataQuery = { __typename?: 'Query', pages: Array<{ __typename?: 'BlogLandingPage', id?: string | null } | { __typename?: 'BlogPage', id?: string | null } | { __typename?: 'Page', id?: string | null }> };
+export type GetBlogMetadataQuery = { __typename?: 'Query', currentSite?: { __typename?: 'SiteObjectType', siteName: string, hostname: string, port: number, isDefaultSite: boolean } | null };
 
 export type ListPageChildrenQueryVariables = Exact<{
   pageId?: InputMaybe<Scalars['Int']>;
@@ -1008,7 +1232,7 @@ export type PageDetailQueryVariables = Exact<{
 }>;
 
 
-export type PageDetailQuery = { __typename?: 'Query', page?: { __typename?: 'BlogLandingPage', intro?: string | null, id?: string | null, urlPath: string, url?: string | null, slug: string, title: string, seoTitle: string, contentType: string, pageType?: string | null, children: Array<{ __typename?: 'BlogLandingPage', id?: string | null, urlPath: string, title: string } | { __typename?: 'BlogPage', id?: string | null, urlPath: string, title: string } | { __typename?: 'Page', id?: string | null, urlPath: string, title: string }>, parent?: { __typename?: 'BlogLandingPage', title: string, urlPath: string } | { __typename?: 'BlogPage', title: string, urlPath: string } | { __typename?: 'Page', title: string, urlPath: string } | null } | { __typename?: 'BlogPage', intro?: string | null, id?: string | null, urlPath: string, url?: string | null, slug: string, title: string, seoTitle: string, contentType: string, pageType?: string | null, body?: Array<{ __typename?: 'BlockQuoteBlock', id?: string | null, rawValue: string, field: string, blockType: string } | { __typename?: 'BooleanBlock', id?: string | null, rawValue: string, field: string, blockType: string } | { __typename?: 'CharBlock', id?: string | null, rawValue: string, field: string, blockType: string } | { __typename?: 'ChoiceBlock', id?: string | null, rawValue: string, field: string, blockType: string } | { __typename?: 'DateBlock', id?: string | null, rawValue: string, field: string, blockType: string } | { __typename?: 'DateTimeBlock', id?: string | null, rawValue: string, field: string, blockType: string } | { __typename?: 'DecimalBlock', id?: string | null, rawValue: string, field: string, blockType: string } | { __typename?: 'DocumentChooserBlock', id?: string | null, rawValue: string, field: string, blockType: string } | { __typename?: 'EmailBlock', id?: string | null, rawValue: string, field: string, blockType: string } | { __typename?: 'EmbedBlock', id?: string | null, rawValue: string, field: string, blockType: string } | { __typename?: 'FloatBlock', id?: string | null, rawValue: string, field: string, blockType: string } | { __typename?: 'ImageChooserBlock', id?: string | null, rawValue: string, field: string, blockType: string, image: { __typename?: 'ImageObjectType', srcSet?: string | null, src?: { __typename?: 'ImageRenditionObjectType', url: string } | null } } | { __typename?: 'IntegerBlock', id?: string | null, rawValue: string, field: string, blockType: string } | { __typename?: 'ListBlock', id?: string | null, rawValue: string, field: string, blockType: string } | { __typename?: 'PageChooserBlock', id?: string | null, rawValue: string, field: string, blockType: string } | { __typename?: 'RawHTMLBlock', id?: string | null, rawValue: string, field: string, blockType: string } | { __typename?: 'RegexBlock', id?: string | null, rawValue: string, field: string, blockType: string } | { __typename?: 'RichTextBlock', value: string, id?: string | null, rawValue: string, field: string, blockType: string } | { __typename?: 'SnippetChooserBlock', id?: string | null, rawValue: string, field: string, blockType: string } | { __typename?: 'StaticBlock', id?: string | null, rawValue: string, field: string, blockType: string } | { __typename?: 'StreamBlock', id?: string | null, rawValue: string, field: string, blockType: string } | { __typename?: 'StreamFieldBlock', id?: string | null, rawValue: string, field: string, blockType: string } | { __typename?: 'StructBlock', id?: string | null, rawValue: string, field: string, blockType: string } | { __typename?: 'TextBlock', id?: string | null, rawValue: string, field: string, blockType: string } | { __typename?: 'TimeBlock', id?: string | null, rawValue: string, field: string, blockType: string } | { __typename?: 'URLBlock', id?: string | null, rawValue: string, field: string, blockType: string } | null> | null, parent?: { __typename?: 'BlogLandingPage', title: string, urlPath: string } | { __typename?: 'BlogPage', title: string, urlPath: string } | { __typename?: 'Page', title: string, urlPath: string } | null } | { __typename?: 'Page', id?: string | null, urlPath: string, url?: string | null, slug: string, title: string, seoTitle: string, contentType: string, pageType?: string | null, parent?: { __typename?: 'BlogLandingPage', title: string, urlPath: string } | { __typename?: 'BlogPage', title: string, urlPath: string } | { __typename?: 'Page', title: string, urlPath: string } | null } | null };
+export type PageDetailQuery = { __typename?: 'Query', page?: { __typename: 'BlogLandingPage', intro?: string | null, id?: string | null, urlPath: string, url?: string | null, slug: string, title: string, seoTitle: string, contentType: string, pageType?: string | null, children: Array<{ __typename: 'BlogLandingPage', id?: string | null, url?: string | null, title: string } | { __typename: 'BlogPage', id?: string | null, url?: string | null, title: string } | { __typename: 'Page', id?: string | null, url?: string | null, title: string }>, parent?: { __typename: 'BlogLandingPage', title: string, url?: string | null } | { __typename: 'BlogPage', title: string, url?: string | null } | { __typename: 'Page', title: string, url?: string | null } | null } | { __typename: 'BlogPage', intro?: string | null, id?: string | null, urlPath: string, url?: string | null, slug: string, title: string, seoTitle: string, contentType: string, pageType?: string | null, body?: Array<{ __typename: 'BlockQuoteBlock', id?: string | null, rawValue: string, field: string, blockType: string } | { __typename: 'BooleanBlock', id?: string | null, rawValue: string, field: string, blockType: string } | { __typename: 'CharBlock', id?: string | null, rawValue: string, field: string, blockType: string } | { __typename: 'ChoiceBlock', id?: string | null, rawValue: string, field: string, blockType: string } | { __typename: 'DateBlock', id?: string | null, rawValue: string, field: string, blockType: string } | { __typename: 'DateTimeBlock', id?: string | null, rawValue: string, field: string, blockType: string } | { __typename: 'DecimalBlock', id?: string | null, rawValue: string, field: string, blockType: string } | { __typename: 'DocumentChooserBlock', id?: string | null, rawValue: string, field: string, blockType: string } | { __typename: 'EmailBlock', id?: string | null, rawValue: string, field: string, blockType: string } | { __typename: 'EmbedBlock', id?: string | null, rawValue: string, field: string, blockType: string } | { __typename: 'FloatBlock', id?: string | null, rawValue: string, field: string, blockType: string } | { __typename: 'ImageChooserBlock', id?: string | null, rawValue: string, field: string, blockType: string, image: { __typename: 'ImageObjectType', srcSet?: string | null, src?: { __typename: 'ImageRenditionObjectType', url: string } | null } } | { __typename: 'IntegerBlock', id?: string | null, rawValue: string, field: string, blockType: string } | { __typename: 'ListBlock', id?: string | null, rawValue: string, field: string, blockType: string } | { __typename: 'PageChooserBlock', id?: string | null, rawValue: string, field: string, blockType: string } | { __typename: 'RawHTMLBlock', id?: string | null, rawValue: string, field: string, blockType: string } | { __typename: 'RegexBlock', id?: string | null, rawValue: string, field: string, blockType: string } | { __typename: 'RichTextBlock', value: string, id?: string | null, rawValue: string, field: string, blockType: string } | { __typename: 'SnippetChooserBlock', id?: string | null, rawValue: string, field: string, blockType: string } | { __typename: 'StaticBlock', id?: string | null, rawValue: string, field: string, blockType: string } | { __typename: 'StreamBlock', id?: string | null, rawValue: string, field: string, blockType: string } | { __typename: 'StreamFieldBlock', id?: string | null, rawValue: string, field: string, blockType: string } | { __typename: 'StructBlock', id?: string | null, rawValue: string, field: string, blockType: string } | { __typename: 'TextBlock', id?: string | null, rawValue: string, field: string, blockType: string } | { __typename: 'TimeBlock', id?: string | null, rawValue: string, field: string, blockType: string } | { __typename: 'URLBlock', id?: string | null, rawValue: string, field: string, blockType: string } | null> | null, parent?: { __typename: 'BlogLandingPage', title: string, url?: string | null } | { __typename: 'BlogPage', title: string, url?: string | null } | { __typename: 'Page', title: string, url?: string | null } | null } | { __typename: 'Page', id?: string | null, urlPath: string, url?: string | null, slug: string, title: string, seoTitle: string, contentType: string, pageType?: string | null, parent?: { __typename: 'BlogLandingPage', title: string, url?: string | null } | { __typename: 'BlogPage', title: string, url?: string | null } | { __typename: 'Page', title: string, url?: string | null } | null } | null };
 
 export type PreviewPageQueryVariables = Exact<{
   token?: InputMaybe<Scalars['String']>;
@@ -1019,8 +1243,8 @@ export type PreviewPageQueryVariables = Exact<{
 export type PreviewPageQuery = { __typename?: 'Query', previewPage?: { __typename?: 'BlogLandingPage', intro?: string | null, id?: string | null, urlPath: string, url?: string | null, slug: string, title: string, seoTitle: string, contentType: string, pageType?: string | null, children: Array<{ __typename?: 'BlogLandingPage', id?: string | null, urlPath: string, title: string } | { __typename?: 'BlogPage', id?: string | null, urlPath: string, title: string } | { __typename?: 'Page', id?: string | null, urlPath: string, title: string }>, parent?: { __typename?: 'BlogLandingPage', title: string, urlPath: string } | { __typename?: 'BlogPage', title: string, urlPath: string } | { __typename?: 'Page', title: string, urlPath: string } | null } | { __typename?: 'BlogPage', intro?: string | null, id?: string | null, urlPath: string, url?: string | null, slug: string, title: string, seoTitle: string, contentType: string, pageType?: string | null, body?: Array<{ __typename?: 'BlockQuoteBlock', id?: string | null, rawValue: string, field: string, blockType: string } | { __typename?: 'BooleanBlock', id?: string | null, rawValue: string, field: string, blockType: string } | { __typename?: 'CharBlock', id?: string | null, rawValue: string, field: string, blockType: string } | { __typename?: 'ChoiceBlock', id?: string | null, rawValue: string, field: string, blockType: string } | { __typename?: 'DateBlock', id?: string | null, rawValue: string, field: string, blockType: string } | { __typename?: 'DateTimeBlock', id?: string | null, rawValue: string, field: string, blockType: string } | { __typename?: 'DecimalBlock', id?: string | null, rawValue: string, field: string, blockType: string } | { __typename?: 'DocumentChooserBlock', id?: string | null, rawValue: string, field: string, blockType: string } | { __typename?: 'EmailBlock', id?: string | null, rawValue: string, field: string, blockType: string } | { __typename?: 'EmbedBlock', id?: string | null, rawValue: string, field: string, blockType: string } | { __typename?: 'FloatBlock', id?: string | null, rawValue: string, field: string, blockType: string } | { __typename?: 'ImageChooserBlock', id?: string | null, rawValue: string, field: string, blockType: string, image: { __typename?: 'ImageObjectType', title: string, srcSet?: string | null, src?: { __typename?: 'ImageRenditionObjectType', url: string } | null } } | { __typename?: 'IntegerBlock', id?: string | null, rawValue: string, field: string, blockType: string } | { __typename?: 'ListBlock', id?: string | null, rawValue: string, field: string, blockType: string } | { __typename?: 'PageChooserBlock', id?: string | null, rawValue: string, field: string, blockType: string } | { __typename?: 'RawHTMLBlock', id?: string | null, rawValue: string, field: string, blockType: string } | { __typename?: 'RegexBlock', id?: string | null, rawValue: string, field: string, blockType: string } | { __typename?: 'RichTextBlock', value: string, id?: string | null, rawValue: string, field: string, blockType: string } | { __typename?: 'SnippetChooserBlock', id?: string | null, rawValue: string, field: string, blockType: string } | { __typename?: 'StaticBlock', id?: string | null, rawValue: string, field: string, blockType: string } | { __typename?: 'StreamBlock', id?: string | null, rawValue: string, field: string, blockType: string } | { __typename?: 'StreamFieldBlock', id?: string | null, rawValue: string, field: string, blockType: string } | { __typename?: 'StructBlock', id?: string | null, rawValue: string, field: string, blockType: string } | { __typename?: 'TextBlock', id?: string | null, rawValue: string, field: string, blockType: string } | { __typename?: 'TimeBlock', id?: string | null, rawValue: string, field: string, blockType: string } | { __typename?: 'URLBlock', id?: string | null, rawValue: string, field: string, blockType: string } | null> | null, parent?: { __typename?: 'BlogLandingPage', title: string, urlPath: string } | { __typename?: 'BlogPage', title: string, urlPath: string } | { __typename?: 'Page', title: string, urlPath: string } | null } | { __typename?: 'Page', id?: string | null, urlPath: string, url?: string | null, slug: string, title: string, seoTitle: string, contentType: string, pageType?: string | null, parent?: { __typename?: 'BlogLandingPage', title: string, urlPath: string } | { __typename?: 'BlogPage', title: string, urlPath: string } | { __typename?: 'Page', title: string, urlPath: string } | null } | null };
 
 
-export const GetBlogMetadataDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"GetBlogMetadata"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"pages"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}}]}}]}}]} as unknown as DocumentNode<GetBlogMetadataQuery, GetBlogMetadataQueryVariables>;
+export const GetBlogMetadataDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"GetBlogMetadata"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"hostname"}},"type":{"kind":"NamedType","name":{"kind":"Name","value":"String"}}},{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"port"}},"type":{"kind":"NamedType","name":{"kind":"Name","value":"PositiveInt"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"currentSite"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"hostname"},"value":{"kind":"Variable","name":{"kind":"Name","value":"hostname"}}},{"kind":"Argument","name":{"kind":"Name","value":"port"},"value":{"kind":"Variable","name":{"kind":"Name","value":"port"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"siteName"}},{"kind":"Field","name":{"kind":"Name","value":"hostname"}},{"kind":"Field","name":{"kind":"Name","value":"port"}},{"kind":"Field","name":{"kind":"Name","value":"isDefaultSite"}}]}}]}}]} as unknown as DocumentNode<GetBlogMetadataQuery, GetBlogMetadataQueryVariables>;
 export const ListPageChildrenDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"ListPageChildren"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"pageId"}},"type":{"kind":"NamedType","name":{"kind":"Name","value":"Int"}}},{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"limit"}},"type":{"kind":"NamedType","name":{"kind":"Name","value":"PositiveInt"}},"defaultValue":{"kind":"IntValue","value":"10"}},{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"offset"}},"type":{"kind":"NamedType","name":{"kind":"Name","value":"PositiveInt"}},"defaultValue":{"kind":"IntValue","value":"0"}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"page"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"id"},"value":{"kind":"Variable","name":{"kind":"Name","value":"pageId"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"children"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"limit"},"value":{"kind":"Variable","name":{"kind":"Name","value":"limit"}}},{"kind":"Argument","name":{"kind":"Name","value":"offset"},"value":{"kind":"Variable","name":{"kind":"Name","value":"offset"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"urlPath"}},{"kind":"Field","name":{"kind":"Name","value":"title"}},{"kind":"Field","name":{"kind":"Name","value":"seoTitle"}},{"kind":"InlineFragment","typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"BlogPage"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"intro"}}]}}]}}]}}]}}]} as unknown as DocumentNode<ListPageChildrenQuery, ListPageChildrenQueryVariables>;
 export const ListPagesDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"ListPages"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"pages"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"title"}},{"kind":"Field","name":{"kind":"Name","value":"url"}},{"kind":"Field","name":{"kind":"Name","value":"seoTitle"}},{"kind":"Field","name":{"kind":"Name","value":"slug"}},{"kind":"InlineFragment","typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"BlogPage"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"intro"}}]}}]}}]}}]} as unknown as DocumentNode<ListPagesQuery, ListPagesQueryVariables>;
-export const PageDetailDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"PageDetail"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"url"}},"type":{"kind":"NamedType","name":{"kind":"Name","value":"String"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"page"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"urlPath"},"value":{"kind":"Variable","name":{"kind":"Name","value":"url"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"urlPath"}},{"kind":"Field","name":{"kind":"Name","value":"url"}},{"kind":"Field","name":{"kind":"Name","value":"slug"}},{"kind":"Field","name":{"kind":"Name","value":"title"}},{"kind":"Field","name":{"kind":"Name","value":"seoTitle"}},{"kind":"Field","name":{"kind":"Name","value":"contentType"}},{"kind":"Field","name":{"kind":"Name","value":"pageType"}},{"kind":"Field","name":{"kind":"Name","value":"parent"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"title"}},{"kind":"Field","name":{"kind":"Name","value":"urlPath"}}]}},{"kind":"InlineFragment","typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"BlogLandingPage"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"intro"}},{"kind":"Field","name":{"kind":"Name","value":"children"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"urlPath"}},{"kind":"Field","name":{"kind":"Name","value":"title"}}]}}]}},{"kind":"InlineFragment","typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"BlogPage"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"intro"}},{"kind":"Field","name":{"kind":"Name","value":"body"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"rawValue"}},{"kind":"Field","name":{"kind":"Name","value":"field"}},{"kind":"Field","name":{"kind":"Name","value":"blockType"}},{"kind":"InlineFragment","typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"RichTextBlock"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"value"}}]}},{"kind":"InlineFragment","typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"ImageChooserBlock"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"image"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","alias":{"kind":"Name","value":"src"},"name":{"kind":"Name","value":"rendition"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"width"},"value":{"kind":"IntValue","value":"600"}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"url"}}]}},{"kind":"Field","name":{"kind":"Name","value":"srcSet"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"sizes"},"value":{"kind":"ListValue","values":[{"kind":"IntValue","value":"400"},{"kind":"IntValue","value":"600"},{"kind":"IntValue","value":"1000"}]}}]}]}}]}}]}}]}}]}}]}}]} as unknown as DocumentNode<PageDetailQuery, PageDetailQueryVariables>;
+export const PageDetailDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"PageDetail"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"url"}},"type":{"kind":"NamedType","name":{"kind":"Name","value":"String"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"page"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"urlPath"},"value":{"kind":"Variable","name":{"kind":"Name","value":"url"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"urlPath"}},{"kind":"Field","name":{"kind":"Name","value":"url"}},{"kind":"Field","name":{"kind":"Name","value":"slug"}},{"kind":"Field","name":{"kind":"Name","value":"title"}},{"kind":"Field","name":{"kind":"Name","value":"seoTitle"}},{"kind":"Field","name":{"kind":"Name","value":"contentType"}},{"kind":"Field","name":{"kind":"Name","value":"pageType"}},{"kind":"Field","name":{"kind":"Name","value":"parent"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"title"}},{"kind":"Field","name":{"kind":"Name","value":"url"}},{"kind":"Field","name":{"kind":"Name","value":"__typename"}}]}},{"kind":"InlineFragment","typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"BlogLandingPage"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"intro"}},{"kind":"Field","name":{"kind":"Name","value":"children"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"url"}},{"kind":"Field","name":{"kind":"Name","value":"title"}},{"kind":"Field","name":{"kind":"Name","value":"__typename"}}]}},{"kind":"Field","name":{"kind":"Name","value":"__typename"}}]}},{"kind":"InlineFragment","typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"BlogPage"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"intro"}},{"kind":"Field","name":{"kind":"Name","value":"body"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"rawValue"}},{"kind":"Field","name":{"kind":"Name","value":"field"}},{"kind":"Field","name":{"kind":"Name","value":"blockType"}},{"kind":"InlineFragment","typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"RichTextBlock"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"value"}},{"kind":"Field","name":{"kind":"Name","value":"__typename"}}]}},{"kind":"InlineFragment","typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"ImageChooserBlock"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"image"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","alias":{"kind":"Name","value":"src"},"name":{"kind":"Name","value":"rendition"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"width"},"value":{"kind":"IntValue","value":"600"}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"url"}},{"kind":"Field","name":{"kind":"Name","value":"__typename"}}]}},{"kind":"Field","name":{"kind":"Name","value":"srcSet"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"sizes"},"value":{"kind":"ListValue","values":[{"kind":"IntValue","value":"400"},{"kind":"IntValue","value":"600"},{"kind":"IntValue","value":"1000"}]}}]},{"kind":"Field","name":{"kind":"Name","value":"__typename"}}]}},{"kind":"Field","name":{"kind":"Name","value":"__typename"}}]}},{"kind":"Field","name":{"kind":"Name","value":"__typename"}}]}},{"kind":"Field","name":{"kind":"Name","value":"__typename"}}]}},{"kind":"Field","name":{"kind":"Name","value":"__typename"}}]}}]}}]} as unknown as DocumentNode<PageDetailQuery, PageDetailQueryVariables>;
 export const PreviewPageDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"PreviewPage"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"token"}},"type":{"kind":"NamedType","name":{"kind":"Name","value":"String"}}},{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"contentType"}},"type":{"kind":"NamedType","name":{"kind":"Name","value":"String"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","alias":{"kind":"Name","value":"previewPage"},"name":{"kind":"Name","value":"page"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"token"},"value":{"kind":"Variable","name":{"kind":"Name","value":"token"}}},{"kind":"Argument","name":{"kind":"Name","value":"contentType"},"value":{"kind":"Variable","name":{"kind":"Name","value":"contentType"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"urlPath"}},{"kind":"Field","name":{"kind":"Name","value":"url"}},{"kind":"Field","name":{"kind":"Name","value":"slug"}},{"kind":"Field","name":{"kind":"Name","value":"title"}},{"kind":"Field","name":{"kind":"Name","value":"seoTitle"}},{"kind":"Field","name":{"kind":"Name","value":"contentType"}},{"kind":"Field","name":{"kind":"Name","value":"pageType"}},{"kind":"Field","name":{"kind":"Name","value":"parent"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"title"}},{"kind":"Field","name":{"kind":"Name","value":"urlPath"}}]}},{"kind":"InlineFragment","typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"BlogLandingPage"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"intro"}},{"kind":"Field","name":{"kind":"Name","value":"children"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"urlPath"}},{"kind":"Field","name":{"kind":"Name","value":"title"}}]}}]}},{"kind":"InlineFragment","typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"BlogPage"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"intro"}},{"kind":"Field","name":{"kind":"Name","value":"body"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"rawValue"}},{"kind":"Field","name":{"kind":"Name","value":"field"}},{"kind":"Field","name":{"kind":"Name","value":"blockType"}},{"kind":"InlineFragment","typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"RichTextBlock"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"value"}}]}},{"kind":"InlineFragment","typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"ImageChooserBlock"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"image"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"title"}},{"kind":"Field","alias":{"kind":"Name","value":"src"},"name":{"kind":"Name","value":"rendition"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"width"},"value":{"kind":"IntValue","value":"600"}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"url"}}]}},{"kind":"Field","name":{"kind":"Name","value":"srcSet"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"sizes"},"value":{"kind":"ListValue","values":[{"kind":"IntValue","value":"400"},{"kind":"IntValue","value":"600"},{"kind":"IntValue","value":"1000"}]}}]}]}}]}}]}}]}}]}}]}}]} as unknown as DocumentNode<PreviewPageQuery, PreviewPageQueryVariables>;

@@ -10,15 +10,18 @@ query PageDetail($url: String) {
     pageType
     parent {
       title
-      urlPath
+      url
+      __typename
     }
     ... on BlogLandingPage {
       intro
       children {
         id
-        urlPath
+        url
         title
+        __typename
       }
+      __typename
     }
     ... on BlogPage {
       intro
@@ -29,16 +32,23 @@ query PageDetail($url: String) {
         blockType
         ... on RichTextBlock {
           value
+          __typename
         }
         ... on ImageChooserBlock {
           image {
             src: rendition(width: 600) {
               url
+              __typename
             }
             srcSet(sizes: [400, 600, 1000])
+            __typename
           }
+          __typename
         }
+        __typename
       }
+      __typename
     }
+    __typename
   }
 }

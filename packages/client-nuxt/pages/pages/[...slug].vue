@@ -1,7 +1,7 @@
 <template>
   <div>
     <div v-if="parentPage">
-      <nuxt-link :to="'/pages' + parentPage.urlPath">up</nuxt-link>
+      <nuxt-link :to="parentPageLink">up</nuxt-link>
     </div>
 
     <render-page :page="page" :loading="loading" :error="error"></render-page>
@@ -21,6 +21,7 @@ export default defineComponent({
     const router = useRouter();
 
     const pagePath = route.path.replace(/^\/pages\//, "/");
+
 
     const { loading, error, result } = useQuery(PageDetailDocument, {
       url: pagePath,
@@ -42,11 +43,16 @@ export default defineComponent({
       }
     });
 
+    const parentPageLink = computed(()=>{
+      return parentPage.value?.url ?? '/'
+    });
+
     return {
       page,
       parentPage,
       loading,
       error,
+      parentPageLink
     };
   },
   components: {

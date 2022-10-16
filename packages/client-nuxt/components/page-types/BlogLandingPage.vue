@@ -22,7 +22,7 @@
           </section>
         </li>
       </ul>
-      <div v-else>Loading Pages</div>
+      <div v-else>No child Pages</div>
     </div>
   </div>
 </template>

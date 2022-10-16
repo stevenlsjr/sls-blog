@@ -16,7 +16,6 @@ def register_gql_queries(query_mixins: List):
     query_mixins[:] = [i for i in query_mixins if i != SitesQuery()]
     query_mixins.append(SiteQueryExt)
     query_mixins.insert(0, AuthQuery)
-    breakpoint()
 
     pass
 

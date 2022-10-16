@@ -1,5 +1,5 @@
 import { defineNuxtConfig, NuxtConfig } from "nuxt3";
-import {} from "nuxt-windicss";
+import {ModuleOptions as Windi} from "nuxt-windicss";
 
 // https://v3.nuxtjs.org/docs/directory-structure/nuxt.config
 
@@ -36,7 +36,27 @@ export default defineNuxtConfig({
   debug: true,
   ssr: true,
   css: [
-    "@/assets/css/main.scss",
-    // '@/css/global.scss',
+    'virtual:windi-base.css',
+    // your stylesheets which overrides the preflight
+    // '@/css/main.css', 
+    // windi extras
+    'virtual:windi-components.css',
+    'virtual:windi-utilities.css',
+    'virtual:windi-devtools',
   ],
-});
+  modules: [
+    'nuxt-windicss'
+  ],
+  windicss: {
+    analyze: {
+      analysis: {
+        interpretUtilities: false,
+      },
+      // see https://github.com/unjs/listhen#options
+      server: {
+        port: 4444,
+        open: true,
+      }
+    }
+  }
+} as NuxtConfig & {windicss: Windi});

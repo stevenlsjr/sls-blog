@@ -3636,9 +3636,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@slsblog/client-nuxt@workspace:packages/client-nuxt":
+"@slsblog/client-nuxt@workspace:apps/client-nuxt":
   version: 0.0.0-use.local
-  resolution: "@slsblog/client-nuxt@workspace:packages/client-nuxt"
+  resolution: "@slsblog/client-nuxt@workspace:apps/client-nuxt"
   dependencies:
     "@apollo/client": ^3.5.6
     "@faker-js/faker": ^6.0.0-alpha.6
@@ -3665,6 +3665,25 @@ __metadata:
     nuxt3: latest
     sass: ^1.49.0
     typescript: ^4.5.5
+  languageName: unknown
+  linkType: soft
+
+"@slsblog/react-client@workspace:apps/react-client":
+  version: 0.0.0-use.local
+  resolution: "@slsblog/react-client@workspace:apps/react-client"
+  dependencies:
+    "@types/node": 18.11.0
+    "@types/react": 18.0.21
+    "@types/react-dom": 18.0.6
+    axios: ^1.1.3
+    eslint: 8.25.0
+    eslint-config-next: 12.3.1
+    http-proxy-middleware: ^2.0.6
+    next: 12.3.1
+    react: 18.2.0
+    react-dom: 18.2.0
+    react-query: ^3.39.2
+    typescript: 4.8.4
   languageName: unknown
   linkType: soft
 
@@ -3969,6 +3988,15 @@ __metadata:
   dependencies:
     "@types/node": "*"
   checksum: d076bb61f45d0fc42dee496ef8b1c2f8742e15d5e47e90e20d0243386e426c04d4efd408a48875ab432f7960b4ce3414db20ed0fbbfc7bcc89d84e574f6e045a
+  languageName: node
+  linkType: hard
+
+"@types/http-proxy@npm:^1.17.8":
+  version: 1.17.9
+  resolution: "@types/http-proxy@npm:1.17.9"
+  dependencies:
+    "@types/node": "*"
+  checksum: 7a6746d00729b2a9fe9f9dd3453430b099931df879ec8f7a7b5f07b1795f6d99b0512640c45a67390b1e4bacb9401e36824952aeeaf089feba8627a063cf8e00
   languageName: node
   linkType: hard
 
@@ -10887,6 +10915,24 @@ __metadata:
   languageName: node
   linkType: hard
 
+"http-proxy-middleware@npm:^2.0.6":
+  version: 2.0.6
+  resolution: "http-proxy-middleware@npm:2.0.6"
+  dependencies:
+    "@types/http-proxy": ^1.17.8
+    http-proxy: ^1.18.1
+    is-glob: ^4.0.1
+    is-plain-obj: ^3.0.0
+    micromatch: ^4.0.2
+  peerDependencies:
+    "@types/express": ^4.17.13
+  peerDependenciesMeta:
+    "@types/express":
+      optional: true
+  checksum: 2ee85bc878afa6cbf34491e972ece0f5be0a3e5c98a60850cf40d2a9a5356e1fc57aab6cff33c1fc37691b0121c3a42602d2b1956c52577e87a5b77b62ae1c3a
+  languageName: node
+  linkType: hard
+
 "http-proxy@npm:^1.18.1":
   version: 1.18.1
   resolution: "http-proxy@npm:1.18.1"
@@ -11625,6 +11671,13 @@ __metadata:
   version: 1.1.0
   resolution: "is-plain-obj@npm:1.1.0"
   checksum: 0ee04807797aad50859652a7467481816cbb57e5cc97d813a7dcd8915da8195dc68c436010bf39d195226cde6a2d352f4b815f16f26b7bf486a5754290629931
+  languageName: node
+  linkType: hard
+
+"is-plain-obj@npm:^3.0.0":
+  version: 3.0.0
+  resolution: "is-plain-obj@npm:3.0.0"
+  checksum: a6ebdf8e12ab73f33530641972a72a4b8aed6df04f762070d823808303e4f76d87d5ea5bd76f96a7bbe83d93f04ac7764429c29413bd9049853a69cb630fb21c
   languageName: node
   linkType: hard
 
@@ -14399,24 +14452,6 @@ __metadata:
   checksum: deac9f8d00eda7b2e5cd1b2549e26e10a0faa70adaa6fdadca701cc55f49ee9018e427f424bac0c790b7c7e2d3068db97f3093f1093975f2acb8f8818b936ed9
   languageName: node
   linkType: hard
-
-"next-client@workspace:packages/next-client":
-  version: 0.0.0-use.local
-  resolution: "next-client@workspace:packages/next-client"
-  dependencies:
-    "@types/node": 18.11.0
-    "@types/react": 18.0.21
-    "@types/react-dom": 18.0.6
-    axios: ^1.1.3
-    eslint: 8.25.0
-    eslint-config-next: 12.3.1
-    next: 12.3.1
-    react: 18.2.0
-    react-dom: 18.2.0
-    react-query: ^3.39.2
-    typescript: 4.8.4
-  languageName: unknown
-  linkType: soft
 
 "next@npm:12.3.1":
   version: 12.3.1

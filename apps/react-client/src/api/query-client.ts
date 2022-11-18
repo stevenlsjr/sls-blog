@@ -7,5 +7,5 @@ import {
 } from 'react-query'
 
 export function makeQueryClient(){
-  return new QueryClient({})
+  return new QueryClient()
 }

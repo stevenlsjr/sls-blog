@@ -6,26 +6,12 @@ import styles from "../styles/Home.module.css";
 import { makeQueryClient } from "../api/query-client";
 import { WagtailClient } from "../api/wagtail-client";
 import { ListPages } from "../components/list-pages";
+import { useEffect } from "react";
 
 export async function getStaticProps(context: NextPageContext) {
   const client = makeQueryClient();
   const wagtail = new WagtailClient();
-  try {
-    const pages = await client.fetchQuery("list-blog-pages", () =>
-      wagtail.listBlogPages({})
-    );
-    await Promise.all(
-      pages.items.map((page) =>
-        client.prefetchQuery(["detail-page-by-id", page.id], () =>
-          wagtail.detailPage(page.id)
-        )
-      )
-    );
-  } catch (e) {
-    if (!(e as any).isAxiosInstance) {
-      throw e;
-    }
-  }
+  const pages = await wagtail.listPages()
 
   const dehydratedState = dehydrate(client);
   return { props: { dehydratedState } };
@@ -34,9 +20,12 @@ export async function getStaticProps(context: NextPageContext) {
 const Home: NextPage = () => {
   const wagtail = new WagtailClient();
 
+  useEffect(() => {
+    (window as any).WAGTAIL = wagtail;
+  });
+
   return (
     <div className={styles.container}>
-      <ListPages></ListPages>
     </div>
   );
 };

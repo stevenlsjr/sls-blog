@@ -6,6 +6,11 @@ const nextConfig = {
   publicRuntimeConfig: {
     apiBaseUrl,
   },
+  async rewrites() {
+    return [
+      {source: '/', destination: '/pages/'},
+    ]
+  }
 };
 
 module.exports = nextConfig;

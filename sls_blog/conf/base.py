@@ -18,7 +18,7 @@ class BaseConfig(Configuration):
     # Quick-start development settings - unsuitable for production
     # See https://docs.djangoproject.com/en/3.1/howto/deployment/checklist/
 
-    ALLOWED_HOSTS = []
+    ALLOWED_HOSTS = ['localhost']
     AUTH_USER_MODEL = 'slsblog_auth.User'
     # Application definition
 
@@ -66,9 +66,9 @@ class BaseConfig(Configuration):
         )
     }
     MIDDLEWARE = [
+        'corsheaders.middleware.CorsMiddleware',
         'django.middleware.security.SecurityMiddleware',
         'django.contrib.sessions.middleware.SessionMiddleware',
-        'corsheaders.middleware.CorsMiddleware',
         'django.middleware.common.CommonMiddleware',
         'django.middleware.csrf.CsrfViewMiddleware',
         'django.contrib.auth.middleware.AuthenticationMiddleware',
@@ -79,6 +79,7 @@ class BaseConfig(Configuration):
 
     ROOT_URLCONF = 'sls_blog.urls'
     WAGTAIL_SITE_NAME = 'Stevenlsjr Blog'
+    WAGTAILAPI_BASE_URL = values.Value(default=None)
     WAGTAIL_I18N_ENABLED = True
     LANGUAGES = WAGTAIL_CONTENT_LANGUAGES = [
     ('en-us', _("English (United States)")),

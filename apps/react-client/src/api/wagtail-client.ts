@@ -1,5 +1,4 @@
 import { AxiosInstance } from "axios";
-import { interpolateAs } from "next/dist/shared/lib/router/router";
 import { getAxios } from "./axios";
 
 export interface WagtailClientOptions {
@@ -41,18 +40,18 @@ export interface ListWagtailPage {
   title: string;
   meta: ListPageMeta;
 }
-const BLOG_PAGE_TYPE = "slsblog_cms.BlogPage";
-const BLOG_LANDING_PAGE_TYPE = "slsblog_cms.BlogLandingPage";
+export const BLOG_PAGE_TYPE = "slsblog_cms.BlogPage";
+export const BLOG_LANDING_PAGE_TYPE = "slsblog_cms.BlogLandingPage";
 export type PageType = typeof BLOG_PAGE_TYPE | typeof BLOG_LANDING_PAGE_TYPE;
 
 export interface DetailPage {
-  id: 5;
+  id: number;
   meta: DetailPageMeta;
   title: string;
 }
 
 export interface BlogPage extends DetailPage {
-  id: 5;
+  id: number;
   meta: DetailPageMeta<typeof BLOG_PAGE_TYPE>;
   title: string;
   intro: string;
@@ -88,6 +87,18 @@ export class WagtailClient {
     return resp.data;
   }
 
+  listPagesByCursor(params: any = {}, initialCursor = 0, limit = 10) {
+    return async ({ pageParam = initialCursor }) => {
+      const cursor = pageParam;
+      const offset = cursor * limit;
+      const pages = await this.listPages({ ...params, limit, offset });
+      const nextOffset = offset + limit;
+      const next =
+        nextOffset >= (pages.meta.total_count ?? 0) ? undefined : cursor + 1;
+      return { pages: pages.items, next };
+    };
+  }
+
   async listBlogPages(params: any = {}) {
     params.type = BLOG_PAGE_TYPE;
     return this.listPages(params);
@@ -98,6 +109,16 @@ export class WagtailClient {
       `/api/wagtail-v2/pages/${id}/`
     );
     return resp.data;
+  }
+
+  async byHtmlPath(path: string): Promise<DetailPage> {
+    return (
+      await this.axios.get("/api/wagtail-v2/pages/find/", {
+        params: {
+          html_path: path,
+        },
+      })
+    ).data;
   }
 
   axios: AxiosInstance;
